@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="感觉可能是由于受c语言的影响，现在好多时候写题还是用char数组字符串比较多，不过感觉用起来似乎比较麻烦，就决定整理一下c++中的string类的用法。 声明一个C++字符串1string str;  这样就声明了一个字符串变量str,由于其构造函数没有传入参数，故此时将str初始化为一个空字符串。 string类中的构造函数和析构函数如下：s;```1```string s(str); //拷贝">
+<meta name="description" content="感觉可能是由于受c语言的影响，现在好多时候写题还是用char数组字符串比较多，不过感觉用起来似乎比较麻烦，就决定整理一下c++中的string类的用法。 声明一个C++字符串1string str;  这样就声明了一个字符串变量str,由于其构造函数没有传入参数，故此时将str初始化为一个空字符串。string类中的构造函数和析构函数如下：1string s; //生成一个空字符串s   1str">
 <meta name="keywords" content="编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++之string类简述">
 <meta property="og:url" content="http://yoursite.com/2018/07/30/c-之string类简述/index.html">
 <meta property="og:site_name" content="ccluo&#39;s Blog">
-<meta property="og:description" content="感觉可能是由于受c语言的影响，现在好多时候写题还是用char数组字符串比较多，不过感觉用起来似乎比较麻烦，就决定整理一下c++中的string类的用法。 声明一个C++字符串1string str;  这样就声明了一个字符串变量str,由于其构造函数没有传入参数，故此时将str初始化为一个空字符串。 string类中的构造函数和析构函数如下：s;```1```string s(str); //拷贝">
+<meta property="og:description" content="感觉可能是由于受c语言的影响，现在好多时候写题还是用char数组字符串比较多，不过感觉用起来似乎比较麻烦，就决定整理一下c++中的string类的用法。 声明一个C++字符串1string str;  这样就声明了一个字符串变量str,由于其构造函数没有传入参数，故此时将str初始化为一个空字符串。string类中的构造函数和析构函数如下：1string s; //生成一个空字符串s   1str">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-31T13:43:46.172Z">
+<meta property="og:updated_time" content="2018-07-31T14:03:57.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++之string类简述">
-<meta name="twitter:description" content="感觉可能是由于受c语言的影响，现在好多时候写题还是用char数组字符串比较多，不过感觉用起来似乎比较麻烦，就决定整理一下c++中的string类的用法。 声明一个C++字符串1string str;  这样就声明了一个字符串变量str,由于其构造函数没有传入参数，故此时将str初始化为一个空字符串。 string类中的构造函数和析构函数如下：s;```1```string s(str); //拷贝">
+<meta name="twitter:description" content="感觉可能是由于受c语言的影响，现在好多时候写题还是用char数组字符串比较多，不过感觉用起来似乎比较麻烦，就决定整理一下c++中的string类的用法。 声明一个C++字符串1string str;  这样就声明了一个字符串变量str,由于其构造函数没有传入参数，故此时将str初始化为一个空字符串。string类中的构造函数和析构函数如下：1string s; //生成一个空字符串s   1str">
 
 
 
@@ -355,13 +355,16 @@
         <p>感觉可能是由于受c语言的影响，现在好多时候写题还是用char数组字符串比较多，不过感觉用起来似乎比较麻烦，就决定整理一下<strong>c++中的string类的用法</strong>。</p>
 <h1 id="声明一个C-字符串"><a href="#声明一个C-字符串" class="headerlink" title="声明一个C++字符串"></a>声明一个C++字符串</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>这样就声明了一个字符串变量<strong>str</strong>,由于其构造函数没有传入参数，故此时将str初始化为一个<strong>空字符串</strong>。</p>
-<h2 id="string类中的构造函数和析构函数如下："><a href="#string类中的构造函数和析构函数如下：" class="headerlink" title="string类中的构造函数和析构函数如下："></a>string类中的构造函数和析构函数如下：</h2><figure class="highlight plain"><figcaption><span>s;</span><a href="//生成一个空字符串s">```</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```string s(str); //拷贝构造函数，将str复制到s中</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>s(str, stridx);</span><a href="//将字符串str内**始于位置stridx**的部分当作字符串的初值">```</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```string s(str, stridx, strlen); //将字符串str内**始于stridx且长度至多为strlen**的部分作为字符串的初值</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>s(cstr);</span><a href="//将c字符串作为s的初值```">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```string s(chars, chars_len); //将c字符串前的至多chars_len个字符串作为字符串s的初值</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>s(num, c);</span><a href="//生成一个字符串，包含num个c```">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```s.~string(); //销毁所有字符，释放内存</span><br></pre></td></tr></table></figure>
+<li>这样就声明了一个字符串变量<strong>str</strong>,由于其构造函数没有传入参数，故此时将str初始化为一个<strong>空字符串</strong>。<h2 id="string类中的构造函数和析构函数如下："><a href="#string类中的构造函数和析构函数如下：" class="headerlink" title="string类中的构造函数和析构函数如下："></a>string类中的构造函数和析构函数如下：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s; //生成一个空字符串s</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str); //拷贝构造函数，将str复制到s中</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str, stridx); //将字符串str内**始于位置stridx**的部分当作字符串的初值</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str, stridx, strlen); //将字符串str内**始于stridx且长度至多为strlen**的部分作为字符串的初值</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(cstr); //将c字符串作为s的初值</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(chars, chars_len); //将c字符串前的至多chars_len个字符串作为字符串s的初值</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(num, c); //生成一个字符串，包含num个c</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.~string(); //销毁所有字符，释放内存</span><br></pre></td></tr></table></figure>
 <h1 id="字符串操作函数"><a href="#字符串操作函数" class="headerlink" title="字符串操作函数"></a>字符串操作函数</h1><ul>
 <li>=，aasign()   //赋值 </li>
 <li>swap()    //交换两个字符串的内容，既可以用作成员函数也可以用作普通函数</li>
