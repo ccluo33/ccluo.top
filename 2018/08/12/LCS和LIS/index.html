@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="LCS LCS即最长公共子序列（Longest Common Subsequence）。 对于dp数组可以采用如下的定义: dp[i][j] :=s&amp;lt;sub&amp;gt;1&amp;lt;/sub&amp;gt;...s&amp;lt;sub&amp;gt;i&amp;lt;/sub&amp;gt;和t&amp;lt;sub&amp;gt;1&amp;lt;/sub&amp;gt;...t&amp;lt;sub&amp;gt;j&amp;lt;/sub&amp;gt;对应的LCS的长度  由此，s1…si+">
+<meta name="description" content="LCS LCS即最长公共子序列（Longest Common Subsequence）。 对于dp数组可以采用如下的定义:    dp[i][j] :=s1…si和t1…tj对应的LCS的长度  由此，s1…si+1和t1…tj+1对应的最长公共子序列应该是    1.当si+1=tj+1时，在s1…si和t1…tj的最长公共子序列末尾追加上si+1.    2.否则应该为s1…si和t1…tj+">
 <meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LCS和LIS">
 <meta property="og:url" content="http://yoursite.com/2018/08/12/LCS和LIS/index.html">
 <meta property="og:site_name" content="ccluo&#39;s Blog">
-<meta property="og:description" content="LCS LCS即最长公共子序列（Longest Common Subsequence）。 对于dp数组可以采用如下的定义: dp[i][j] :=s&amp;lt;sub&amp;gt;1&amp;lt;/sub&amp;gt;...s&amp;lt;sub&amp;gt;i&amp;lt;/sub&amp;gt;和t&amp;lt;sub&amp;gt;1&amp;lt;/sub&amp;gt;...t&amp;lt;sub&amp;gt;j&amp;lt;/sub&amp;gt;对应的LCS的长度  由此，s1…si+">
+<meta property="og:description" content="LCS LCS即最长公共子序列（Longest Common Subsequence）。 对于dp数组可以采用如下的定义:    dp[i][j] :=s1…si和t1…tj对应的LCS的长度  由此，s1…si+1和t1…tj+1对应的最长公共子序列应该是    1.当si+1=tj+1时，在s1…si和t1…tj的最长公共子序列末尾追加上si+1.    2.否则应该为s1…si和t1…tj+">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T15:30:07.491Z">
+<meta property="og:updated_time" content="2018-08-13T06:20:32.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LCS和LIS">
-<meta name="twitter:description" content="LCS LCS即最长公共子序列（Longest Common Subsequence）。 对于dp数组可以采用如下的定义: dp[i][j] :=s&amp;lt;sub&amp;gt;1&amp;lt;/sub&amp;gt;...s&amp;lt;sub&amp;gt;i&amp;lt;/sub&amp;gt;和t&amp;lt;sub&amp;gt;1&amp;lt;/sub&amp;gt;...t&amp;lt;sub&amp;gt;j&amp;lt;/sub&amp;gt;对应的LCS的长度  由此，s1…si+">
+<meta name="twitter:description" content="LCS LCS即最长公共子序列（Longest Common Subsequence）。 对于dp数组可以采用如下的定义:    dp[i][j] :=s1…si和t1…tj对应的LCS的长度  由此，s1…si+1和t1…tj+1对应的最长公共子序列应该是    1.当si+1=tj+1时，在s1…si和t1…tj的最长公共子序列末尾追加上si+1.    2.否则应该为s1…si和t1…tj+">
 
 
 
@@ -355,8 +355,8 @@
         <h1 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h1><ul>
 <li>LCS即<strong>最长公共子序列</strong>（Longest Common Subsequence）。</li>
 <li><p>对于dp数组可以采用如下的定义:</p>
-<pre><code>dp[i][j] :=s&lt;sub&gt;1&lt;/sub&gt;...s&lt;sub&gt;i&lt;/sub&gt;和t&lt;sub&gt;1&lt;/sub&gt;...t&lt;sub&gt;j&lt;/sub&gt;对应的LCS的长度
-</code></pre></li>
+<p>   dp[i][j] :=s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j</sub>对应的LCS的长度</p>
+</li>
 <li><p>由此，s<sub>1</sub>…s<sub>i+1</sub>和t<sub>1</sub>…t<sub>j+1</sub>对应的最长公共子序列应该是</p>
 <p>   1.当s<sub>i+1</sub>=t<sub>j+1</sub>时，在s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j</sub>的最长公共子序列末尾追加上s<sub>i+1</sub>.</p>
 <p>   2.否则应该为s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j+1</sub>的最长公共子序列和s<sub>1</sub>…s<sub>i+1</sub>和t<sub>1</sub>…t<sub>j</sub>的最长公共子序列中最长的那个。</p>
@@ -365,15 +365,16 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int n , m;</span><br><span class="line">char s[MAX_N], t[MAX_M];</span><br><span class="line"></span><br><span class="line">int dp[MAX_N+1][MAX_M+1];    //DP数组</span><br><span class="line"></span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int j = 0; j &lt; m; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(s[i] == t[j])</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+1][j+1] = dp[i][j] + 1;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+1][j+1] = max(dp[i][j+1], dp[i+1][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, dp[n][m]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>此时的时间复杂度为O(nm)。<h1 id="LIS"><a href="#LIS" class="headerlink" title="LIS"></a>LIS</h1></li>
+<li>此时的时间复杂度为O(nm)。</li>
+</ul>
+<h1 id="LIS"><a href="#LIS" class="headerlink" title="LIS"></a>LIS</h1><ul>
 <li>LIS即<strong>最长上升子序列</strong>(Longest Increasing Subsequence)。</li>
 <li>对于这种问题的求解通常有三种做法。<h2 id="1-动态规划-时间复杂度为O-n2"><a href="#1-动态规划-时间复杂度为O-n2" class="headerlink" title="1.动态规划(时间复杂度为O(n2))"></a>1.动态规划(时间复杂度为O(n<sup>2</sup>))</h2></li>
 <li><p>定义dp[i]:=以a<sub>i</sub>为末尾的最长上升子序列的长度</p>
 <p>  以a<sub>i</sub>结尾的上升子序列可以是:</p>
-<pre><code>1.只包含a&lt;sub&gt;i&lt;/sub&gt;的子序列
-
-2.在满足j &lt; i并且a&lt;sub&gt;j&lt;/sub&gt; &lt; a&lt;sub&gt;i&lt;/sub&gt;的以a&lt;sub&gt;j&lt;/sub&gt;为结尾的上升子列末尾，追加上a&lt;sub&gt;i&lt;/sub&gt;后得到的子序列
-</code></pre></li>
+<p>   1.只包含a<sub>i</sub>的子序列</p>
+<p>   2.在满足j &lt; i并且a<sub>j</sub> &lt; a<sub>i</sub>的以a<sub>j</sub>为结尾的上升子列末尾，追加上a<sub>i</sub>后得到的子序列</p>
+</li>
 <li>根据上述描述可求得dp数组的递推关系，关系可见代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int n,;</span><br><span class="line">int a[MAX_N];</span><br><span class="line"></span><br><span class="line">int dp[MAX_N];    //DP数组</span><br><span class="line"></span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">	int res = 0;</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[i] = 1;</span><br><span class="line">		for(int j = 0; j &lt; i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			dp[i] = max(dp[j]+1, dp[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		res = max(res, dp[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
