@@ -298,60 +298,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h1><ul>
-<li>LCS即<strong>最长公共子序列</strong>（Longest Common Subsequence）。</li>
-<li><p>对于dp数组可以采用如下的定义:</p>
-<p>   dp[i][j] :=s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j</sub>对应的LCS的长度</p>
-</li>
-<li><p>由此，s<sub>1</sub>…s<sub>i+1</sub>和t<sub>1</sub>…t<sub>j+1</sub>对应的最长公共子序列应该是</p>
-<p>   1.当s<sub>i+1</sub>=t<sub>j+1</sub>时，在s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j</sub>的最长公共子序列末尾追加上s<sub>i+1</sub>.</p>
-<p>   2.否则应该为s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j+1</sub>的最长公共子序列和s<sub>1</sub>…s<sub>i+1</sub>和t<sub>1</sub>…t<sub>j</sub>的最长公共子序列中最长的那个。</p>
-</li>
-<li>根据上述描述可求得dp数组的递推关系，关系可见代码：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int n , m;</span><br><span class="line">char s[MAX_N], t[MAX_M];</span><br><span class="line"></span><br><span class="line">int dp[MAX_N+1][MAX_M+1];    //DP数组</span><br><span class="line"></span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int j = 0; j &lt; m; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(s[i] == t[j])</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+1][j+1] = dp[i][j] + 1;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+1][j+1] = max(dp[i][j+1], dp[i+1][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, dp[n][m]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>此时的时间复杂度为O(nm)。</li>
-</ul>
-<h1 id="LIS"><a href="#LIS" class="headerlink" title="LIS"></a>LIS</h1><ul>
-<li>LIS即<strong>最长上升子序列</strong>(Longest Increasing Subsequence)。</li>
-<li>对于这种问题的求解通常有三种做法。<h2 id="1-动态规划-时间复杂度为O-n2"><a href="#1-动态规划-时间复杂度为O-n2" class="headerlink" title="1.动态规划(时间复杂度为O(n2))"></a>1.动态规划(时间复杂度为O(n<sup>2</sup>))</h2></li>
-<li><p>定义dp[i]:=以a<sub>i</sub>为末尾的最长上升子序列的长度</p>
-<p>  以a<sub>i</sub>结尾的上升子序列可以是:</p>
-<p>   1.只包含a<sub>i</sub>的子序列</p>
-<p>   2.在满足j &lt; i并且a<sub>j</sub> &lt; a<sub>i</sub>的以a<sub>j</sub>为结尾的上升子列末尾，追加上a<sub>i</sub>后得到的子序列</p>
-</li>
-<li>根据上述描述可求得dp数组的递推关系，关系可见代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int n,;</span><br><span class="line">int a[MAX_N];</span><br><span class="line"></span><br><span class="line">int dp[MAX_N];    //DP数组</span><br><span class="line"></span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">	int res = 0;</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[i] = 1;</span><br><span class="line">		for(int j = 0; j &lt; i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			dp[i] = max(dp[j]+1, dp[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		res = max(res, dp[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="2-动态规划-二分查找-时间复杂度为O-nlogn"><a href="#2-动态规划-二分查找-时间复杂度为O-nlogn" class="headerlink" title="2.动态规划+二分查找(时间复杂度为O(nlogn))"></a>2.动态规划+二分查找(时间复杂度为O(nlogn))</h2><ul>
-<li><p>可以看这么一个例子：假设存在一个序列d[1..9] = 2 1 5 3 6 4 8 9 7，可以看出来它的LIS长度为5。<br>下面一步一步试着找出它。<br>我们定义一个序列B，然后令 i = 1 to 9 逐个考察这个序列。<br>此外，我们用一个变量Len来记录现在最长算到多少了</p>
-<p>  首先，把d[1]有序地放到B里，令B[1] = 2，就是说当只有1一个数字2的时候，长度为1的LIS的最小末尾是2。这时Len=1</p>
-<p>  然后，把d[2]有序地放到B里，令B[1] = 1，就是说长度为1的LIS的最小末尾是1，d[1]=2已经没用了，这时Len=1</p>
-<p>  接着，d[3] = 5，d[3]&gt;B[1]，所以令B[1+1]=B[2]=d[3]=5，就是说长度为2的LIS的最小末尾是5，这时候B[1..2] = 1, 5，Len＝2</p>
-<p>  再来，d[4] = 3，它正好加在1,5之间，放在1的位置显然不合适，因为1小于3，长度为1的LIS最小末尾应该是1，这样很容易推知，长度为2的LIS最小末尾是3，于是可以把5淘汰掉，这时候B[1..2] = 1, 3，Len = 2</p>
-<p>  继续，d[5] = 6，它在3后面，因为B[2] = 3, 而6在3后面，于是很容易可以推知B[3] = 6, 这时B[1..3] = 1, 3, 6， Len = 3 了哦。</p>
-<p>  第6个, d[6] = 4，你看它在3和6之间，于是我们就可以把6替换掉，得到B[3] = 4。B[1..3] = 1, 3, 4， Len继续等于3</p>
-<p>  第7个, d[7] = 8，它很大，比4大，嗯。于是B[4] = 8。Len变成4了</p>
-<p>  第8个, d[8] = 9，得到B[5] = 9，嗯。Len继续增大，到5了。</p>
-<p>  最后一个, d[9] = 7，它在B[3] = 4和B[4] = 8之间，所以我们知道，最新的B[4] =7，B[1..5] = 1, 3, 4, 7, 9，Len = 5。</p>
-<p>  于是我们知道了LIS的长度为5。</p>
-<p>  !!!!! 注意。这个1,3,4,7,9不是LIS，它只是存储的对应长度LIS的最小末尾。有了这个末尾，我们就可以一个一个地插入数据。虽然最后一个d[9] = 7更新进去对于这组数据没有什么意义，但是如果后面再出现两个数字 8 和 9，那么就可以把8更新到d[5], 9更新到d[6]，得出LIS的长度为6。</p>
-<p>  然后应该发现一件事情了：在B中插入数据是有序的，而且是进行替换而不需要挪动——也就是说，我们可以使用二分查找，将每一个数字的插入时间优化到O(logN)<del>~</del>于是算法的时间复杂度就降低到了O(NlogN)～！</p>
-</li>
-<li>根据上面的例子我们可以体会到如果子序列的长度相同，那么最末尾的元素较小的在之后会更加有优势。</li>
-<li><p>因此我们定义dp[i]:=长度为i+1的上升子序列中末尾元素的最小值(不存在的话就是INF)，最开始全部dp[i]的值都初始化为INF。然后由前到后逐个考虑数组的元素，对于每一个a<sub>j</sub>，如果i=0或者dp[i-1] &lt; a<sub>j</sub>的话，就用dp[i] = min(dp[i], a<sub>j</sub>)进行更新。最终找出使dp[i] &lt; INF的最大的i+1就是结果了。而这个dp数组是单调递增的，所以可以知道对于每个a<sub>j</sub>最多只需要更新一次。对于这次更新应该在什么位置，不必逐个遍历，可直接使用二分搜索。代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int dp[MAX_N];</span><br><span class="line"></span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">	fill(dp, dp + n, INF);</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		*lower_bound(dp, dp+n, a[i]) = a[i];  </span><br><span class="line">		//lower_bound(a, a+n, k)函数从已排好序的序列a中利用二分搜索指出满足ai &gt;= k的ai的最小的指针 </span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, lower_bound(dp, dp+n, INF) - dp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这种方法的缺点是求最长上升子序列的长度比较快，但最长上升子序列实际是什么很难知道。</p>
-<h2 id="转化为求LCS（时间复杂度O-n2-）"><a href="#转化为求LCS（时间复杂度O-n2-）" class="headerlink" title="转化为求LCS（时间复杂度O(n2)）"></a>转化为求LCS（时间复杂度O(n<sup>2</sup>)）</h2></li>
-<li>可将<strong>所求序列</strong>与<strong>所求序列排序后得到的序列</strong>求最长公共子序列，所得的最长公共子序列即是原序列的最长上升子序列。</li>
-<li>代码可参考LCS的求解代码。</li>
-</ul>
-<p>参考博客：</p>
-<p><a href="https://www.cnblogs.com/handsomecui/p/4692350.html" target="_blank" rel="noopener">handsomecui的博客</a></p>
-<p><a href="https://blog.csdn.net/xws117/article/details/45438917" target="_blank" rel="noopener">xws117123的博客</a></p>
-
+              <p>求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。<br>
+          
       
     </div>
     
@@ -359,7 +307,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/ACM/">ACM</a>
+    <a class="article-category-link" href="/categories/算法/">算法</a>
     </div>
 
 
@@ -368,6 +316,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2018/08/12/LCS和LIS/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -414,20 +366,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ul>
-<li>对于数独问题的求解，首先考虑从左上角的空白格子开始填数字的深度优先搜索，所填的数字应该是所在行，列和方格中都没有填过的数字，可按此种方法进行减枝。但是对于空白格子多的情况，此种方法可能会超时。</li>
-<li>考虑处理某一行时，对于某个还没用过的数字，如果该行只有一个可行的空白格子，就只能将该数填入该格子中。对于列和方块也一样。反之，如果某个格子可填的数字只有一个，也只能将该数字填入格子。这样，我们优先处理数字或格子唯一的情况。此外，如果搜索过程中发现没有可选的数字或格子这样矛盾的情况，则提前停止搜索。</li>
-<li>但是当没有唯一确定的数字和格子时，此时的搜索又会回到原来从左上的空白格子开始填数字的方法。<strong>当人们求解数独问题时，是不会特地特地这样做的，通常会选择先处理选择少的格子</strong>。</li>
-<li>例如，假设有一个只有五个候选数字的格子，即使其中一个出现了矛盾，依然还有四个候选数字需要尝试。也就是说，比起从左上角开始填数字，<strong>优先选择候选数字少的格子填数字要更加高效</strong>。<h1 id="Sudoku"><a href="#Sudoku" class="headerlink" title="Sudoku"></a>Sudoku</h1></li>
-<li>题面：Sudoku is a very simple task. A square table with 9 rows and 9 columns is divided to 9 smaller squares 3x3 as shown on the Figure. In some of the cells are written decimal digits from 1 to 9. The other cells are empty. The goal is to fill the empty cells with decimal digits from 1 to 9, one digit per cell, in such way that in each row, in each column and in each marked 3x3 subsquare, all the digits from 1 to 9 to appear. Write a program to solve a given Sudoku-task. </li>
-<li>输入：The input data will start with the number of the test cases. For each test case, 9 lines follow, corresponding to the rows of the table. On each line a string of exactly 9 decimal digits is given, corresponding to the cells in this line. If a cell is empty it is represented by 0.</li>
-<li>输出：For each test case your program should print the solution in the same format as the input data. The empty cells have to be filled according to the rules. If solutions is not unique, then the program may print any one of them.</li>
-<li>样例输入：<br>1<br>103000509<br>002109400<br>000704000<br>300502006<br>060000050<br>700803004<br>000401000<br>009205800<br>804000107</li>
-<li>样例输出：<br>143628579<br>572139468<br>986754231<br>391542786<br>468917352<br>725863914<br>237481695<br>619275843<br>854396127</li>
-<li>程序代码如下:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int n; </span><br><span class="line">int tag[9][9][9];   //tag[i][j][k]表示(i,j)位置是否可填入数字i+1 </span><br><span class="line">int count[9][9];    //count[i][j]存储(i, j)位置可填入数字的个数 </span><br><span class="line">int s[9][9];         //存储数独矩阵       </span><br><span class="line"></span><br><span class="line">void init()</span><br><span class="line">&#123;</span><br><span class="line">	for(int i = 0; i &lt; 9; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int j = 0; j &lt; 9; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			count[i][j] = 9;</span><br><span class="line">			for(int k = 0; k &lt; 9; k++)</span><br><span class="line">			&#123;</span><br><span class="line">				tag[i][j][k] = 0;    //0表示可以放 </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void input()</span><br><span class="line">&#123;</span><br><span class="line">	char str[10];</span><br><span class="line">	for(int i = 0; i &lt; 9; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		scanf(&quot;%s&quot;, str);</span><br><span class="line">		for(int j = 0; j &lt; 9; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			s[i][j] = str[j] -&apos;0&apos;;</span><br><span class="line">			if(s[i][j] != 0)</span><br><span class="line">			&#123;</span><br><span class="line">				//我们最终只关注输入为0的位置的count值，故对于输入的数，其位置所在的count值是不用管的 </span><br><span class="line">				for(int a = 0; a &lt; 9; a++)</span><br><span class="line">				&#123;</span><br><span class="line">					//处理行和列 </span><br><span class="line">					if(tag[i][a][s[i][j] -1] == 0)</span><br><span class="line">					&#123;</span><br><span class="line">						tag[i][a][s[i][j] -1] = 1;   //1表示不能放 </span><br><span class="line">						count[i][a]--;</span><br><span class="line">					&#125;</span><br><span class="line">					if(tag[a][j][s[i][j] - 1] == 0)</span><br><span class="line">					&#123;</span><br><span class="line">						tag[a][j][s[i][j] - 1] = 1;</span><br><span class="line">						count[a][j]--;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				//处理其所在的3*3方块 </span><br><span class="line">				int area = i / 3 * 3 + j / 3;    //计算方格块的编号 </span><br><span class="line">				for(int b = area/3*3; b &lt; area/3*3+3; b++)</span><br><span class="line">				&#123;</span><br><span class="line">					for(int c = area%3*3; c &lt; area%3*3+3; c++)</span><br><span class="line">					&#123;</span><br><span class="line">						if(tag[b][c][s[i][j] - 1] == 0)</span><br><span class="line">						&#123;</span><br><span class="line">							tag[b][c][s[i][j] - 1] = 1;</span><br><span class="line">							count[b][c]--;	</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool search(int num)</span><br><span class="line">&#123;</span><br><span class="line">	int x, y;</span><br><span class="line">	int min = 10;</span><br><span class="line">	//printf(&quot;此时num = %d\n&quot;, num);</span><br><span class="line">	</span><br><span class="line">	//找s[i][j] == 0并且count[i][j]最小的位置 </span><br><span class="line">	for(int i = 0; i &lt; 9; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int j = 0; j &lt; 9; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(s[i][j] == 0 &amp;&amp; min &gt; count[i][j])</span><br><span class="line">			&#123;</span><br><span class="line">				min = count[i][j];</span><br><span class="line">				x = i;</span><br><span class="line">				y = j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	if(min == 10)</span><br><span class="line">	&#123;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	for(int i = 1; i &lt;= 9; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(tag[x][y][i-1] == 0)</span><br><span class="line">		&#123;</span><br><span class="line">			s[x][y] = i;</span><br><span class="line">			for(int a = 0; a &lt; 9; a++)</span><br><span class="line">			&#123;</span><br><span class="line">				//行和列 </span><br><span class="line">				if(tag[x][a][i-1] == 0)</span><br><span class="line">				&#123;</span><br><span class="line">					tag[x][a][i-1] = num;</span><br><span class="line">					count[x][a]--;</span><br><span class="line">				&#125;</span><br><span class="line">				if(tag[a][y][i-1] == 0)</span><br><span class="line">				&#123;</span><br><span class="line">					tag[a][y][i-1] = num;</span><br><span class="line">					count[a][y]--;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			//处理其所在的3*3方块 </span><br><span class="line">			int area = x / 3 * 3 + y / 3;    //计算方格快的编号 </span><br><span class="line">			for(int b = area/3*3; b &lt; area/3*3+3; b++)</span><br><span class="line">			&#123;</span><br><span class="line">				for(int c = area%3*3; c &lt; area%3*3+3; c++)</span><br><span class="line">				&#123;</span><br><span class="line">					if(tag[b][c][i - 1] == 0)</span><br><span class="line">					&#123;</span><br><span class="line">						tag[b][c][i - 1] = num;</span><br><span class="line">						count[b][c]--;	</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		</span><br><span class="line">             		</span><br><span class="line">			int result = search(num + 1);</span><br><span class="line">			if(result == 1)</span><br><span class="line">			&#123;</span><br><span class="line">				return true;</span><br><span class="line">			&#125;</span><br><span class="line">		</span><br><span class="line">			s[x][y] = 0;</span><br><span class="line">			for(int a = 0; a &lt; 9; a++)</span><br><span class="line">			&#123;</span><br><span class="line">				//行和列 </span><br><span class="line">				if(tag[x][a][i-1] == num)</span><br><span class="line">				&#123;</span><br><span class="line">					tag[x][a][i-1] = 0;</span><br><span class="line">					count[x][a]++;</span><br><span class="line">				&#125;</span><br><span class="line">				if(tag[a][y][i-1] == num)</span><br><span class="line">				&#123;</span><br><span class="line">					tag[a][y][i-1] = 0;</span><br><span class="line">					count[a][y]++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			area = x / 3 * 3 + y / 3;    //计算方格快的编号 </span><br><span class="line">			for(int b = area/3*3; b &lt; area/3*3+3; b++)</span><br><span class="line">			&#123;</span><br><span class="line">				for(int c = area%3*3; c &lt; area%3*3+3; c++)</span><br><span class="line">				&#123;</span><br><span class="line">					if(tag[b][c][i - 1] == num)</span><br><span class="line">					&#123;</span><br><span class="line">						tag[b][c][i - 1] = 0;</span><br><span class="line">						count[b][c]++;	</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;		</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void print()</span><br><span class="line">&#123;</span><br><span class="line">	for(int i = 0; i &lt; 9; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int j = 0; j &lt; 9; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;%d&quot;, s[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">	while(n--)</span><br><span class="line">	&#123;</span><br><span class="line">		init();</span><br><span class="line">		input();</span><br><span class="line">		search(2);</span><br><span class="line">		print();</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+              <p>数独问题的求解：深度优先搜索算法以及剪枝<br>
+          
       
     </div>
     
@@ -435,7 +375,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/ACM/">ACM</a>
+    <a class="article-category-link" href="/categories/算法/">算法</a>
     </div>
 
 
@@ -444,6 +384,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索/">搜索</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2018/08/11/搜索/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -490,7 +434,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。<br>+
+              <p>最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。<br>
           
       
     </div>
@@ -558,43 +502,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>哈哈，今天终于开始更新博客了(<em>^▽^</em>)一时不知道写什么好，就写一下最近学到的东西吧！</p>
-<h1 id="输出流与输入流"><a href="#输出流与输入流" class="headerlink" title="输出流与输入流"></a>输出流与输入流</h1><ul>
-<li><strong>cout</strong>是一个输出流对象，它是“console out”(控制台输出)的缩写,又称为插入运算符，是输出数据的，是属于basic_ostream类中的对象。而ostream类在iostream头文件中定义。</li>
-<li><strong>cin</strong>是一个输入流对象，又称为提取操作符，用来获取用户外部输入的数据，当用户进行键盘输入时，对应的字符将输入到操作系统的键盘缓冲区，当用户点击”Enter”键时，操作系统把键盘缓冲区的内容传输到cin流的内部缓冲区，<strong>“&gt;&gt;”</strong>操作符随后从这个缓冲区提取需要的信息，它是属于istream类中的对象。</li>
-<li>在C++中左移，右移操作符进行了重载。</li>
-<li><p>下面列举一些<strong>cin</strong>和<strong>cout</strong>的用法:</p>
-<h2 id="cin-ignore-amp-cin-getline"><a href="#cin-ignore-amp-cin-getline" class="headerlink" title="cin.ignore() &amp; cin.getline()"></a>cin.ignore() &amp; cin.getline()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char buf[20];</span><br><span class="line">cin.ignore(7);</span><br><span class="line">cin.getline( buf, 10 );</span><br><span class="line">cout &lt;&lt; buf &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用cin.ignore(7)在输入时会忽略输入的前7个字符。</p>
-</li>
-<li>使用cin.getline（buf, 10）在输入时只会得到前10个字符，注意这10个字符中还要包括’/0’。</li>
-</ul>
-<h2 id="cin-peek-amp-cin-get"><a href="#cin-peek-amp-cin-get" class="headerlink" title="cin.peek() &amp; cin.get()"></a>cin.peek() &amp; cin.get()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">char p;</span><br><span class="line">cout &lt;&lt; &quot;请输入一段文本: \n&quot;;</span><br><span class="line">while( cin.peek() != &apos;\n&apos; )</span><br><span class="line">&#123;</span><br><span class="line">      p = cin.get();</span><br><span class="line">      cout &lt;&lt; p;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>cin.peek()函数的返回值是一个<strong>char</strong>型的字符，其返回值是指针指向的当前字符。</li>
-<li>cin.get()函数用来从指定的输入流中提取一个字符(包括空白字符)，函数的返回值就是读入的字符。</li>
-</ul>
-<h2 id="cin-gcount-amp-cin-read"><a href="#cin-gcount-amp-cin-read" class="headerlink" title="cin.gcount() &amp; cin.read()"></a>cin.gcount() &amp; cin.read()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const int SIZE = 50;</span><br><span class="line">char buf[SIZE];</span><br><span class="line">cout &lt;&lt; &quot;请输入一段文本: &quot;;</span><br><span class="line">cin.read( buf, 20 );</span><br><span class="line">cout &lt;&lt; &quot;字符串收集到的字符数为: &quot; &lt;&lt; cin.gcount() &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; &quot;输入的文本信息是: &quot;;</span><br><span class="line">cout.write( buf, 20 );</span><br><span class="line">cout &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>cin.gcount()函数返回一个非格式化的提取方法读取的字符数，这以为着字符是由<strong>cin.get(),cin.getline(),cin.ignore()或cin.read()</strong>函数读取的，不是又提取操作符”&gt;&gt;”读取的。</li>
-<li>cin.read(buf,20)是读取长度为20的字符串给buf字符数组中，该字符串中包括了’\0’。</li>
-</ul>
-<h2 id="cout-precision-amp-cout-width"><a href="#cout-precision-amp-cout-width" class="headerlink" title="cout.precision() &amp; cout.width()"></a>cout.precision() &amp; cout.width()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">double result = sqrt(3.0);</span><br><span class="line">cout &lt;&lt; &quot;对 3 开方保留小数点后0 ~ 9 位，结果如下: \n&quot; &lt;&lt;endl;</span><br><span class="line">for( int i=0; i &lt;= 9; i++ )</span><br><span class="line">&#123;</span><br><span class="line">     cout.precision(i);</span><br><span class="line">     cout &lt;&lt; result &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; &quot;当前的输出精度为: &quot; &lt;&lt; cout.precision() &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>cout.precision(i)函数设置当前输出精度为i,输出小数点后<strong>i-1</strong>位，第i位四舍五入。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int width = 4;</span><br><span class="line">char str[20];</span><br><span class="line">cout &lt;&lt; &quot;请输入一段文本: \n&quot;;</span><br><span class="line">cin.width(5);</span><br><span class="line">while( cin &gt;&gt; str )</span><br><span class="line">&#123;</span><br><span class="line">     cout.width(width++);</span><br><span class="line">     cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">     cin.width(5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>cin,width(n)读取长度为n的字符，注意最后一个字符为’\0’。</li>
-<li>cout.width(n)设置输出宽度为n，不足的用空格补齐。<h1 id="名字空间"><a href="#名字空间" class="headerlink" title="名字空间"></a>名字空间</h1></li>
-<li><strong>cout</strong>这个输出流对象是在名字空间<strong>std</strong>中来定义的。</li>
-<li><p>在使用时可以直接用指令<strong>using namespace std</strong>，然后再使用<strong>cout</strong>，或者直接使用<strong>std::cout</strong>。</p>
-<p><code>std::cout&lt;&lt;&quot;This is a test&quot;&lt;&lt;endl</code></p>
-</li>
-</ul>
-<p>第一次写就先写到这了，希望以后自己能坚持下去!ヾ(◍°∇°◍)ﾉﾞ</p>
-
+              <p>C++中的输入输出流,以及一些有限定条件的输入输出方法（第一次更新博客！！！）。<br>
+          
       
     </div>
     
@@ -611,6 +520,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2018/04/22/输入输出流对象/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

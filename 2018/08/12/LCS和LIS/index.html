@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="LCS LCS即最长公共子序列（Longest Common Subsequence）。 对于dp数组可以采用如下的定义:    dp[i][j] :=s1…si和t1…tj对应的LCS的长度  由此，s1…si+1和t1…tj+1对应的最长公共子序列应该是    1.当si+1=tj+1时，在s1…si和t1…tj的最长公共子序列末尾追加上si+1.    2.否则应该为s1…si和t1…tj+">
+<meta name="description" content="求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。">
 <meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LCS和LIS">
 <meta property="og:url" content="http://yoursite.com/2018/08/12/LCS和LIS/index.html">
 <meta property="og:site_name" content="ccluo&#39;s Blog">
-<meta property="og:description" content="LCS LCS即最长公共子序列（Longest Common Subsequence）。 对于dp数组可以采用如下的定义:    dp[i][j] :=s1…si和t1…tj对应的LCS的长度  由此，s1…si+1和t1…tj+1对应的最长公共子序列应该是    1.当si+1=tj+1时，在s1…si和t1…tj的最长公共子序列末尾追加上si+1.    2.否则应该为s1…si和t1…tj+">
+<meta property="og:description" content="求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T03:40:17.032Z">
+<meta property="og:updated_time" content="2018-11-13T14:44:23.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LCS和LIS">
-<meta name="twitter:description" content="LCS LCS即最长公共子序列（Longest Common Subsequence）。 对于dp数组可以采用如下的定义:    dp[i][j] :=s1…si和t1…tj对应的LCS的长度  由此，s1…si+1和t1…tj+1对应的最长公共子序列应该是    1.当si+1=tj+1时，在s1…si和t1…tj的最长公共子序列末尾追加上si+1.    2.否则应该为s1…si和t1…tj+">
+<meta name="twitter:description" content="求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -292,7 +292,7 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/ACM/">ACM</a>
+    <a class="article-category-link" href="/categories/算法/">算法</a>
     </div>
 
 
@@ -308,7 +308,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h1><ul>
+        <p>求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。<br><a id="more"></a></p>
+<h1 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h1><ul>
 <li>LCS即<strong>最长公共子序列</strong>（Longest Common Subsequence）。</li>
 <li><p>对于dp数组可以采用如下的定义:</p>
 <p>   dp[i][j] :=s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j</sub>对应的LCS的长度</p>
@@ -372,7 +373,7 @@
         <p><span>本文标题:</span><a href="/2018/08/12/LCS和LIS/">LCS和LIS</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
         <p><span>发布时间:</span>2018-08-12, 22:06:26</p>
-        <p><span>最后更新:</span>2018-11-07, 11:40:17</p>
+        <p><span>最后更新:</span>2018-11-13, 22:44:23</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/08/12/LCS和LIS/" title="LCS和LIS">http://yoursite.com/2018/08/12/LCS和LIS/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/12/LCS和LIS/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
