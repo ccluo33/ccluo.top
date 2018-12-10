@@ -191,7 +191,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li></ul>
                     </div>
                 </section>
                 
@@ -249,6 +249,85 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-HTML和CSS(一)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/09/HTML和CSS(一)/" class="article-date">
+      <time datetime="2018-12-09T07:32:50.000Z" itemprop="datePublished">2018-12-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/09/HTML和CSS(一)/">HTML和CSS(一)</a>
+    </h1>
+  
+
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><ul>
+<li>HTML(HyperText Markup Language)即超文本标记语言，可以用该语言来编写文件建立Web页面，将这些Web页面放在Web服务器上，连接到互联网的PC和其它设备就可以用浏览器来得到此页面。根据Web页面的HTML，浏览器可以知道显示页面所需的全部信息。可以说HTML是浏览器显示页面的关键。</li>
+<li>第一个HTML文件：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;Starbuzz Coffee&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;h1&gt;Starbuzz Coffee Beverages&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">		&lt;h2&gt;House Blend, $1.49&lt;/h2&gt;</span><br><span class="line">		&lt;p&gt;A smooth, mild blend of coffees from Mexico, Bolivia</span><br><span class="line">		       and Guatemals.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">		&lt;h2&gt;Mocha Cafe Latte, $2.35&lt;/h2&gt;</span><br><span class="line">		&lt;p&gt;Espresso, steamed milk and chocolate syrup.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">		&lt;h2&gt;Cappuccino, $1.89&lt;/h2&gt;</span><br><span class="line">		&lt;p&gt;A mixture of espresso, steamed milk and foam.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">		&lt;h2&gt;Chai Tea, $1.85&lt;/h2&gt;</span><br><span class="line">		&lt;p&gt;A spicy drink made with black tea, spices, milk and </span><br><span class="line">		       honey.&lt;/p&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>要告诉浏览器页面的结构，就需要用成对的标记包围页面的内容。<br>需要注意的是 元素 = 开始标记 + 内容 + 结束标记，举个例子：<br>    <code>&lt;h1&gt;Starbuzz Coffee Beverages&lt;/h1&gt;</code><br>就是一个<code>&lt;h1&gt;</code>元素。</p>
+<ul>
+<li>HTML提供了一种方法来描述文件中内容的结构。浏览器在显示HTML时，它会使用它自己的内置的默认样式来表示这个结构。不过这远远不能满足我们的需求，于是就产生了CSS。<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1></li>
+<li>CSS(Cascading Style Sheets)即层叠样式表，它提供一种方法来告诉浏览器页面中的元素该如何显示。</li>
+<li>style元素。<code>&lt;style&gt;</code>元素放在HTML的首部里，与其它元素类似，<code>&lt;style&gt;</code>元素有一个开始标记<code>&lt;style&gt;</code>，还有一个结束标记<code>&lt;/style&gt;</code>。且该标记还有一个可选的属性（属性用来提供一个元素的附加信息），名为type，它告诉浏览器我们在使用什么类型的样式，由于我们使用的是CSS,所以可以指定”text/css”类型。</li>
+<li>对上面的页面加一些样式，新的代码如下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;Starbuzz Coffee&lt;/title&gt;</span><br><span class="line">		&lt;style type = &quot;text/css&quot;&gt;</span><br><span class="line">			body &#123;</span><br><span class="line">				background-color: #d2b48c;        &lt;!-- 设置背景色为土黄色，这是用十六进制码指定一个颜色 --&gt;</span><br><span class="line">				margin-left: 20%;</span><br><span class="line">				margin-right: 20%;                        &lt;!-- 设置左右外边距分别占页面的20% --&gt;</span><br><span class="line">				border: 2px dotted black;             &lt;!-- 定义页面主体周围的边框是虚线，颜色为黑色 --&gt;</span><br><span class="line">				padding: 10px 10px 10px 10px;    &lt;!-- 在页面主体周围创建一些内边距 --&gt;</span><br><span class="line">				font-family: sans-serif;                   &lt;!-- 定义文本使用的字体 --&gt;</span><br><span class="line">			&#125;    &lt;!-- &lt;body&gt;元素表示花括号之间的所有CSS都要应用于HTML --&gt; </span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;h1&gt;Starbuzz Coffee Beverages&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">		&lt;h2&gt;House Blend, $1.49&lt;/h2&gt;</span><br><span class="line">		&lt;p&gt;A smooth, mild blend of coffees from Mexico, Bolivia</span><br><span class="line">		       and Guatemals.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">		&lt;h2&gt;Mocha Cafe Latte, $2.35&lt;/h2&gt;</span><br><span class="line">		&lt;p&gt;Espresso, steamed milk and chocolate syrup.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">		&lt;h2&gt;Cappuccino, $1.89&lt;/h2&gt;</span><br><span class="line">		&lt;p&gt;A mixture of espresso, steamed milk and foam.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">		&lt;h2&gt;Chai Tea, $1.85&lt;/h2&gt;</span><br><span class="line">		&lt;p&gt;A spicy drink made with black tea, spices, milk and </span><br><span class="line">		       honey.&lt;/p&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>不过虽然自己用的是谷歌浏览器但是也没有显示边框。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-LCS和LIS" class="article article-type-post" itemscope itemprop="blogPost">
   
