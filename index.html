@@ -250,6 +250,62 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-HTML和CSS(四)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/30/HTML和CSS(四)/" class="article-date">
+      <time datetime="2019-01-30T14:17:42.000Z" itemprop="datePublished">2019-01-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/30/HTML和CSS(四)/">HTML和CSS(四)</a>
+    </h1>
+  
+
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-HTML和CSS(三)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -280,65 +336,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<p>再次意识到自己很菜qaq</p>
-<h1 id="认识-lt-q-gt-元素"><a href="#认识-lt-q-gt-元素" class="headerlink" title="认识&lt;q&gt;元素"></a>认识<code>&lt;q&gt;</code>元素</h1><ul>
-<li><code>&lt;q&gt;</code>元素用来在HTML里面添加简短的引用。下面是一小段测试HTML:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Quote Test Drive&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">You never know when you&apos;ll need a good quote, how about &lt;q&gt;To be or not to be&lt;/q&gt;, or &lt;q&gt;Wherever you go, there you are&lt;/q&gt;.</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>每个引用都要用一个<code>&lt;q&gt;</code>开始标记和一个<code>&lt;/q&gt;</code>结束标记包围。注意，这里没有在引用周围加双引号。这些引用在浏览器中会如下图这样显示，浏览器会负责加上双引号。<br><img src="images/testq.jpg" alt=""></li>
-<li><strong>并不是所有浏览器都会在<code>&lt;q&gt;</code>元素的内容两边加双引号</strong>。</li>
-<li>使用<code>&lt;q&gt;</code>元素可以使页面更结构化，更有意义。人们在文本中使用双引号原因可能有很多（使用双引号并不代表它确实是引用文字），但是如果使用的是<code>&lt;q&gt;</code>元素，这就意味着这是某种特定的内容，它表示的是一段引用文字。也就是说，通过标记引用，我们可以为它增加更多的含义（并且我们可以对引用设置样式，使它的外观如我们所愿）。<h1 id="很长的引用"><a href="#很长的引用" class="headerlink" title="很长的引用"></a>很长的引用</h1></li>
-<li><code>&lt;q&gt;</code>用于短引用，作为现有段落的一部分。<code>&lt;blockquote&gt;</code>元素用于较长的引用，需要单独显示。</li>
-<li>一个使用<code>&lt;blockquote&gt;</code>的例子如下所示（节选的一部分代码）：</li>
-</ul>
-<pre><code>&lt;h2&gt;July 14, 2012&lt;/h2&gt;
-&lt;p&gt;
-  I saw some Burma Shave style signs on the side of the
-  road today:
-&lt;/p&gt;
-&lt;blockquote&gt;
-  Passing cars, 
-  When you can&apos;t see, 
-  May get you, 
-  A glimpse, 
-  Of eternity. 
-&lt;/blockquote&gt;
-&lt;p&gt;
-  I definitely won&apos;t be passing any cars.
-&lt;/p&gt;
-</code></pre><p>我们在浏览器中打开后如下所示：<br><img src="images/html3_2.jpg" alt=""></p>
-<ul>
-<li>可以看出<code>&lt;blockquote&gt;</code>创建了一个单独的文本块（与<code>&lt;p&gt;</code>类似），另外还把文字稍微缩进，使它更像一个引用。不过我们的引用与原先预想的还有差距，因为所有行都在一起。我们希望它分行显示。</li>
-<li>如果想引用一段或者多段文字，就要使用<code>&lt;blockquote&gt;</code>，不过如果只想把一个引用放在现有的文字里，作为其中的一部分，就可以使用<code>&lt;q&gt;</code>。</li>
-<li>把段落元素放在<code>&lt;blockquote&gt;</code>中，一个段落元素对应一个段落就可以实现一个块引用中有多段。</li>
-<li><strong>只是有些浏览器显示<code>&lt;blockquote&gt;</code>时会缩进。一些浏览器对于<code>&lt;blockquote&gt;</code>可能不使用缩进。</strong>所以，不要指望<code>&lt;blockquote&gt;</code>在所有浏览器中都有相同的显示。</li>
-<li>引用元素可以结合使用，可以将一个<code>&lt;q&gt;</code>元素放在<code>&lt;p&gt;</code>元素中，同样的，也可以将<code>&lt;q&gt;</code>嵌在<code>&lt;blockquote&gt;</code>中。如果引用某个人的话，而他又引用另外某个人的言论，可能就需要这样的嵌套使用。不过把<code>&lt;blockquote&gt;</code>放在一个<code>&lt;q&gt;</code>元素中似乎没有任何意义。</li>
-<li><code>&lt;blockquote&gt;</code>和<code>&lt;q&gt;</code>实际是两类不同的元素。<code>&lt;blockquote&gt;</code>元素是一个块(block)元素，而<code>&lt;q&gt;</code>元素是一个内联(inline)元素。块元素显示时就好像前后各有一个换行，而内联元素在页面文本流中总在“行内”出现。</li>
-<li>块元素特立独行，内联元素随波逐流。<code>&lt;h1&gt;,&lt;h2&gt;,...&lt;h6&gt;,&lt;p&gt;</code>和<code>&lt;blockquote&gt;</code>都是块元素，每个块元素都单独显示，就好像前后都有换行。块元素的内容分块显示。<code>&lt;q&gt;,&lt;a&gt;</code>和<code>&lt;em&gt;</code>是内联元素。<code>&lt;q&gt;</code>则不同，与所有元素一样，<code>&lt;q&gt;</code>会显示在所在的段落中。</li>
-<li>块元素通常用作Web页面中的主要构建模块，而内联元素往往用来标记小段内容。设计一个页面时，一般先从较大的块开始（块元素），然后在完善页面时再加入内联元素。</li>
-<li>为什么在上面的图片中引用的文字不能分行显示呢？浏览器不会显示空白符和换行！！！可以考虑把每一行都放在一个块元素中。但是实际上HTML中提供了元素进行换行操作——<code>&lt;br&gt;</code>元素！在希望换行的地方增加一个<code>&lt;br&gt;</code>元素，这里就会插入一个“换行符”。</li>
-<li><code>&lt;br&gt;</code>元素是一个没有任何内容的元素，因为它只是一个换行，没有其他内容。对于一个没有实际内容的元素，我们会使用简写来表示这个元素，最后就会像<code>&lt;br&gt;</code>一样。<code>&lt;br&gt;</code>并不是唯一没有实际内容的元素，还有很多类似这样的元素，我们把这些元素叫做void元素（也叫作空元素）。比如说我们之前见到过的<code>&lt;img&gt;</code>元素。<h1 id="两步轻松构建HTML列表"><a href="#两步轻松构建HTML列表" class="headerlink" title="两步轻松构建HTML列表"></a>两步轻松构建HTML列表</h1></li>
-<li>创建一个HTML列表需要两个元素，结合使用这两个元素构成了列表。第一个元素用来标记每个列表项——<code>&lt;li&gt;</code>元素(list item)。第二个元素确定你创建的是哪种类型的列表：有序列表（ordered list，用<code>&lt;ol&gt;</code>元素表示）还是无序列表（unordered list，用<code>&lt;ul&gt;</code>元素表示）。</li>
-<li><strong>第一步：将每个列表项放在一个<code>&lt;li&gt;</code>元素中。</strong>要创建一个列表，需要把每个列表项放在单独的<code>&lt;li&gt;</code>元素中，这说明需要把内容用一个开始<code>&lt;li&gt;</code>标记和一个结束<code>&lt;/li&gt;</code>标记包围起来。与所有其它HTML元素一样，标记之间的内容由自己来确定，可以很短，也可以很长，分为多行。</li>
-<li><strong>第二步：用<code>&lt;ol&gt;</code>或<code>&lt;ul&gt;</code>元素包围列表项。</strong>如果使用一个<code>&lt;ol&gt;</code>元素包围列表项，则这些列表项将作为一个有序列表显示，浏览器将会负责对每个列表项进行编号；如果使用<code>&lt;ul&gt;</code>，则列表项将显示为一个无序列表。</li>
-<li><code>&lt;li&gt;</code>和<code>&lt;ol&gt;</code>以及<code>&lt;ul&gt;</code>元素都是块元素。</li>
-<li>可以把一个<code>&lt;ol&gt;</code>或<code>&lt;ul&gt;</code>作为某个<code>&lt;li&gt;</code>的内容，这样就在列表中有了另一个列表（我们把这叫做嵌套列表）。</li>
-<li>HTML中有有序列表和无序列表，还有另外一类列表：定义列表（用<code>&lt;dl&gt;</code>元素表示），列表中每一项都有一个定义术语<code>&lt;dt&gt;</code>和一个定义描述<code>&lt;dd&gt;</code>。<h1 id="HTML内容中特殊字符的表示方法"><a href="#HTML内容中特殊字符的表示方法" class="headerlink" title="HTML内容中特殊字符的表示方法"></a>HTML内容中特殊字符的表示方法</h1></li>
-<li>因为浏览器要使用<code>&lt;</code>和<code>&gt;</code>来开始和结束标记，如果在HTML内容中使用这两个字符，就会有问题。不过HTML提供了一种简便的方法，可以使用一种称为字符实体(character entity)的简单缩写来指定这样一些特殊字符。它是这样工作的：对于被认为特殊的字符，或者你可能希望在Web页面中使用某个字符但在你的编辑器里无法输入(比如版权符号)，就可以查找相应的缩写在HTML中直接输入。例如，<code>&gt;</code>字符的缩写是<code>&amp;gt;</code>,<code>&lt;</code>字符的缩写是<code>&amp;lt;</code>。</li>
-<li>加入下网在页面中输入<code>&quot;The &lt;html&gt; element rocks.&quot;</code>。通过使用字符实体，可以这样输入：<code>The &amp;lt;html&amp;gt; element rocks.</code>。还有一个特殊的字符是<code>&amp;</code>字符(与字符)。如果希望HTML内容中出现一个<code>&amp;</code>，则可以使用字符实体<code>&amp;amp;</code>，而不要直接使用字符<code>&amp;</code>。<code>&amp;</code>字符之所以特殊是因为它是所有实体的第一个字符。所以在实体名中使用<code>&amp;</code>是完全可以的，但不能单独使用<code>&amp;</code>。只要记住，输入实体时都会用到<code>&amp;</code>，而如果内容中确实需要一个<code>&amp;</code>，就要使用<code>&amp;amp;</code>。另外版权符号的表示为<code>&amp;copyright;</code>。</li>
-<li><code>www.unicode.org</code>网站上有太多的不同字符和语言。只有当所用的计算机或设备安装了正确的字体时，浏览器才可能显示所有这些字符。</li>
-<li>在<code>www.w3schools.com</code>上查看了字符实体，并且每个实体还有一个编号。可以在HTML中使用这个编号，比如<code>&amp;#100</code>，也可以使用实体名，它们的作用都是一样的。不过，并不是所有的实体都有名字，所以如果没有实体名，所以如果没有实体名，那么使用这个编号就是唯一选择了。<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1></li>
-<li><code>&lt;code&gt;</code>元素用来显示计算机程序代码。<code>&lt;em&gt;</code>元素来标记想用不同方式展示的文本，比如想强调一个重点。<code>&lt;time&gt;</code>元素用来告诉浏览器这个内容是一个日期或时间，或者同时包含日期和时间。<code>&lt;strong&gt;</code>元素来标记希望特别强调的文本。<code>&lt;pre&gt;</code>希望浏览器按照我们自己输入的方式原样显示文本时，使用这个元素来指定文本格式。</li>
-<li>开始输入内容之前要规划好Web页面的结构，然后画出一个草图，然后创建一个略图，最后在写出HTML。要尽可能使用元素来告诉浏览器我们的内容的含义。一定要使用与内容含义最接近的元素。例如，如果创建一个列表，就不要使用段落元素。</li>
-<li>块元素在内容前后分别有一个换行。</li>
-<li>要插入自己的换行时，可以使用<code>&lt;br&gt;</code>元素，它是一个”void”元素。</li>
-<li>void元素没有内容。并且只有一个标记组成。</li>
-<li>“空”元素没有内容，不过它由开始和结束标记。</li>
-<li>要对HTML中的特殊字符使用字符实体。</li>
-</ul>
-
+              <p>引用元素<code>&lt;q&gt;</code>和引用元素<code>&lt;blockquote&gt;</code>的区别：<code>&lt;q&gt;</code>是内联元素，适合于小段引用时使用，而<code>&lt;blockquote&gt;</code>是块元素，适合于大段引用。<br>一个列表由两种元素构成：列表类型和列表项。列表类型有无序列表（<code>&lt;ul&gt;</code>元素表示）以及有序列表（<code>&lt;ol&gt;</code>元素表示），列表项由<code>&lt;li&gt;</code>元素表示。这三个元素都是块元素。<br>
+          
       
     </div>
     
@@ -355,6 +354,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2019/01/22/HTML和CSS(三)/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -648,10 +651,10 @@
 
 
   
-    <article id="post-c-之string类简述" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-c++之string类简述" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/30/c-之string类简述/" class="article-date">
+      <a href="/2018/07/30/c++之string类简述/" class="article-date">
       <time datetime="2018-07-30T13:32:20.000Z" itemprop="datePublished">2018-07-30</time>
 </a>
 
@@ -667,7 +670,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/c-之string类简述/">c++之string类简述</a>
+      <a class="article-title" href="/2018/07/30/c++之string类简述/">c++之string类简述</a>
     </h1>
   
 
@@ -698,7 +701,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2018/07/30/c-之string类简述/#more">阅读全文 >></a>
+          <a href="/2018/07/30/c++之string类简述/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>

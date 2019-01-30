@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。">
-<meta name="keywords" content="动态规划">
+<meta name="description" content="最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。">
+<meta name="keywords" content="编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LCS和LIS">
-<meta property="og:url" content="http://yoursite.com/2018/08/12/LCS和LIS/index.html">
+<meta property="og:title" content="c++之string类简述">
+<meta property="og:url" content="http://yoursite.com/2018/07/30/c++之string类简述/index.html">
 <meta property="og:site_name" content="ccluo&#39;s Blog">
-<meta property="og:description" content="求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。">
+<meta property="og:description" content="最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-13T14:44:23.564Z">
+<meta property="og:updated_time" content="2018-11-13T14:39:12.771Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LCS和LIS">
-<meta name="twitter:description" content="求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。">
+<meta name="twitter:title" content="c++之string类简述">
+<meta name="twitter:description" content="最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>LCS和LIS | ccluo&#39;s Blog</title>
+<title>c++之string类简述 | ccluo&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -245,11 +245,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-LCS和LIS" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-c++之string类简述" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/12/LCS和LIS/" class="article-date">
-      <time datetime="2018-08-12T14:06:26.000Z" itemprop="datePublished">2018-08-12</time>
+      <a href="/2018/07/30/c++之string类简述/" class="article-date">
+      <time datetime="2018-07-30T13:32:20.000Z" itemprop="datePublished">2018-07-30</time>
 </a>
 
 
@@ -264,7 +264,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      LCS和LIS
+      c++之string类简述
     </h1>
   
 
@@ -274,13 +274,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
+    <a class="article-category-link" href="/categories/C/">C++</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -290,60 +290,52 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。<br><a id="more"></a></p>
-<h1 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h1><ul>
-<li>LCS即<strong>最长公共子序列</strong>（Longest Common Subsequence）。</li>
-<li><p>对于dp数组可以采用如下的定义:</p>
-<p>   dp[i][j] :=s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j</sub>对应的LCS的长度</p>
-</li>
-<li><p>由此，s<sub>1</sub>…s<sub>i+1</sub>和t<sub>1</sub>…t<sub>j+1</sub>对应的最长公共子序列应该是</p>
-<p>   1.当s<sub>i+1</sub>=t<sub>j+1</sub>时，在s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j</sub>的最长公共子序列末尾追加上s<sub>i+1</sub>.</p>
-<p>   2.否则应该为s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j+1</sub>的最长公共子序列和s<sub>1</sub>…s<sub>i+1</sub>和t<sub>1</sub>…t<sub>j</sub>的最长公共子序列中最长的那个。</p>
-</li>
-<li>根据上述描述可求得dp数组的递推关系，关系可见代码：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int n , m;</span><br><span class="line">char s[MAX_N], t[MAX_M];</span><br><span class="line"></span><br><span class="line">int dp[MAX_N+1][MAX_M+1];    //DP数组</span><br><span class="line"></span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int j = 0; j &lt; m; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(s[i] == t[j])</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+1][j+1] = dp[i][j] + 1;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+1][j+1] = max(dp[i][j+1], dp[i+1][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, dp[n][m]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。<br><a id="more"></a><br>可能是由于受c语言的影响，现在好多时候写题还是用char数组字符串比较多，不过感觉用起来似乎比较麻烦，就决定整理一下<strong>c++中的string类的用法</strong>。</p>
+<h1 id="声明一个C-字符串"><a href="#声明一个C-字符串" class="headerlink" title="声明一个C++字符串"></a>声明一个C++字符串</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>此时的时间复杂度为O(nm)。</li>
+<li>这样就声明了一个字符串变量<strong>str</strong>,由于其构造函数没有传入参数，故此时将str初始化为一个<strong>空字符串</strong>。<h2 id="string类中的构造函数和析构函数如下："><a href="#string类中的构造函数和析构函数如下：" class="headerlink" title="string类中的构造函数和析构函数如下："></a>string类中的构造函数和析构函数如下：</h2></li>
 </ul>
-<h1 id="LIS"><a href="#LIS" class="headerlink" title="LIS"></a>LIS</h1><ul>
-<li>LIS即<strong>最长上升子序列</strong>(Longest Increasing Subsequence)。</li>
-<li>对于这种问题的求解通常有三种做法。<h2 id="1-动态规划-时间复杂度为O-n2"><a href="#1-动态规划-时间复杂度为O-n2" class="headerlink" title="1.动态规划(时间复杂度为O(n2))"></a>1.动态规划(时间复杂度为O(n<sup>2</sup>))</h2></li>
-<li><p>定义dp[i]:=以a<sub>i</sub>为末尾的最长上升子序列的长度</p>
-<p>  以a<sub>i</sub>结尾的上升子序列可以是:</p>
-<p>   1.只包含a<sub>i</sub>的子序列</p>
-<p>   2.在满足j &lt; i并且a<sub>j</sub> &lt; a<sub>i</sub>的以a<sub>j</sub>为结尾的上升子列末尾，追加上a<sub>i</sub>后得到的子序列</p>
-</li>
-<li>根据上述描述可求得dp数组的递推关系，关系可见代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int n,;</span><br><span class="line">int a[MAX_N];</span><br><span class="line"></span><br><span class="line">int dp[MAX_N];    //DP数组</span><br><span class="line"></span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">	int res = 0;</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[i] = 1;</span><br><span class="line">		for(int j = 0; j &lt; i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			dp[i] = max(dp[j]+1, dp[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		res = max(res, dp[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s; //生成一个空字符串s</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str); //拷贝构造函数，将str复制到s中</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str, stridx); //将字符串str内**始于位置stridx**的部分当作字符串的初值</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str, stridx, strlen); //将字符串str内**始于stridx且长度至多为strlen**的部分作为字符串的初值</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(cstr); //将c字符串作为s的初值</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(chars, chars_len); //将c字符串前的至多chars_len个字符串作为字符串s的初值</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(num, c); //生成一个字符串，包含num个c</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.~string(); //销毁所有字符，释放内存</span><br></pre></td></tr></table></figure>
+<h1 id="字符串操作函数"><a href="#字符串操作函数" class="headerlink" title="字符串操作函数"></a>字符串操作函数</h1><ul>
+<li>=，aasign()   //赋值 </li>
+<li>swap()    //交换两个字符串的内容，既可以用作成员函数也可以用作普通函数</li>
+<li>+=,append(),push_back()  //在尾部添加字符，前两个也可添加字符串，后一个只能添加字符</li>
+<li>insert()   //插入字符，有两个参数</li>
+<li>erase()    //删除字符</li>
+<li>clear()    //删除全部字符</li>
+<li>replace()  //替换字符，可将字符串的某段替换为其他字符串</li>
+<li><ul>
+<li>//字符串拼接</li>
 </ul>
-<h2 id="2-动态规划-二分查找-时间复杂度为O-nlogn"><a href="#2-动态规划-二分查找-时间复杂度为O-nlogn" class="headerlink" title="2.动态规划+二分查找(时间复杂度为O(nlogn))"></a>2.动态规划+二分查找(时间复杂度为O(nlogn))</h2><ul>
-<li><p>可以看这么一个例子：假设存在一个序列d[1..9] = 2 1 5 3 6 4 8 9 7，可以看出来它的LIS长度为5。<br>下面一步一步试着找出它。<br>我们定义一个序列B，然后令 i = 1 to 9 逐个考察这个序列。<br>此外，我们用一个变量Len来记录现在最长算到多少了</p>
-<p>  首先，把d[1]有序地放到B里，令B[1] = 2，就是说当只有1一个数字2的时候，长度为1的LIS的最小末尾是2。这时Len=1</p>
-<p>  然后，把d[2]有序地放到B里，令B[1] = 1，就是说长度为1的LIS的最小末尾是1，d[1]=2已经没用了，这时Len=1</p>
-<p>  接着，d[3] = 5，d[3]&gt;B[1]，所以令B[1+1]=B[2]=d[3]=5，就是说长度为2的LIS的最小末尾是5，这时候B[1..2] = 1, 5，Len＝2</p>
-<p>  再来，d[4] = 3，它正好加在1,5之间，放在1的位置显然不合适，因为1小于3，长度为1的LIS最小末尾应该是1，这样很容易推知，长度为2的LIS最小末尾是3，于是可以把5淘汰掉，这时候B[1..2] = 1, 3，Len = 2</p>
-<p>  继续，d[5] = 6，它在3后面，因为B[2] = 3, 而6在3后面，于是很容易可以推知B[3] = 6, 这时B[1..3] = 1, 3, 6， Len = 3 了哦。</p>
-<p>  第6个, d[6] = 4，你看它在3和6之间，于是我们就可以把6替换掉，得到B[3] = 4。B[1..3] = 1, 3, 4， Len继续等于3</p>
-<p>  第7个, d[7] = 8，它很大，比4大，嗯。于是B[4] = 8。Len变成4了</p>
-<p>  第8个, d[8] = 9，得到B[5] = 9，嗯。Len继续增大，到5了。</p>
-<p>  最后一个, d[9] = 7，它在B[3] = 4和B[4] = 8之间，所以我们知道，最新的B[4] =7，B[1..5] = 1, 3, 4, 7, 9，Len = 5。</p>
-<p>  于是我们知道了LIS的长度为5。</p>
-<p>  !!!!! 注意。这个1,3,4,7,9不是LIS，它只是存储的对应长度LIS的最小末尾。有了这个末尾，我们就可以一个一个地插入数据。虽然最后一个d[9] = 7更新进去对于这组数据没有什么意义，但是如果后面再出现两个数字 8 和 9，那么就可以把8更新到d[5], 9更新到d[6]，得出LIS的长度为6。</p>
-<p>  然后应该发现一件事情了：在B中插入数据是有序的，而且是进行替换而不需要挪动——也就是说，我们可以使用二分查找，将每一个数字的插入时间优化到O(logN)<del>~</del>于是算法的时间复杂度就降低到了O(NlogN)～！</p>
 </li>
-<li>根据上面的例子我们可以体会到如果子序列的长度相同，那么最末尾的元素较小的在之后会更加有优势。</li>
-<li><p>因此我们定义dp[i]:=长度为i+1的上升子序列中末尾元素的最小值(不存在的话就是INF)，最开始全部dp[i]的值都初始化为INF。然后由前到后逐个考虑数组的元素，对于每一个a<sub>j</sub>，如果i=0或者dp[i-1] &lt; a<sub>j</sub>的话，就用dp[i] = min(dp[i], a<sub>j</sub>)进行更新。最终找出使dp[i] &lt; INF的最大的i+1就是结果了。而这个dp数组是单调递增的，所以可以知道对于每个a<sub>j</sub>最多只需要更新一次。对于这次更新应该在什么位置，不必逐个遍历，可直接使用二分搜索。代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int dp[MAX_N];</span><br><span class="line"></span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">	fill(dp, dp + n, INF);</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		*lower_bound(dp, dp+n, a[i]) = a[i];  </span><br><span class="line">		//lower_bound(a, a+n, k)函数从已排好序的序列a中利用二分搜索指出满足ai &gt;= k的ai的最小的指针 </span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, lower_bound(dp, dp+n, INF) - dp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这种方法的缺点是求最长上升子序列的长度比较快，但最长上升子序列实际是什么很难知道。</p>
-<h2 id="转化为求LCS（时间复杂度O-n2-）"><a href="#转化为求LCS（时间复杂度O-n2-）" class="headerlink" title="转化为求LCS（时间复杂度O(n2)）"></a>转化为求LCS（时间复杂度O(n<sup>2</sup>)）</h2></li>
-<li>可将<strong>所求序列</strong>与<strong>所求序列排序后得到的序列</strong>求最长公共子序列，所得的最长公共子序列即是原序列的最长上升子序列。</li>
-<li>代码可参考LCS的求解代码。</li>
+<li>==, !=, &lt;, &lt;=, &gt;, &gt;=, compare()     //字符串比较</li>
+<li>size(), length()   //返回字符串中的字符数量，<strong>注意如果求字符数组的长度的话可以用strlen()函数</strong></li>
+<li>max_size()     //返回字符的可能最大个数</li>
+<li>empty()     //判断字符串是否为空</li>
+<li>capacity()   //返回重新分配之前的字符容量</li>
+<li>reverse()   //字符串转置，<strong>注意如果是用字符数组表示字符串的话可用strrev()函数来进行字符串转置</strong></li>
+<li>[],at()    //存取单一字符串</li>
+<li>getline()   //从输入流读入一行</li>
+<li>copy(p,n,size_type _Off = 0)   //从string类型对象中至多复制n个字符到字符指针p指向的空间中。默认从首字符开始，但是也可以指定，开始的位置（记住从0开始）。返回真正从对象中复制的字符。<strong>用户要确保p指向的空间足够保存n个字符</strong>。</li>
+<li>c_str()   //取得c分格的const char *字符串</li>
+<li>data()    //取得字符串内容的地址</li>
+<li>substr()   //返回某个子字符串</li>
+<li>begin()    //得到指向字符串开头的iterator</li>
+<li>end()      //得到指向字符串结尾的iterator</li>
+<li>rbegin()    //得到指向反向字符串开头的iterator</li>
+<li>rend()      //得到指向反向字符串结尾的iterator</li>
+<li>find_first_of()     //查找包含子串中的任何字符，返回第一个位置</li>
+<li>find_first_not_of()     //查找不包含子串中的任何字符，返回第一个位置</li>
+<li>find_last_of()    //查找包含子串中的任何字符，返回最后一个位置</li>
+<li>find_last_not_of()    //查找不包含子串中的任何字符，返回最后一个位置</li>
 </ul>
-<p>参考博客：</p>
-<p><a href="https://www.cnblogs.com/handsomecui/p/4692350.html" target="_blank" rel="noopener">handsomecui的博客</a></p>
-<p><a href="https://blog.csdn.net/xws117/article/details/45438917" target="_blank" rel="noopener">xws117123的博客</a></p>
 
       
     </div>
@@ -352,13 +344,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/12/LCS和LIS/">LCS和LIS</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/30/c++之string类简述/">c++之string类简述</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
-        <p><span>发布时间:</span>2018-08-12, 22:06:26</p>
-        <p><span>最后更新:</span>2018-11-13, 22:44:23</p>
+        <p><span>发布时间:</span>2018-07-30, 21:32:20</p>
+        <p><span>最后更新:</span>2018-11-13, 22:39:12</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/12/LCS和LIS/" title="LCS和LIS">http://yoursite.com/2018/08/12/LCS和LIS/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/12/LCS和LIS/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/30/c++之string类简述/" title="c++之string类简述">http://yoursite.com/2018/07/30/c++之string类简述/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/30/c++之string类简述/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -371,15 +363,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/12/09/HTML和CSS(一)/">
-                    HTML和CSS(一)
+                <a href="/2018/08/11/搜索/">
+                    数独求解
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/11/搜索/">
-                    数独求解
+                <a href="/2018/04/22/输入输出流对象/">
+                    输入输出流对象
                 </a>
             </div>
         
@@ -391,7 +383,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LCS"><span class="toc-number">1.</span> <span class="toc-text">LCS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LIS"><span class="toc-number">2.</span> <span class="toc-text">LIS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-动态规划-时间复杂度为O-n2"><span class="toc-number">2.1.</span> <span class="toc-text">1.动态规划(时间复杂度为O(n2))</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-动态规划-二分查找-时间复杂度为O-nlogn"><span class="toc-number">2.2.</span> <span class="toc-text">2.动态规划+二分查找(时间复杂度为O(nlogn))</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#转化为求LCS（时间复杂度O-n2-）"><span class="toc-number">2.3.</span> <span class="toc-text">转化为求LCS（时间复杂度O(n2)）</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#声明一个C-字符串"><span class="toc-number">1.</span> <span class="toc-text">声明一个C++字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#string类中的构造函数和析构函数如下："><span class="toc-number">1.1.</span> <span class="toc-text">string类中的构造函数和析构函数如下：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串操作函数"><span class="toc-number">2.</span> <span class="toc-text">字符串操作函数</span></a></li></ol>
         
     </div>
     <style>
@@ -427,7 +419,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"LCS和LIS　| ccluo's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"c++之string类简述　| ccluo's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -466,7 +458,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/12/09/HTML和CSS(一)/" title="上一篇: HTML和CSS(一)">
+            <a href="/2018/08/11/搜索/" title="上一篇: 数独求解">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -474,7 +466,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/11/搜索/" title="下一篇: 数独求解">
+            <a href="/2018/04/22/输入输出流对象/" title="下一篇: 输入输出流对象">
                 <i class="fa fa-angle-right"></i>
             </a>
         
