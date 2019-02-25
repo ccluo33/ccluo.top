@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-18T12:58:53.185Z</updated>
+  <updated>2019-02-25T01:56:56.869Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTML和CSS(五)</title>
+    <link href="http://yoursite.com/2019/02/24/HTML%E5%92%8CCSS(%E4%BA%94)/"/>
+    <id>http://yoursite.com/2019/02/24/HTML和CSS(五)/</id>
+    <published>2019-02-24T13:36:17.000Z</published>
+    <updated>2019-02-25T01:56:56.869Z</updated>
+    
+    <content type="html"><![CDATA[<p>浏览器如何处理图像<br><br>缩略图的使用<br><br><code>&lt;img&gt;</code>元素是一个内联元素，这说明浏览器不会在图像前后插入一个换行<br><br><code>&lt;img&gt;</code>元素的src属性和alt属性介绍<br><br>JPEG,PNG,GIF三种图像格式的特点<br><a id="more"></a><br>开学了嘻嘻，这学期不该提前四天就来的，来了之后好无聊，刚来的第一天还找不到饭吃，真让人难受。下学期开学没啥事的话还是来晚一点吧！</p><h1 id="浏览器如何处理图像"><a href="#浏览器如何处理图像" class="headerlink" title="浏览器如何处理图像"></a>浏览器如何处理图像</h1><p>浏览器处理<code>&lt;img&gt;</code>元素与处理其它HTML元素稍有不同。在读取HTML页面之后，浏览器会从服务器获取各个图像并显示。</p><h1 id="图像格式介绍"><a href="#图像格式介绍" class="headerlink" title="图像格式介绍"></a>图像格式介绍</h1><p>Web上最常用的图像格式是这三种：JPEG,PNG和GIF。<br></p><ul><li>照片和复杂图像使用JPEG<br></li><li>单色图像，logo和几何图像使用PNG或GIF<br><h2 id="JPEG"><a href="#JPEG" class="headerlink" title="JPEG"></a>JPEG</h2>它最适合连续色调图像，如照片。<br><br>可以表示包含多达1600万种不同颜色的图像。<br><br>这是一种“有损”格式，因为缩小文件大小时会丢掉图像的一些信息。<br><br>不支持透明度。<br><br>文件比较小，以便Web页面更高效地显示。<br><br>不支持动画。<br><h2 id="PNG"><a href="#PNG" class="headerlink" title="PNG"></a>PNG</h2>PNG最适合单色图像和线条构成的图像（如logo,剪贴画和图像中的小文本）。<br><br>PNG可以表示包含上百万种不同颜色的图像。PNG有三种：PNG-8，PNG-24和PNG-32，取决于你需要表示多少种颜色。<br><br>PNG会压缩文件来缩小文件大小，不过不会丢掉信息。所以这是一种“无损”格式。<br><br>允许将颜色设置为“透明”，使图像下面的东西可以显示出来。<br><br>与相应的JPEG文件相比，PNG文件更大一些，不过取决于使用的颜色数，可能比相应的GIF文件小，也可能更大。<h2 id="GIF"><a href="#GIF" class="headerlink" title="GIF"></a>GIF</h2>类似于PNG，GIF最适合单色图像和线条构成的图像（如logo,剪贴画和图像中的小文本）。<br><br>GIF可以表示最多256种不同颜色的图像。<br><br>GIF也是一种“无损”格式。<br><br>GIF也支持透明度，不过只允许一种颜色设置为“透明”。<br><br>GIF文件往往比相应的JPEG文件大。<br><br>支持动画。</li><li>在GIF和PNG之间如何选择呢？    要在GIF和PNG中做出选择，有几个方面需要考虑。首先，PNG的压缩要稍稍优于GIF，所以对于一个颜色数相同的图像（也就是说，最多256中颜色），PNG文件可能更小一些。不过，如果需要更多颜色而GIF无法提供，而且也不能选择JPEG（例如，需要透明性），那么就只能选择PNG了。不过，如果需要动画的话，那么还得使用GIF，因为GIF是唯一支持动画并得到广泛支持的格式。<h1 id="lt-img-gt-元素"><a href="#lt-img-gt-元素" class="headerlink" title="&lt;img&gt;元素"></a><code>&lt;img&gt;</code>元素</h1></li><li><code>&lt;img&gt;</code>元素是一个内联元素。它在显示时不会在前面或后面插入换行（浏览器总是在块元素前后在垂直方向上显示间距）。</li><li><code>&lt;img&gt;</code>是一个void元素。</li><li>其src属性指定了在Web页面上显示的图像文件的位置。src属性不只是用于相对链接，还可以在src属性中放入URL。对于相同网站上的图像，最好使用相对路径。对于另一个不同网站上的对象，通常要使用这个图像的URL。需要注意的是，与默认Web页面不同，这里没有默认图像之说。</li><li>void元素就是没有内容和结束标记的元素，为什么说<code>&lt;img&gt;</code>元素是void元素，它不是有内容（图像）吗？    更确切地讲，void元素是指HTML页面中在开始标记和结束标记之间没有任何内容的元素。确实，图像也是内容，不过<code>&lt;img&gt;</code>元素只是指向图像。图像并不是HTML页面本身的一部分。实际上，浏览器显示页面时，图像会取代<code>&lt;img&gt;</code>元素。另外需要记住，HTML页面是纯文本，所以图像无法直接作为页面的一部分。它是单独存在的。</li><li><code>&lt;img&gt;</code>元素的alt属性可以为访问者提供一些暗示，告诉他们图像里有什么信息。alt属性需要指定，描述这个图像的一些文本。如果图像未显示，就会使用这个文本来取代它。</li><li><code>&lt;img&gt;</code>元素还有一对属性:width和height。width属性告诉 浏览器在页面中显示图像的宽度，height属性告诉浏览器在页面显示图像的高度。宽度和高度都使用像素数指定。如果没有指定宽度和高度，则浏览器在页面中显示这个图像之前会自动确定图像的大小。如果在HTML中提供了width和height，浏览器在显示图像之前就可以开始建立页面布局。如果没有指定，则浏览器在知道了图像大小之后，通常需要重新调整页面布局。当然，还可以提供比图像实际尺寸更大或更小的宽度或高度值，这样浏览器就会缩放图像来满足所指定的大小。不过在这种情况下，可能最好考虑使用CSS来得到同样的结果。</li><li>浏览器窗口宽度大约为800像素（计算机显示屏是由数百万个称为像素的点组成的），有时候会面临图像太大，需要用户使用滚动条查看。大多数人通常会把浏览器宽度设置为800到1280像素之间。所以一般经验是将图像最大宽度设置为800像素（通过照片编辑应用将图像调整为合适的大小）。</li><li>为什么不直接使用width属性和height属性来调整页面上图像的大小？因为浏览器在缩放图像使之适应页面大小之前，任然需要获取整个大图像。width属性和height属性实际上是帮助浏览器确定要为这个图像预留多大的空间。如果使用这两个属性，则它们应该与图像的实际宽度和高度一致。<h1 id="使用缩略图"><a href="#使用缩略图" class="headerlink" title="使用缩略图"></a>使用缩略图</h1>在网站的某个页面上，如果有许多照片的话，我们经常看到的是每个照片的一个小的缩略图像，然后可以单击这个缩略图来查看更大的图像，其实现的方法为：<br><ol><br>  <li>为缩略图创建一个目录。</li><br>  <li>将照片调整大小，然后保存到第一步所创建的目录下（一般缩略图的名字和原图的名字保持一致）。</li><br>  <li>将页面中的各个<code>&lt;img&gt;</code>元素的src属性设置为照片的缩略版本。</li><br>  <li>增加从各个缩略图到一个新页面的链接，这个新页面中包含相应的大照片（一般先创建一个包含新页面的文件夹，再创建新页面，再从原页面的缩略图链接到新页面，即用<code>&lt;a&gt;</code>元素包围缩略图的<code>&lt;img&gt;</code>元素，<code>&lt;a&gt;</code>元素的href属性为包含大照片页面的链接）。</li><br></ol><br>在用<code>&lt;a&gt;</code>元素包围图像后，鼠标经过图像时，光标会改变，指示你可以单击这个链接图像。大多数情况下,用户都可以通过上下文和鼠标光标了解到一个图像是链接。<br><br>为什么不直接链接到一个大照片而要链接到一个包含大照片的页面？  一般认为直接链接到一个图像并不是一个好的做法，因为通常你需要为所显示的图像提供一些上下文。<h1 id="logo的处理"><a href="#logo的处理" class="headerlink" title="logo的处理"></a>logo的处理</h1>大多数照片编辑应用都会以<strong>背景里的棋盘图案</strong>告诉你这个区域是透明的，为logo选择图形格式时要记住这些。<br><br>如果需要透明背景在设置图片格式时就要选中透明度复选框。用蒙版选项来告诉照片编辑应用使用某种颜色背景在文本周围创建蒙版（默认使用白色背景），即根据背景颜色柔化文本边缘，避免文本周围出现光晕（在Photoshop CS6中蒙版选项为杂边选项）。<br><br>为什么不直接设置logo的背景色为某种颜色，让它与web页面的颜色一致？ 可以这么做，但这有一个缺点：如果Web页面中有其它东西要“透过”logo的透明背景显示出来，倘若logo背景为单色，就无法看到它们了。<br><br>在背景色有很大变化的时候，必须用新的蒙版颜色重新创建PNG。<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1></li><li>如果Web页面上有多个大图像，则可以通过创建图像的缩略图使你的Web页面更可用，下载也更快，缩略图是一些小图像（大图像的缩小版本），用户单击这些缩略图时可以看到原来的大图像。</li><li><code>&lt;img&gt;</code>元素是一个内联元素，这说明浏览器不会在图像前后插入一个换行。</li><li>利用<code>&lt;img&gt;</code>元素的src属性指定图像文件的位置。可以在src属性中使用相对路径包含你自己网站中的图像，或者可以使用URL包含其他网站的图像。</li><li><code>&lt;img&gt;</code>元素的alt属性是对图像的一个有意义的描述。在一些浏览器中，如果无法找到图像，则会显示这个描述，另外屏幕阅读器会使用这个属性为有视力障碍的人描述图像。</li><li>JPEG,PNG和GIF是Web浏览器广泛支持的三种图像格式。JPEG格式最适合保存照片和其它复杂图像。GIF和PNG格式最适合保存logo和其它包含单色，线条或文本的简单图形。</li><li>JPEG图像可以按不同质量压缩，所以可以很好地权衡图像质量和文件大小，来满足你的需要。</li><li>GIF和PNG图像格式允许建立一个有透明背景的图像。如果把一个有透明背景的图像放在一个Web页面中，图像后面的东西（如页面的背景色）就会透过图像的透明部分显示出来。</li><li>GIF和PNG是无损格式，这说明相比于JPEG文件，这些格式的文件往往更大。</li><li>PNG可以提供比GIF更好的透明度控制，而且不像GIF只支持256种颜色，PNG可以支持更多颜色。</li><li>在Photoshop CS6中，使用保存为Web格式对话框中的杂边选项来选择合适的颜色，柔化PNG或GIF图像的边缘。</li><li>图像可以用作指向其它Web页面的链接。要由图像创建一个链接，可以使用<code>&lt;img&gt;</code>元素作为<code>&lt;a&gt;</code>元素的内容，将链接放在<code>&lt;a&gt;</code>元素的href属性中。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;浏览器如何处理图像&lt;br&gt;&lt;br&gt;缩略图的使用&lt;br&gt;&lt;br&gt;&lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;元素是一个内联元素，这说明浏览器不会在图像前后插入一个换行&lt;br&gt;&lt;br&gt;&lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;元素的src属性和alt属性介绍&lt;br&gt;&lt;br&gt;JPEG,PNG,GIF三种图像格式的特点&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="HTML" scheme="http://yoursite.com/tags/HTML/"/>
+    
+  </entry>
   
   <entry>
     <title>HTML和CSS(四)</title>
