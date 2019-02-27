@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="如何利用&amp;lt;style&amp;gt;元素给某种元素增加样式利用样式表给多个页面增加样式继承与覆盖继承利用类为单独的段落指定样式CSS验证工具以及常用属性在CSS中写注释，只需要把注释包围在/*和/*之间。">
+<meta name="description" content="如何利用&amp;lt;style&amp;gt;元素给某种元素增加样式利用样式表给多个页面增加样式继承与覆盖继承利用类为单独的段落指定样式CSS验证工具以及常用属性在CSS中写注释，只需要把注释包围在/*和*/之间。">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML和CSS(八)">
 <meta property="og:url" content="http://yoursite.com/2019/02/26/HTML和CSS(七)/index.html">
 <meta property="og:site_name" content="ccluo&#39;s Blog">
-<meta property="og:description" content="如何利用&amp;lt;style&amp;gt;元素给某种元素增加样式利用样式表给多个页面增加样式继承与覆盖继承利用类为单独的段落指定样式CSS验证工具以及常用属性在CSS中写注释，只需要把注释包围在/*和/*之间。">
+<meta property="og:description" content="如何利用&amp;lt;style&amp;gt;元素给某种元素增加样式利用样式表给多个页面增加样式继承与覆盖继承利用类为单独的段落指定样式CSS验证工具以及常用属性在CSS中写注释，只需要把注释包围在/*和*/之间。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-27T03:39:33.714Z">
+<meta property="og:updated_time" content="2019-02-27T03:41:41.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML和CSS(八)">
-<meta name="twitter:description" content="如何利用&amp;lt;style&amp;gt;元素给某种元素增加样式利用样式表给多个页面增加样式继承与覆盖继承利用类为单独的段落指定样式CSS验证工具以及常用属性在CSS中写注释，只需要把注释包围在/*和/*之间。">
+<meta name="twitter:description" content="如何利用&amp;lt;style&amp;gt;元素给某种元素增加样式利用样式表给多个页面增加样式继承与覆盖继承利用类为单独的段落指定样式CSS验证工具以及常用属性在CSS中写注释，只需要把注释包围在/*和*/之间。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -290,7 +290,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>如何利用<code>&lt;style&gt;</code>元素给某种元素增加样式<br>利用样式表给多个页面增加样式<br>继承与覆盖继承<br>利用类为单独的段落指定样式<br>CSS验证工具以及常用属性<br>在CSS中写注释，只需要把注释包围在/*和/*之间。<br><a id="more"></a><br>这几天一直在纠结要考研吗(ಥ﹏ಥ)，有点没有勇气。</p>
+        <p>如何利用<code>&lt;style&gt;</code>元素给某种元素增加样式<br>利用样式表给多个页面增加样式<br>继承与覆盖继承<br>利用类为单独的段落指定样式<br>CSS验证工具以及常用属性<br>在CSS中写注释，只需要把注释包围在/*和*/之间。<br><a id="more"></a><br>这几天一直在纠结要考研吗(ಥ﹏ಥ)，有点没有勇气。</p>
 <h1 id="给某种元素增加样式"><a href="#给某种元素增加样式" class="headerlink" title="给某种元素增加样式"></a>给某种元素增加样式</h1><p>比如说给<code>&lt;p&gt;</code>元素增加背景色和边框：<code>p    {   background-color: red; border: 1px solid gray;   }</code>，这为<code>&lt;p&gt;</code>元素增加了红色的背景色以及粗细为1像素，灰色，实线的边框。<br><br>然后要将上述CSS放入HTML。要为HTML直接增加CSS样式，需要在<code>&lt;head&gt;</code>元素中增加开始和结束style标记。CSS规则要放在<code>&lt;style&gt;</code>元素之间。<br><br>如果要改变段落中文本的颜色，CSS规则将写为<code>p  { color: red; }</code>，改变字体颜色的属性名为color。<strong>在改变了段落的文本颜色之后，其中链接的颜色不会发生改变</strong>。<br><br>典型的CSS规则包括一个选择器，以及一个或多个属性和值。通过逗号分隔元素名，可以一次选择多个元素。CSS允许你指定各种选择器，来确定将样式应用到哪些元素。比如说：<code>h1,h2 { font-family: sans-serif; color: gray; }</code>，使用font-family属性指定字体。<br><br>一般来说，要把元素的所有共同样式归组在一起，然后把一个元素特定的样式写在另一个规则中。<br><br>下边框与下划线的区别：如果使用border-bottom属性增加下边框，这条线会延伸到页面边缘。而使用属性text-decoration，并使其值为”underline”时给文本增加下划线，下划线只出现在文本的下面。<br></p>
 <h1 id="给多个页面增加同样的样式"><a href="#给多个页面增加同样的样式" class="headerlink" title="给多个页面增加同样的样式"></a>给多个页面增加同样的样式</h1><p>可能首先会想到，将一个样式复制到其它页面中。不过这样太麻烦了，如果样式发生改变，就必须要对每个页面进行修改，这样既浪费时间而且还容易产生错误。<br><br>此时可以对每个页面链接同一个CSS文件，我们通常把CSS文件称为“样式表”(stylesheets)。<strong>可以分两步进行：先写好CSS文件，然后再对各个页面链接该CSS文件。</strong><br>    <ol><br>        <li>CSS文件的后缀名为css，其内容是将原来<code>&lt;style&gt;</code>标记中的内容复制过来，注意不要复制<code>&lt;style&gt;</code>和<code>&lt;/style&gt;</code>标记，因为”xxx.css”文件只包含CSS，不能包含HTML。</li><br>        <li>然后要从各个页面链接到外部样式表。利用HTML中的<code>&lt;link&gt;</code>元素告诉浏览器，它要利用外部样式表为这个页面增加样式。此时不再需要<code>&lt;style&gt;</code>元素，要将它删除掉。</li><br>    </ol><br><code>&lt;link&gt;</code>元素该怎么写？举个例子：<code>&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;lounge.css&quot;&gt;</code>，使用<code>&lt;link&gt;</code>元素“链入”外部信息。type属性指定类型，这个信息的类型是”text/css”。换句话说，这是一个CSS样式表。在HTML5中，不再需要这个属性（这是可选的），不过在比较老的页面还是会看到它。rel属性指定了HTML文件与所链接的文件之间的关系。我们要链接到一个样式表，所以这里使用值”stylesheet”。样式表放在href中（在这个例子中，我们使用了相对链接，不过这也可以是一个完整的URL）。需要注意的是<code>&lt;link&gt;</code>元素是一个void元素，它没有结束标记。</p>
 <h1 id="继承与覆盖继承"><a href="#继承与覆盖继承" class="headerlink" title="继承与覆盖继承"></a>继承与覆盖继承</h1><p>元素可以从它们的父元素继承样式。但是不是所有样式都能继承。只有一部分能继承，如font-family。<br><br>可能会产生一个疑问，CSS中哪些属性可以继承，哪些属性不能继承？ 一般来讲，如果样式会影响你的文本外观，所有这些样式都能继承，如字体颜色（color属性），font-family（字体系列）以及所有与字体相关的属性，如font-size（字体大小），font-weight（字体粗细）和font-style（是否斜体）。其他属性不能继承，如边框，这是有道理的。比如说，如果<code>&lt;body&gt;</code>元素有一个边框，这并不表示你希望体中的所有元素都有边框。<br>如果没有继承规则的存在，如果对一个段落应用了某种CSS规则，就需要对一个段落中的每一个内联元素增加CSS规则。<br><br>如果要为整个页面设置某种样式，可以利用继承规则对<code>&lt;body&gt;</code>元素设置该样式，从而是整个页面使用该样式。<br><br>如果对某个元素单独指定了某种CSS规则，则这将覆盖它继承得到的CSS规则（覆盖继承的前提是同一属性）。对于CSS，总会使用最特定的那个规则。所以，如果对<code>&lt;body&gt;</code>有一个规则，对<code>&lt;em&gt;</code>元素有一个更特定的规则，它就会使用这个更特定的规则。<br></p>
@@ -328,7 +328,7 @@
         <p><span>本文标题:</span><a href="/2019/02/26/HTML和CSS(七)/">HTML和CSS(八)</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
         <p><span>发布时间:</span>2019-02-26, 23:15:53</p>
-        <p><span>最后更新:</span>2019-02-27, 11:39:33</p>
+        <p><span>最后更新:</span>2019-02-27, 11:41:41</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/02/26/HTML和CSS(七)/" title="HTML和CSS(八)">http://yoursite.com/2019/02/26/HTML和CSS(七)/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/02/26/HTML和CSS(七)/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
