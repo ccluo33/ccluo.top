@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="ccluo&#39;s Blog">
 <meta property="og:description" content="五种字体系列介绍，怎么设置字体，以及Web字体的使用调整字体大小的四种方法调整字体粗细设置字体倾斜指定Web颜色的三种方法如何为文本增加装饰">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-01T13:26:52.826Z">
+<meta property="og:updated_time" content="2019-03-05T01:51:16.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML和CSS(八)">
 <meta name="twitter:description" content="五种字体系列介绍，怎么设置字体，以及Web字体的使用调整字体大小的四种方法调整字体粗细设置字体倾斜指定Web颜色的三种方法如何为文本增加装饰">
@@ -304,7 +304,7 @@
 <li>fantasy字体系列包含有某种风格的装饰性字体。<br><p></p><h3 id="使用CSS指定字体系列"><a href="#使用CSS指定字体系列" class="headerlink" title="使用CSS指定字体系列"></a>使用CSS指定字体系列</h3>使用font-family属性可以指定多个字体。只需要输入字体名，并用逗号分隔。需要注意的是字体名大小写敏感。通常，你指定的font-family包含一个候选字体列表，它们都来自同一个字体系列。最后总是放一个通用的字体系列名。<br><br>举个例子：<code>body {  font-family: Verdana, Geneva, Arial, sans-serif; }</code><br><br>font-family规范在工作时，先查看用户计算机上是否有Verdana字体，如果有，这个元素（即<code>&lt;body&gt;</code>元素就会使用这个字体）。如果第一个字体不可用就看下一个是否可用，直到找到一个可用的字体或者到最后一个字体系列，使用浏览器的默认该字体系列的字体。<br><br>如果字体名中有空格，就需要对该字体名加引号。例如：<code>font-family: &quot;Courier New&quot;, Courier;</code><br><br>一般对于最后一个字体，应当指定最全面的通用”sans-serif”或”serif”，它与列表中指定的所有其他字体应当在同一个字体系列中。<br><h3 id="使用Web字体"><a href="#使用Web字体" class="headerlink" title="使用Web字体"></a>使用Web字体</h3>如果你必须使用某种比较好的字体，或者排版对你的网站设计很重要，那么你可以使用Web字体（Web Font）向用户的浏览器提供一种字体。<br><br>这要用到CSS的一个特性: <strong>@font-face规则</strong>。这个规则允许你定义一种字体的名字和位置，然后可以在你的页面中使用。<br><br>Web字体的工作过程如下：<br><ol><br>  <li>要利用Web字体，浏览器首先获取一个引用这些字体的HTML页面。</li><br>  <li>浏览器再获取这个页面所需的Web字体文件（字体文件包含在Web页面中使用这种字体时浏览器所需的一切信息，字体文件应当放在服务器上或者使用托管服务，当然，测试时可以本地测试）。</li><br>  <li>在获取了这个字体以后，浏览器显示页面时就会使用这个字体。</li><br></ol><br>为页面增加Web字体的方法如下：<br><ol><br>  <li>找到一个字体，可以访问一些提供字体的网站，它们会提供免费以及需要授权的字体。</li><br>  <li>确保有所需字体的所有格式，存储字体的具体格式目前还不是一个标准，不同的浏览器对很多不同的格式提供了不同程度的支持，常用的格式有：TrueType字体(.ttf)，OpenType字体(.otf)，Embedded Open Type字体(.eot)，SVG字体(.svg)，Web开放字体格式(.woff)。大多数现代浏览器上支持最为广泛的格式时Web开放字体格式。</li><br>  <li>将所需的字体文件放在Web上，这样用户的浏览器就能访问这些字体。</li><br>  <li>在CSS中增加@font-face属性</li><br>  <li>在CSS中使用font-family名</li><br>  <li>加载页面</li><br></ol><br>@font-family规则使用举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@font-face &#123;</span><br><span class="line">	font-family: &quot;Emblema One&quot;;</span><br><span class="line">	src: url(&quot;EmblemaOne-Regular.woff&quot;), </span><br><span class="line">	     url(&quot;EmblemaOne-Regular.ttf&quot;); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p></p><p>此处用了相对地址。</p><br>该规则要以@font-family开头。与正常的规则不同，正常的规则会选择一组元素并指定样式，而@font-family规则会建立一个字体，将指定一个font-family名，以便以后使用。在这个规则中，我们使用font-family属性为这个字体创建一个名字。可以使用你喜欢的任何名字，不过通常最好与字体名一致。src属性告诉浏览器在哪里可以得到这个字体。对于浏览器可识别的每一个文件，我们要分别指定一个src值。<br><br>@font-face规则告诉浏览器：要加载由src URL指定的字体文件。浏览器会尝试加载每一个src文件，直到找到它能支持的一个文件。一旦加载，会为这个字体分配font-family属性中指定的名字，在这里就是”Emblema One”，然后就可以在其他地方指定这种字体了。<br><br>@font-face规则不像前面学的CSS规则，可以认为@font-face是一个内置的CSS规则，而不是一个选择器规则。@font-face并不选择一个元素。利用@font-face规则，可以获取一个Web字体，并为它分配一个font-family名。最前面的@就说明它不是一个普通的CSS规则。还有两个常用的内置CSS规则，分别是@import和@media。@import允许导入其他CSS文件（而不是HTML中通过一个<code>&lt;link&gt;</code>链入），另外@media允许创建特定于某些“媒体”类型的CSS规则。<br><br>可以用@font-face使用多个定制字体。如果使用@font-face来加载字体，对于你想要的每一种字体，要确保服务器上有相应的字体文件，而且要为每个字体创建一个单独的@font-face规则，所以对各个字体要分别指定唯一的名字。<br><p></p>
+<p>此处用了相对地址。<br><br>该规则要以@font-family开头。与正常的规则不同，正常的规则会选择一组元素并指定样式，而@font-family规则会建立一个字体，将指定一个font-family名，以便以后使用。在这个规则中，我们使用font-family属性为这个字体创建一个名字。可以使用你喜欢的任何名字，不过通常最好与字体名一致。src属性告诉浏览器在哪里可以得到这个字体。对于浏览器可识别的每一个文件，我们要分别指定一个src值。<br><br>@font-face规则告诉浏览器：要加载由src URL指定的字体文件。浏览器会尝试加载每一个src文件，直到找到它能支持的一个文件。一旦加载，会为这个字体分配font-family属性中指定的名字，在这里就是”Emblema One”，然后就可以在其他地方指定这种字体了。<br><br>@font-face规则不像前面学的CSS规则，可以认为@font-face是一个内置的CSS规则，而不是一个选择器规则。@font-face并不选择一个元素。利用@font-face规则，可以获取一个Web字体，并为它分配一个font-family名。最前面的@就说明它不是一个普通的CSS规则。还有两个常用的内置CSS规则，分别是@import和@media。@import允许导入其他CSS文件（而不是HTML中通过一个<code>&lt;link&gt;</code>链入），另外@media允许创建特定于某些“媒体”类型的CSS规则。<br><br>可以用@font-face使用多个定制字体。如果使用@font-face来加载字体，对于你想要的每一种字体，要确保服务器上有相应的字体文件，而且要为每个字体创建一个单独的@font-face规则，所以对各个字体要分别指定唯一的名字。<br></p>
 <h2 id="调整字体大小"><a href="#调整字体大小" class="headerlink" title="调整字体大小"></a>调整字体大小</h2><p></p><p>指定字体大小有很多选择：px, em, 百分数和关键字。</p><p></p>
 <ul>
 <li>按像素指定字体大小是在告诉浏览器字母高度是多少像素。比如说：<code>font-size: 14px;</code>，这指定了字母是14像素高。</li>
@@ -347,7 +347,7 @@
         <p><span>本文标题:</span><a href="/2019/02/28/HTML和CSS(八)/">HTML和CSS(八)</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
         <p><span>发布时间:</span>2019-02-28, 09:19:55</p>
-        <p><span>最后更新:</span>2019-03-01, 21:26:52</p>
+        <p><span>最后更新:</span>2019-03-05, 09:51:16</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/02/28/HTML和CSS(八)/" title="HTML和CSS(八)">http://yoursite.com/2019/02/28/HTML和CSS(八)/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/02/28/HTML和CSS(八)/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
