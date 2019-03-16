@@ -3,6 +3,52 @@
   
     
     <entry>
+      <title>stringstream常见用法</title>
+      <link href="/2019/03/15/stringstream%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/"/>
+      <url>/2019/03/15/stringstream%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>stringstream常用来进行输入输出格式转换，有时候也用来进行字符串合并。<br><br>stringstream两种清空的方法，以及两种方法的使用场景的区别。<br><a id="more"></a><br>这几天的我好丧啊，不知道自己该干什么，没有一个目标，什么事情都想干，可是自己又超级懒，连后天的考试都没怎么准备，哎o(╥﹏╥)o</p><h1 id="lt-sstream-gt-头文件介绍"><a href="#lt-sstream-gt-头文件介绍" class="headerlink" title="&lt;sstream&gt;头文件介绍"></a><code>&lt;sstream&gt;</code>头文件介绍</h1><p><code>&lt;sstream&gt;</code>定义了三个类：istringstream,ostringstream和stringstream，分别用来进行流的输入，输出和输入输出操作。这里主要介绍一下stringstream。<br><br><code>&lt;sstream&gt;</code>主要用来进行数据类型转换，由于<code>&lt;sstream&gt;</code>使用string对象来代替字符数组(sprintf方式)，就避免了缓冲区溢出的危险。而且，因为传入参数和<br>目标对象的类型会被自动推导出来，所以不存在错误的格式化符的问题。简单来说，相比C语言库的数据类型转换而言，<code>&lt;sstream&gt;</code>更加安全，自动和直接。<br></p><h2 id="stringstream用于数据类型转换"><a href="#stringstream用于数据类型转换" class="headerlink" title="stringstream用于数据类型转换"></a>stringstream用于数据类型转换</h2><p>比如说将一个int类型转换为字符串型，<br>这可以使用sprintf来实现，不过必须保证目标缓冲区有足够大的空间以容纳转换完的字符串：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int nValue = 1000;</span><br><span class="line">char s[10];</span><br><span class="line">sprintf(s, &quot;%d&quot;, nValue);</span><br><span class="line">printf(&quot;%s\n&quot;, s);</span><br></pre></td></tr></table></figure></p><p>这样看起来也还行，只需要将字符数组开得足够大，放得下转换完的字符串就ok。<br><br>不过如果对上面的代码做一个微小的改变就会使得程序崩溃：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int nValue = 1000;</span><br><span class="line">char s[10];</span><br><span class="line">sprintf(s, &quot;%f&quot;, nValue);   //错误的格式化符 </span><br><span class="line">printf(&quot;%s\n&quot;, s);</span><br></pre></td></tr></table></figure></p><p>在这种情况下，错误地使用了%f格式化符来替代了%d。因此，s在调用完sprintf()后包含了一个不确定的字符串。如果要是能推导出正确的类型，岂不是要方便许多，所以我们选择使用stringstream：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">stringstream ss;</span><br><span class="line">string strResult;</span><br><span class="line">int nValue = 1000;</span><br><span class="line"></span><br><span class="line">//将int类型的值放入输入流中</span><br><span class="line">ss &lt;&lt; nValue;    </span><br><span class="line">//从ss中抽取前面插入的int类型的值，赋值给string类型 </span><br><span class="line">ss &gt;&gt; strResult;  </span><br><span class="line"></span><br><span class="line">cout &lt;&lt; &quot;[cout]strResult is: &quot; &lt;&lt; strResult &lt;&lt; endl;</span><br><span class="line">printf(&quot;[printf]strResult is: %s\n&quot;, strResult.c_str());</span><br></pre></td></tr></table></figure></p><p>此时不必担心缓冲区溢出，因为stringstream对象会根据需要自动分配存储空间。</p><h2 id="stringstream用于多个字符串拼接"><a href="#stringstream用于多个字符串拼接" class="headerlink" title="stringstream用于多个字符串拼接"></a>stringstream用于多个字符串拼接</h2><p>举个例子：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">stringstream ss;</span><br><span class="line"></span><br><span class="line">//将多个字符串放入ss中</span><br><span class="line">ss &lt;&lt; &quot;first&quot; &lt;&lt; &quot; &quot; &lt;&lt; &quot;string,&quot;;</span><br><span class="line">ss &lt;&lt; &quot; second string&quot;;</span><br><span class="line">cout &lt;&lt; &quot;strResult is: &quot; &lt;&lt; ss.str() &lt;&lt; endl; </span><br><span class="line">    </span><br><span class="line">//清空ss</span><br><span class="line">ss.str(&quot;&quot;);</span><br><span class="line">ss &lt;&lt; &quot;third string&quot;;</span><br><span class="line">cout &lt;&lt; &quot;After clear, strResult is: &quot; &lt;&lt; ss.str() &lt;&lt; endl;</span><br></pre></td></tr></table></figure></p><p>此程序的输出结果为：<br><br><img src="images/stringstream.jpg" alt=""><br>从上述代码可以知道：</p><p><ul><br>    <li>可以使用str()方法，将stringstream类型转换为string类型；</li><br>    <li>可以将多个字符串放入stringstream中，实现字符串拼接的目的；</li><br>    <li>如果想清空stringstream，必须使用s.str(“”)方式。</li><br></ul></p><h2 id="stringstream的清空"><a href="#stringstream的清空" class="headerlink" title="stringstream的清空"></a>stringstream的清空</h2><p>清空stringstream有两种方法，前面已经见到了一种：str(“”)方法，还有一种方法是clear()。这两种方法的使用场景是不同的。<br><br>上面的代码已经展示了str(“”)的使用场景，下面就clear()方法的使用场景来举个例子：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">stringstream ss;</span><br><span class="line">int first, second;</span><br><span class="line"></span><br><span class="line">//插入字符串</span><br><span class="line">ss &lt;&lt; &quot;456&quot;;</span><br><span class="line">//转换为int类型</span><br><span class="line">ss &gt;&gt; first;</span><br><span class="line">cout &lt;&lt; first &lt;&lt; endl; </span><br><span class="line"></span><br><span class="line">//在进行多次类型转换前，必须先运行clear() </span><br><span class="line">ss.clear();</span><br><span class="line"></span><br><span class="line">//插入bool值</span><br><span class="line">ss &lt;&lt; true;</span><br><span class="line">//转换为int类型</span><br><span class="line">ss &gt;&gt; second;</span><br><span class="line">cout &lt;&lt; second &lt;&lt; endl;</span><br></pre></td></tr></table></figure></p><p>运行后输出的结果为:<br><img src="images/stringstream1.jpg" alt=""><br>在这个例子涉及的场景下（多次数据类型转换），必须使用clear()方法清空stringstream，不使用clear()方法或者使用str(“”)方法，都不能得到数据类型转换的正确结果。不使用clear()方法得到的运行结果为：<br><img src="images/stringstream2.jpg" alt=""><br>而使用str(“”)得到的运行结果为：<br><img src="images/stringstream3.jpg" alt=""></p><p>参考博客：</p><p><a href="https://blog.csdn.net/liitdar/article/details/82598039" target="_blank" rel="noopener">liitdar的博客</a></p><p><a href="http://developer.zhiding.cn/2003/0304/83250.shtml" target="_blank" rel="noopener">至顶网</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>HTML和CSS(十一)</title>
+      <link href="/2019/03/07/HTML%E5%92%8CCSS(%E5%8D%81%E4%B8%80)/"/>
+      <url>/2019/03/07/HTML%E5%92%8CCSS(%E5%8D%81%E4%B8%80)/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p>纠结了一下，决定还是去考CSP，哪怕是去试一下也好，不过也要加油呀！这一篇可能得过几天才能写。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>HTML和CSS(十)</title>
       <link href="/2019/03/04/HTML%E5%92%8CCSS(%E5%8D%81)/"/>
       <url>/2019/03/04/HTML%E5%92%8CCSS(%E5%8D%81)/</url>
