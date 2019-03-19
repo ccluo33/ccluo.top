@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="ccluo&#39;s Blog">
 <meta property="og:description" content="最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-13T14:39:12.771Z">
+<meta property="og:updated_time" content="2019-03-19T07:04:46.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++之string类简述">
 <meta name="twitter:description" content="最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。">
@@ -311,10 +311,7 @@
 <li>erase()    //删除字符</li>
 <li>clear()    //删除全部字符</li>
 <li>replace()  //替换字符，可将字符串的某段替换为其他字符串</li>
-<li><ul>
-<li>//字符串拼接</li>
-</ul>
-</li>
+<li><code>+</code>   //字符串拼接</li>
 <li>==, !=, &lt;, &lt;=, &gt;, &gt;=, compare()     //字符串比较</li>
 <li>size(), length()   //返回字符串中的字符数量，<strong>注意如果求字符数组的长度的话可以用strlen()函数</strong></li>
 <li>max_size()     //返回字符的可能最大个数</li>
@@ -324,7 +321,7 @@
 <li>[],at()    //存取单一字符串</li>
 <li>getline()   //从输入流读入一行</li>
 <li>copy(p,n,size_type _Off = 0)   //从string类型对象中至多复制n个字符到字符指针p指向的空间中。默认从首字符开始，但是也可以指定，开始的位置（记住从0开始）。返回真正从对象中复制的字符。<strong>用户要确保p指向的空间足够保存n个字符</strong>。</li>
-<li>c_str()   //取得c分格的const char *字符串</li>
+<li>c_str()   //取得c风格的<code>const char *</code>字符串，如果要用scanf()输入或者用printf()输出string类型的变量，我们可以使用c_str()函数，得到string类型的等效字符数组，然后就可以用scanf()/printf()函数进行输入输出。</li>
 <li>data()    //取得字符串内容的地址</li>
 <li>substr()   //返回某个子字符串</li>
 <li>begin()    //得到指向字符串开头的iterator</li>
@@ -347,7 +344,7 @@
         <p><span>本文标题:</span><a href="/2018/07/30/c++之string类简述/">c++之string类简述</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
         <p><span>发布时间:</span>2018-07-30, 21:32:20</p>
-        <p><span>最后更新:</span>2018-11-13, 22:39:12</p>
+        <p><span>最后更新:</span>2019-03-19, 15:04:46</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/30/c++之string类简述/" title="c++之string类简述">http://yoursite.com/2018/07/30/c++之string类简述/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/30/c++之string类简述/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
