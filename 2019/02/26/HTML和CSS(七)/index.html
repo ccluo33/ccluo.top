@@ -188,7 +188,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简介/">简介</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li></ul>
                     </div>
                 </section>
                 
@@ -292,11 +292,32 @@
           
         <p>如何利用<code>&lt;style&gt;</code>元素给某种元素增加样式<br>利用样式表给多个页面增加样式<br>继承与覆盖继承<br>利用类为单独的段落指定样式<br>CSS验证工具以及常用属性<br>在CSS中写注释，只需要把注释包围在/*和*/之间。<br><a id="more"></a><br>这几天一直在纠结要考研吗(ಥ﹏ಥ)，有点没有勇气。</p>
 <h1 id="给某种元素增加样式"><a href="#给某种元素增加样式" class="headerlink" title="给某种元素增加样式"></a>给某种元素增加样式</h1><p>比如说给<code>&lt;p&gt;</code>元素增加背景色和边框：<code>p    {   background-color: red; border: 1px solid gray;   }</code>，这为<code>&lt;p&gt;</code>元素增加了红色的背景色以及粗细为1像素，灰色，实线的边框。<br><br>然后要将上述CSS放入HTML。要为HTML直接增加CSS样式，需要在<code>&lt;head&gt;</code>元素中增加开始和结束style标记。CSS规则要放在<code>&lt;style&gt;</code>元素之间。<br><br>如果要改变段落中文本的颜色，CSS规则将写为<code>p  { color: red; }</code>，改变字体颜色的属性名为color。<strong>在改变了段落的文本颜色之后，其中链接的颜色不会发生改变</strong>。<br><br>典型的CSS规则包括一个选择器，以及一个或多个属性和值。通过逗号分隔元素名，可以一次选择多个元素。CSS允许你指定各种选择器，来确定将样式应用到哪些元素。比如说：<code>h1,h2 { font-family: sans-serif; color: gray; }</code>，使用font-family属性指定字体。<br><br>一般来说，要把元素的所有共同样式归组在一起，然后把一个元素特定的样式写在另一个规则中。<br><br>下边框与下划线的区别：如果使用border-bottom属性增加下边框，这条线会延伸到页面边缘。而使用属性text-decoration，并使其值为”underline”时给文本增加下划线，下划线只出现在文本的下面。<br></p>
-<h1 id="给多个页面增加同样的样式"><a href="#给多个页面增加同样的样式" class="headerlink" title="给多个页面增加同样的样式"></a>给多个页面增加同样的样式</h1><p>可能首先会想到，将一个样式复制到其它页面中。不过这样太麻烦了，如果样式发生改变，就必须要对每个页面进行修改，这样既浪费时间而且还容易产生错误。<br><br>此时可以对每个页面链接同一个CSS文件，我们通常把CSS文件称为“样式表”(stylesheets)。<strong>可以分两步进行：先写好CSS文件，然后再对各个页面链接该CSS文件。</strong><br>    <ol><br>        <li>CSS文件的后缀名为css，其内容是将原来<code>&lt;style&gt;</code>标记中的内容复制过来，注意不要复制<code>&lt;style&gt;</code>和<code>&lt;/style&gt;</code>标记，因为”xxx.css”文件只包含CSS，不能包含HTML。</li><br>        <li>然后要从各个页面链接到外部样式表。利用HTML中的<code>&lt;link&gt;</code>元素告诉浏览器，它要利用外部样式表为这个页面增加样式。此时不再需要<code>&lt;style&gt;</code>元素，要将它删除掉。</li><br>    </ol><br><code>&lt;link&gt;</code>元素该怎么写？举个例子：<code>&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;lounge.css&quot;&gt;</code>，使用<code>&lt;link&gt;</code>元素“链入”外部信息。type属性指定类型，这个信息的类型是”text/css”。换句话说，这是一个CSS样式表。在HTML5中，不再需要这个属性（这是可选的），不过在比较老的页面还是会看到它。rel属性指定了HTML文件与所链接的文件之间的关系。我们要链接到一个样式表，所以这里使用值”stylesheet”。样式表放在href中（在这个例子中，我们使用了相对链接，不过这也可以是一个完整的URL）。需要注意的是<code>&lt;link&gt;</code>元素是一个void元素，它没有结束标记。</p>
+<h1 id="给多个页面增加同样的样式"><a href="#给多个页面增加同样的样式" class="headerlink" title="给多个页面增加同样的样式"></a>给多个页面增加同样的样式</h1><p>可能首先会想到，将一个样式复制到其它页面中。不过这样太麻烦了，如果样式发生改变，就必须要对每个页面进行修改，这样既浪费时间而且还容易产生错误。<br><br>此时可以对每个页面链接同一个CSS文件，我们通常把CSS文件称为“样式表”(stylesheets)。<strong>可以分两步进行：先写好CSS文件，然后再对各个页面链接该CSS文件。</strong><br>    <ol>
+        <li>CSS文件的后缀名为css，其内容是将原来`<style>`标记中的内容复制过来，注意不要复制`<style>`和`</style>`标记，因为"xxx.css"文件只包含CSS，不能包含HTML。</li>
+        <li>然后要从各个页面链接到外部样式表。利用HTML中的`<link>`元素告诉浏览器，它要利用外部样式表为这个页面增加样式。此时不再需要`<style>`元素，要将它删除掉。</li>
+    </ol><br><code>&lt;link&gt;</code>元素该怎么写？举个例子：<code>&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;lounge.css&quot;&gt;</code>，使用<code>&lt;link&gt;</code>元素“链入”外部信息。type属性指定类型，这个信息的类型是”text/css”。换句话说，这是一个CSS样式表。在HTML5中，不再需要这个属性（这是可选的），不过在比较老的页面还是会看到它。rel属性指定了HTML文件与所链接的文件之间的关系。我们要链接到一个样式表，所以这里使用值”stylesheet”。样式表放在href中（在这个例子中，我们使用了相对链接，不过这也可以是一个完整的URL）。需要注意的是<code>&lt;link&gt;</code>元素是一个void元素，它没有结束标记。</p>
 <h1 id="继承与覆盖继承"><a href="#继承与覆盖继承" class="headerlink" title="继承与覆盖继承"></a>继承与覆盖继承</h1><p>元素可以从它们的父元素继承样式。但是不是所有样式都能继承。只有一部分能继承，如font-family。<br><br>可能会产生一个疑问，CSS中哪些属性可以继承，哪些属性不能继承？ 一般来讲，如果样式会影响你的文本外观，所有这些样式都能继承，如字体颜色（color属性），font-family（字体系列）以及所有与字体相关的属性，如font-size（字体大小），font-weight（字体粗细）和font-style（是否斜体）。其他属性不能继承，如边框，这是有道理的。比如说，如果<code>&lt;body&gt;</code>元素有一个边框，这并不表示你希望体中的所有元素都有边框。<br>如果没有继承规则的存在，如果对一个段落应用了某种CSS规则，就需要对一个段落中的每一个内联元素增加CSS规则。<br><br>如果要为整个页面设置某种样式，可以利用继承规则对<code>&lt;body&gt;</code>元素设置该样式，从而是整个页面使用该样式。<br><br>如果对某个元素单独指定了某种CSS规则，则这将覆盖它继承得到的CSS规则（覆盖继承的前提是同一属性）。对于CSS，总会使用最特定的那个规则。所以，如果对<code>&lt;body&gt;</code>有一个规则，对<code>&lt;em&gt;</code>元素有一个更特定的规则，它就会使用这个更特定的规则。<br></p>
-<h1 id="为单独的段落指定样式"><a href="#为单独的段落指定样式" class="headerlink" title="为单独的段落指定样式"></a>为单独的段落指定样式</h1><p>这需要引入类(class)的概念。结合HTML和CSS，我们可以定义一类元素，并对属于该类的所有元素应用样式。<br><br>创建一个类有两步：首先，为HTML中的元素增加一个class属性，这样会把元素增加到这个类中；其次，在CSS中选择这个类。<br><br>    <ol><br>        <li>要将一个元素加入一个类，只需要增加属性”class”，并提供类名。</li><br>        <li>然后要提供一些规则，为这个类的元素指定样式。</li><br>    </ol><br>要在CSS中创建一个类，并选择这个类中的一个元素，可以编写一个类选择器，比如说<code>p.greentea { color: green; }</code>，先选择这个类中的元素，在这里就是元素p。再用一个”.”指定一个类。最后是类名。选择器p.greentea会选择greentea类中的所有段落。<br><br>如果希望类中的两个元素使用相同样式，可以使用逗号分隔选择器，比如说：<code>blockquote.greentea, p.greentea { color: green; }</code>。<br><br>如果希望greentea类中的所有元素都有同一种样式，可以这样写规则：<code>.greentea { color: green; }</code>。如果省略所有元素名，只有一个点，后面是类名，那么这个规则会应用到这个类的所有成员。<br><br>并且，元素可以加入多个类。一个元素要加入多个类，比如说指定一个<code>&lt;p&gt;</code>元素属于greentea,raspberry和blueberry类。可以在开始标记中这样写：<code>&lt;p class=&quot;greentea raspberry blueberry&quot;&gt;</code>。即把各个类名放在class属性中，各个类名之间用一个空格分割。类名的顺序并不重要。如果希望一个元素拥有不同类中定义的不同样式，就要使用多个类。<br><br>如果出现多个选择器选择一个元素并且它们都定义了该元素的某种属性的情况，此时一个规则比其他规则更特定，它就会胜出。比如说类比段落特定，类中的特定元素比类特定。不过还有可能这些规则的特定程度是相同的，由于两个选择器有相同的特定性而无法解决冲突，就要利用样式表文件中规则的顺序来解决问题，这些规则中哪个规则在样式表的最后面哪个就会起作用。<br></p>
-<h1 id="CSS验证工具"><a href="#CSS验证工具" class="headerlink" title="CSS验证工具"></a>CSS验证工具</h1><p>如果你的CSS里有错误，通常这个错误以下的所有其它规则都会被忽略。<br><br>CSS的验证工具为<a href="http://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">http://jigsaw.w3.org/css-validator/</a>。</p>
-<h1 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h1><p><ul><br>    <li>color: 设置文本元素的字体颜色</li><br>    <li>font-weight: 控制文本的粗细，可用它来设置粗体</li><br>    <li>left: 指定一个元素的左边所在位置</li><br>    <li>line-height: 设置一个文本元素的行间距</li><br>    <li>top: 控制元素顶部的位置</li><br>    <li>background-color: 控制元素的背景颜色</li><br>    <li>border: 在一个元素周围加边框。可以有一个实线边框，凸起边框，虚线边框等</li><br>    <li>padding: 内边距设置，使一个元素边缘和它的内容之间有空间</li><br>    <li>font-size: 设置文本大小</li><br>    <li>text-align: 将文本左对齐，居中或右对齐</li><br>    <li>letter-spacing: 在字母之间设置边距</li><br>    <li>font-style: 设置斜体文本</li><br>    <li>list-style: 可用来改变列表中列表项的外观</li><br>    <li>background-image: 在元素后面放置一个图像</li><br></ul></p>
+<h1 id="为单独的段落指定样式"><a href="#为单独的段落指定样式" class="headerlink" title="为单独的段落指定样式"></a>为单独的段落指定样式</h1><p>这需要引入类(class)的概念。结合HTML和CSS，我们可以定义一类元素，并对属于该类的所有元素应用样式。<br><br>创建一个类有两步：首先，为HTML中的元素增加一个class属性，这样会把元素增加到这个类中；其次，在CSS中选择这个类。<br><br>    <ol>
+        <li>要将一个元素加入一个类，只需要增加属性"class"，并提供类名。</li>
+        <li>然后要提供一些规则，为这个类的元素指定样式。</li>
+    </ol><br>要在CSS中创建一个类，并选择这个类中的一个元素，可以编写一个类选择器，比如说<code>p.greentea { color: green; }</code>，先选择这个类中的元素，在这里就是元素p。再用一个”.”指定一个类。最后是类名。选择器p.greentea会选择greentea类中的所有段落。<br><br>如果希望类中的两个元素使用相同样式，可以使用逗号分隔选择器，比如说：<code>blockquote.greentea, p.greentea { color: green; }</code>。<br><br>如果希望greentea类中的所有元素都有同一种样式，可以这样写规则：<code>.greentea { color: green; }</code>。如果省略所有元素名，只有一个点，后面是类名，那么这个规则会应用到这个类的所有成员。<br><br>并且，元素可以加入多个类。一个元素要加入多个类，比如说指定一个<code>&lt;p&gt;</code>元素属于greentea,raspberry和blueberry类。可以在开始标记中这样写：<code>&lt;p class=&quot;greentea raspberry blueberry&quot;&gt;</code>。即把各个类名放在class属性中，各个类名之间用一个空格分割。类名的顺序并不重要。如果希望一个元素拥有不同类中定义的不同样式，就要使用多个类。<br><br>如果出现多个选择器选择一个元素并且它们都定义了该元素的某种属性的情况，此时一个规则比其他规则更特定，它就会胜出。比如说类比段落特定，类中的特定元素比类特定。不过还有可能这些规则的特定程度是相同的，由于两个选择器有相同的特定性而无法解决冲突，就要利用样式表文件中规则的顺序来解决问题，这些规则中哪个规则在样式表的最后面哪个就会起作用。<br></p>
+<h1 id="CSS验证工具"><a href="#CSS验证工具" class="headerlink" title="CSS验证工具"></a>CSS验证工具</h1><p>如果你的CSS里有错误，通常这个错误以下的所有其它规则都会被忽略。<br><br>CSS的验证工具为<a href="http://jigsaw.w3.org/css-validator/">http://jigsaw.w3.org/css-validator/</a>。</p>
+<h1 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h1><p><ul>
+    <li>color: 设置文本元素的字体颜色</li>
+    <li>font-weight: 控制文本的粗细，可用它来设置粗体</li>
+    <li>left: 指定一个元素的左边所在位置</li>
+    <li>line-height: 设置一个文本元素的行间距</li>
+    <li>top: 控制元素顶部的位置</li>
+    <li>background-color: 控制元素的背景颜色</li>
+    <li>border: 在一个元素周围加边框。可以有一个实线边框，凸起边框，虚线边框等</li>
+    <li>padding: 内边距设置，使一个元素边缘和它的内容之间有空间</li>
+    <li>font-size: 设置文本大小</li>
+    <li>text-align: 将文本左对齐，居中或右对齐</li>
+    <li>letter-spacing: 在字母之间设置边距</li>
+    <li>font-style: 设置斜体文本</li>
+    <li>list-style: 可用来改变列表中列表项的外观</li>
+    <li>background-image: 在元素后面放置一个图像</li>
+</ul></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li>CSS包含一些简单语句，称为规则。</li>
 <li>每个规则为选择的一些HTML元素提供样式。</li>
@@ -315,9 +336,9 @@
 <li>通过在元素名和类名之间加一个”.”，可以选择该类中的一个特定元素。</li>
 <li>使用”.classname”可以选择属于这个类的所有元素。</li>
 <li>通过在class属性中放入多个类名，可以指定一个元素属于多个类，类名之间用空格分割。</li>
-<li>可以使用W3C验证工具验证CSS(<a href="http://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">http://jigsaw.w3.org/css-validator/</a>)。</li>
+<li>可以使用W3C验证工具验证CSS(<a href="http://jigsaw.w3.org/css-validator/">http://jigsaw.w3.org/css-validator/</a>)。</li>
 </ul>
-
+</style></li></ol></p>
       
     </div>
     
@@ -364,7 +385,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#给某种元素增加样式"><span class="toc-number">1.</span> <span class="toc-text">给某种元素增加样式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#给多个页面增加同样的样式"><span class="toc-number">2.</span> <span class="toc-text">给多个页面增加同样的样式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#继承与覆盖继承"><span class="toc-number">3.</span> <span class="toc-text">继承与覆盖继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为单独的段落指定样式"><span class="toc-number">4.</span> <span class="toc-text">为单独的段落指定样式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS验证工具"><span class="toc-number">5.</span> <span class="toc-text">CSS验证工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用属性"><span class="toc-number">6.</span> <span class="toc-text">常用属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#给某种元素增加样式"><span class="toc-number">1.</span> <span class="toc-text">给某种元素增加样式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#给多个页面增加同样的样式"><span class="toc-number">2.</span> <span class="toc-text">给多个页面增加同样的样式</span></a></li></ol>
         
     </div>
     <style>
@@ -453,7 +474,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/03/15/stringstream常见用法/">stringstream常见用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/04/HTML和CSS(十)/">HTML和CSS(十)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/01/HTML与CSS(九)/">HTML与CSS（九）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/28/HTML和CSS(八)/">HTML和CSS(八)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(七)/">HTML和CSS(七)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(六)/">HTML和CSS(六)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/24/HTML和CSS(五)/">HTML和CSS(五)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/HTML和CSS(四)/">HTML和CSS(四)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/HTML和CSS(三)/">HTML和CSS(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/20/HTML和CSS(二)/">HTML和CSS(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/09/HTML和CSS(一)/">HTML和CSS(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/12/LCS和LIS/">LCS和LIS</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/搜索/">数独求解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/c++之string类简述/">c++之string类简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/输入输出流对象/">输入输出流对象</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/21/机器学习简介/">机器学习简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/15/stringstream常见用法/">stringstream常见用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/04/HTML和CSS(十)/">HTML和CSS(十)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/01/HTML与CSS(九)/">HTML与CSS（九）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/28/HTML和CSS(八)/">HTML和CSS(八)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(七)/">HTML和CSS(七)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(六)/">HTML和CSS(六)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/24/HTML和CSS(五)/">HTML和CSS(五)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/HTML和CSS(四)/">HTML和CSS(四)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/HTML和CSS(三)/">HTML和CSS(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/20/HTML和CSS(二)/">HTML和CSS(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/09/HTML和CSS(一)/">HTML和CSS(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/12/LCS和LIS/">LCS和LIS</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/搜索/">数独求解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/c++之string类简述/">c++之string类简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/输入输出流对象/">输入输出流对象</a></li></ul>
 
 
 

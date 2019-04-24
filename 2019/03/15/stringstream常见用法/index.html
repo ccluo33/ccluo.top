@@ -193,7 +193,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简介/">简介</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li></ul>
                     </div>
                 </section>
                 
@@ -303,7 +303,11 @@
 <p>此时不必担心缓冲区溢出，因为stringstream对象会根据需要自动分配存储空间。</p>
 <h2 id="stringstream用于多个字符串拼接"><a href="#stringstream用于多个字符串拼接" class="headerlink" title="stringstream用于多个字符串拼接"></a>stringstream用于多个字符串拼接</h2><p>举个例子：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">stringstream ss;</span><br><span class="line">	</span><br><span class="line">//将多个字符串放入ss中</span><br><span class="line">ss &lt;&lt; &quot;first&quot; &lt;&lt; &quot; &quot; &lt;&lt; &quot;string,&quot;;</span><br><span class="line">ss &lt;&lt; &quot; second string&quot;;</span><br><span class="line">cout &lt;&lt; &quot;strResult is: &quot; &lt;&lt; ss.str() &lt;&lt; endl; </span><br><span class="line">	    </span><br><span class="line">//清空ss</span><br><span class="line">ss.str(&quot;&quot;);</span><br><span class="line">ss &lt;&lt; &quot;third string&quot;;</span><br><span class="line">cout &lt;&lt; &quot;After clear, strResult is: &quot; &lt;&lt; ss.str() &lt;&lt; endl;</span><br></pre></td></tr></table></figure></p>
 <p>此程序的输出结果为：<br><br><img src="images/stringstream.jpg" alt=""><br>从上述代码可以知道：</p>
-<p><ul><br>    <li>可以使用str()方法，将stringstream类型转换为string类型；</li><br>    <li>可以将多个字符串放入stringstream中，实现字符串拼接的目的；</li><br>    <li>如果想清空stringstream，必须使用s.str(“”)方式。</li><br></ul></p>
+<p><ul>
+    <li>可以使用str()方法，将stringstream类型转换为string类型；</li>
+    <li>可以将多个字符串放入stringstream中，实现字符串拼接的目的；</li>
+    <li>如果想清空stringstream，必须使用s.str("")方式。</li>
+</ul></p>
 <h2 id="stringstream的清空"><a href="#stringstream的清空" class="headerlink" title="stringstream的清空"></a>stringstream的清空</h2><p>清空stringstream有两种方法，前面已经见到了一种：str(“”)方法，还有一种方法是clear()。这两种方法的使用场景是不同的。<br><br>上面的代码已经展示了str(“”)的使用场景，下面就clear()方法的使用场景来举个例子：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">stringstream ss;</span><br><span class="line">int first, second;</span><br><span class="line">	</span><br><span class="line">//插入字符串</span><br><span class="line">ss &lt;&lt; &quot;456&quot;;</span><br><span class="line">//转换为int类型</span><br><span class="line">ss &gt;&gt; first;</span><br><span class="line">cout &lt;&lt; first &lt;&lt; endl; </span><br><span class="line">	</span><br><span class="line">//在进行多次类型转换前，必须先运行clear() </span><br><span class="line">ss.clear();</span><br><span class="line">	</span><br><span class="line">//插入bool值</span><br><span class="line">ss &lt;&lt; true;</span><br><span class="line">//转换为int类型</span><br><span class="line">ss &gt;&gt; second;</span><br><span class="line">cout &lt;&lt; second &lt;&lt; endl;</span><br></pre></td></tr></table></figure></p>
 <p>运行后输出的结果为:<br><img src="images/stringstream1.jpg" alt=""><br>在这个例子涉及的场景下（多次数据类型转换），必须使用clear()方法清空stringstream，不使用clear()方法或者使用str(“”)方法，都不能得到数据类型转换的正确结果。不使用clear()方法得到的运行结果为：<br><img src="images/stringstream2.jpg" alt=""><br>而使用str(“”)得到的运行结果为：<br><img src="images/stringstream3.jpg" alt=""></p>
 <p>参考博客：</p>
@@ -334,6 +338,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/04/21/机器学习简介/">
+                    机器学习简介
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -425,7 +435,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2019/04/21/机器学习简介/" title="上一篇: 机器学习简介">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -437,7 +449,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/03/15/stringstream常见用法/">stringstream常见用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/04/HTML和CSS(十)/">HTML和CSS(十)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/01/HTML与CSS(九)/">HTML与CSS（九）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/28/HTML和CSS(八)/">HTML和CSS(八)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(七)/">HTML和CSS(七)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(六)/">HTML和CSS(六)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/24/HTML和CSS(五)/">HTML和CSS(五)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/HTML和CSS(四)/">HTML和CSS(四)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/HTML和CSS(三)/">HTML和CSS(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/20/HTML和CSS(二)/">HTML和CSS(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/09/HTML和CSS(一)/">HTML和CSS(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/12/LCS和LIS/">LCS和LIS</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/搜索/">数独求解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/c++之string类简述/">c++之string类简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/输入输出流对象/">输入输出流对象</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/21/机器学习简介/">机器学习简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/15/stringstream常见用法/">stringstream常见用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/04/HTML和CSS(十)/">HTML和CSS(十)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/01/HTML与CSS(九)/">HTML与CSS（九）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/28/HTML和CSS(八)/">HTML和CSS(八)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(七)/">HTML和CSS(七)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(六)/">HTML和CSS(六)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/24/HTML和CSS(五)/">HTML和CSS(五)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/HTML和CSS(四)/">HTML和CSS(四)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/HTML和CSS(三)/">HTML和CSS(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/20/HTML和CSS(二)/">HTML和CSS(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/09/HTML和CSS(一)/">HTML和CSS(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/12/LCS和LIS/">LCS和LIS</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/搜索/">数独求解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/c++之string类简述/">c++之string类简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/输入输出流对象/">输入输出流对象</a></li></ul>
 
 
 
