@@ -289,8 +289,10 @@
 <li>Cost function（代价函数）有助于我们弄清楚如何把最有可能的直线与我们的数据相拟合。</li>
 <li>在线性回归中假设函数的形式为<script type="math/tex">h_{\theta}(x) = \theta _{0}+\theta _{1}x</script>，其中<script type="math/tex">\theta _{i}</script>称为模型参数。</li>
 <li>如何选择<script type="math/tex">\theta _{0}</script>和<script type="math/tex">\theta _{1}</script>这两个参数？选取的原则是对于我们给定的训练集中的数据，使<script type="math/tex">h_{\theta}(x)</script>尽可能靠近y。也就是求解最小化问题<script type="math/tex">\underset{\theta _{0},\theta _{1}}minimize\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{i})-y^{i})^{2}</script>(m是训练集中样本的数量)。</li>
-<li>在该问题中的代价函数为<script type="math/tex">J(\theta _{0},\theta _{1})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{i})-y^{i})^{2}</script>，代价函数的参数是模型参数。</li>
+<li>在该问题中的代价函数为<script type="math/tex">J(\theta _{0},\theta _{1})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{i})-y^{i})^{2}</script>，代价函数的参数是模型参数，我们的目标是最小化代价函数，即求<script type="math/tex">\underset{\theta _{0},\theta_{1}}{mininmize}J(\theta_{0}, \theta_{1})</script>。</li>
 <li>上述代价函数也被称为平方误差函数，有时也被称为误差平方代价函数。平方误差代价函数是解决回归问题最常用的手段。</li>
+<li>可以使用梯度下降法(gradient descent algorithm)将代价函数最小化。</li>
+<li>梯度下降法的步骤为:<br><br>&amp;emsp 1.Start with some <script type="math/tex">\theta _{0}</script>,<script type="math/tex">\theta _{1}</script><br><br>&amp;emsp 2.Keep changing <script type="math/tex">\theta _{0}</script>,<script type="math/tex">\theta _{1}</script> to reduce <script type="math/tex">J(\theta _{0}, \theta _{1})</script> util we hopefully end up at a minimum</li>
 </ul>
 
       
@@ -1080,8 +1082,7 @@ MathJax.Hub.Queue(function() {
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
-  </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":true},"log":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -1098,5 +1099,6 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript" src="custom_mathjax_source">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":true},"log":false});</script></body>
 </html>
