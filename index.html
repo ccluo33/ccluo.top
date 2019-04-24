@@ -285,11 +285,11 @@
 <li>监督学习是指教计算机怎么学习，无监督学习是指让计算机自己学习。</li>
 <li>监督学习可以分为分类问题(classification problems)和回归问题(regression problems)，分类问题对应于离散的情况，而回归问题对应于连续的情况。对于只有少量离散值的问题，应该将它作为分类问题。</li>
 <li>在无监督学习中，所给的数据没有标签或者标签都相同，常使用聚类算法(clustering algorithm)，将数据集划分为不同的簇；另一个使用无监督学习方法的问题时鸡尾酒会的音频分离问题。<h1 id="线性回归-linear-regression"><a href="#线性回归-linear-regression" class="headerlink" title="线性回归(linear regression)"></a>线性回归(linear regression)</h1></li>
-<li>线性回归中假设函数(hypothesis function)$h_{\theta}(x)$用来预测y是x的线性函数。<h2 id="Linear-regression-with-one-variable"><a href="#Linear-regression-with-one-variable" class="headerlink" title="Linear regression with one variable"></a>Linear regression with one variable</h2></li>
+<li>线性回归中假设函数(hypothesis function)’$h_{\theta}(x)$’用来预测y是x的线性函数。<h2 id="Linear-regression-with-one-variable"><a href="#Linear-regression-with-one-variable" class="headerlink" title="Linear regression with one variable"></a>Linear regression with one variable</h2></li>
 <li>Cost function（代价函数）有助于我们弄清楚如何把最有可能的直线与我们的数据相拟合。</li>
-<li>在线性回归中假设函数的形式为$h<em>{\theta}(x) = \theta </em>{0}+\theta <em>{1}x$，其中$\theta </em>{i}$称为模型参数。</li>
-<li>如何选择$\theta <em>{0}$和$\theta </em>{1}$这两个参数？选取的原则是对于我们给定的训练集中的数据，使$h<em>{\theta}(x)$尽可能靠近y。也就是求解最小化问题$\underset{\theta </em>{0},\theta <em>{1}}minimize\frac{1}{2m}\sum</em>{i=1}^{m}(h_{\theta }(x^{i})-y^{i})^{2}$(m是训练集中样本的数量)。</li>
-<li>在该问题中的代价函数为$J(\theta <em>{0},\theta </em>{1})=\frac{1}{2m}\sum<em>{i=1}^{m}(h</em>{\theta }(x^{i})-y^{i})^{2}$，代价函数的参数是模型参数。</li>
+<li>在线性回归中假设函数的形式为’$h<em>{\theta}(x) = \theta </em>{0}+\theta <em>{1}x$’，其中’$\theta </em>{i}$’称为模型参数。</li>
+<li>如何选择’$\theta <em>{0}$’和’$\theta </em>{1}$’这两个参数？选取的原则是对于我们给定的训练集中的数据，使’$h<em>{\theta}(x)$’尽可能靠近y。也就是求解最小化问题’$\underset{\theta </em>{0},\theta <em>{1}}minimize\frac{1}{2m}\sum</em>{i=1}^{m}(h_{\theta }(x^{i})-y^{i})^{2}$’(m是训练集中样本的数量)。</li>
+<li>在该问题中的代价函数为’$J(\theta <em>{0},\theta </em>{1})=\frac{1}{2m}\sum<em>{i=1}^{m}(h</em>{\theta }(x^{i})-y^{i})^{2}$’，代价函数的参数是模型参数。</li>
 <li>上述代价函数也被称为平方误差函数，有时也被称为误差平方代价函数。平方误差代价函数是解决回归问题最常用的手段。</li>
 </ul>
 
