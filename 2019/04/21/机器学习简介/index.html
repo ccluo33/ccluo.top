@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="ccluo&#39;s Blog">
 <meta property="og:description" content="分类 机器学习有很多分类，主要可以分为监督学习（supervised learning）和无监督学习（unsupervised learning）。 监督学习是指教计算机怎么学习，无监督学习是指让计算机自己学习。 监督学习可以分为分类问题(classification problems)和回归问题(regression problems)，分类问题对应于离散的情况，而回归问题对应于连续的情况。对于">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/04/21/机器学习简介/machinelearning1.jpg">
-<meta property="og:updated_time" content="2019-04-26T04:48:58.741Z">
+<meta property="og:image" content="http://yoursite.com/机器学习简介/machinelearning1.jpg">
+<meta property="og:updated_time" content="2019-04-26T10:51:58.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习简介">
 <meta name="twitter:description" content="分类 机器学习有很多分类，主要可以分为监督学习（supervised learning）和无监督学习（unsupervised learning）。 监督学习是指教计算机怎么学习，无监督学习是指让计算机自己学习。 监督学习可以分为分类问题(classification problems)和回归问题(regression problems)，分类问题对应于离散的情况，而回归问题对应于连续的情况。对于">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/21/机器学习简介/machinelearning1.jpg">
+<meta name="twitter:image" content="http://yoursite.com/机器学习简介/machinelearning1.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -305,7 +305,7 @@
 <li>上述代价函数也被称为平方误差函数，有时也被称为误差平方代价函数。平方误差代价函数是解决回归问题最常用的手段。<h3 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h3></li>
 <li>可以使用梯度下降法(gradient descent algorithm)将代价函数最小化。</li>
 <li>梯度下降法的步骤为:<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{j} := \theta _{j}-\alpha \frac{\partial }{\partial\theta _{j}}J(\theta _{0},\theta _{1})</script>&emsp;(for j = 0 and j = 1)<br><br>&emsp;&emsp;}</li>
-<li>注意上述步骤在实现时要做到同步更新。<br><br><img src="machinelearning1.jpg" alt="同步更新"></li>
+<li>注意上述步骤在实现时要做到同步更新。<br><br><img src="/机器学习简介/machinelearning1.jpg" alt="同步更新"></li>
 <li>其中<script type="math/tex">\alpha</script>是学习率(learning rate)，它用来控制梯度下降时，我们迈出多大的步子。如果<script type="math/tex">\alpha</script>太小，我们就需要很多步才能达到全局最优解或者局部最优解。如果<script type="math/tex">\alpha</script>值很大，梯度下降可能越过最低点，甚至可能无法收敛(converge)，甚至发散(diverge)。</li>
 <li>递归下降法可以收敛到一个局部最小值，甚至是在学习率固定的情况下。因为当我们接近一个局部最小值时（因为导数在逐渐减小），梯度下降法将会自动地减小步子。因此， 我们不需要去减小学习率。</li>
 <li>对于线性回归问题，梯度下降算法的步骤为：<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{0} := \theta _{0}-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_{\theta }(x_{i})-y^{(i)})</script><br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{1} := \theta _{1}-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_{\theta }(x_{i})-y^{(i)})</script><br><br>&emsp;&emsp;}</li>
@@ -325,7 +325,7 @@
         <p><span>本文标题:</span><a href="/2019/04/21/机器学习简介/">机器学习简介</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
         <p><span>发布时间:</span>2019-04-21, 20:28:38</p>
-        <p><span>最后更新:</span>2019-04-26, 12:48:58</p>
+        <p><span>最后更新:</span>2019-04-26, 18:51:58</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/04/21/机器学习简介/" title="机器学习简介">http://yoursite.com/2019/04/21/机器学习简介/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/21/机器学习简介/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
