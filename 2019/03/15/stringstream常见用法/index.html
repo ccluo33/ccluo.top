@@ -23,15 +23,15 @@
 <meta property="og:site_name" content="ccluo&#39;s Blog">
 <meta property="og:description" content="stringstream常用来进行输入输出格式转换，有时候也用来进行字符串合并。stringstream两种清空的方法，以及两种方法的使用场景的区别。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/03/15/stringstream常见用法/stringstream.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/03/15/stringstream常见用法/stringstream1.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/03/15/stringstream常见用法/stringstream2.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/03/15/stringstream常见用法/stringstream3.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/stringstream常见用法/images/stringstream.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/stringstream常见用法/images/stringstream1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/stringstream常见用法/images/stringstream2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/stringstream常见用法/images/stringstream3.jpg">
 <meta property="og:updated_time" content="2019-03-16T13:55:37.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="stringstream常见用法">
 <meta name="twitter:description" content="stringstream常用来进行输入输出格式转换，有时候也用来进行字符串合并。stringstream两种清空的方法，以及两种方法的使用场景的区别。">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/15/stringstream常见用法/stringstream.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/15/stringstream常见用法/images/stringstream.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -302,14 +302,14 @@
 <p>在这种情况下，错误地使用了%f格式化符来替代了%d。因此，s在调用完sprintf()后包含了一个不确定的字符串。如果要是能推导出正确的类型，岂不是要方便许多，所以我们选择使用stringstream：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">stringstream ss;</span><br><span class="line">string strResult;</span><br><span class="line">int nValue = 1000;</span><br><span class="line">	</span><br><span class="line">//将int类型的值放入输入流中</span><br><span class="line">ss &lt;&lt; nValue;    </span><br><span class="line">//从ss中抽取前面插入的int类型的值，赋值给string类型 </span><br><span class="line">ss &gt;&gt; strResult;  </span><br><span class="line">	</span><br><span class="line">cout &lt;&lt; &quot;[cout]strResult is: &quot; &lt;&lt; strResult &lt;&lt; endl;</span><br><span class="line">printf(&quot;[printf]strResult is: %s\n&quot;, strResult.c_str());</span><br></pre></td></tr></table></figure></p>
 <p>此时不必担心缓冲区溢出，因为stringstream对象会根据需要自动分配存储空间。</p>
 <h2 id="stringstream用于多个字符串拼接"><a href="#stringstream用于多个字符串拼接" class="headerlink" title="stringstream用于多个字符串拼接"></a>stringstream用于多个字符串拼接</h2><p>举个例子：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">stringstream ss;</span><br><span class="line">	</span><br><span class="line">//将多个字符串放入ss中</span><br><span class="line">ss &lt;&lt; &quot;first&quot; &lt;&lt; &quot; &quot; &lt;&lt; &quot;string,&quot;;</span><br><span class="line">ss &lt;&lt; &quot; second string&quot;;</span><br><span class="line">cout &lt;&lt; &quot;strResult is: &quot; &lt;&lt; ss.str() &lt;&lt; endl; </span><br><span class="line">	    </span><br><span class="line">//清空ss</span><br><span class="line">ss.str(&quot;&quot;);</span><br><span class="line">ss &lt;&lt; &quot;third string&quot;;</span><br><span class="line">cout &lt;&lt; &quot;After clear, strResult is: &quot; &lt;&lt; ss.str() &lt;&lt; endl;</span><br></pre></td></tr></table></figure></p>
-<p>此程序的输出结果为：<br><br><img src="/2019/03/15/stringstream常见用法/stringstream.jpg" alt=""><br>从上述代码可以知道：</p>
+<p>此程序的输出结果为：<br><br><img src="images/stringstream.jpg" alt=""><br>从上述代码可以知道：</p>
 <p><ul>
     <li>可以使用str()方法，将stringstream类型转换为string类型；</li>
     <li>可以将多个字符串放入stringstream中，实现字符串拼接的目的；</li>
     <li>如果想清空stringstream，必须使用s.str("")方式。</li>
 </ul></p>
 <h2 id="stringstream的清空"><a href="#stringstream的清空" class="headerlink" title="stringstream的清空"></a>stringstream的清空</h2><p>清空stringstream有两种方法，前面已经见到了一种：str(“”)方法，还有一种方法是clear()。这两种方法的使用场景是不同的。<br><br>上面的代码已经展示了str(“”)的使用场景，下面就clear()方法的使用场景来举个例子：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">stringstream ss;</span><br><span class="line">int first, second;</span><br><span class="line">	</span><br><span class="line">//插入字符串</span><br><span class="line">ss &lt;&lt; &quot;456&quot;;</span><br><span class="line">//转换为int类型</span><br><span class="line">ss &gt;&gt; first;</span><br><span class="line">cout &lt;&lt; first &lt;&lt; endl; </span><br><span class="line">	</span><br><span class="line">//在进行多次类型转换前，必须先运行clear() </span><br><span class="line">ss.clear();</span><br><span class="line">	</span><br><span class="line">//插入bool值</span><br><span class="line">ss &lt;&lt; true;</span><br><span class="line">//转换为int类型</span><br><span class="line">ss &gt;&gt; second;</span><br><span class="line">cout &lt;&lt; second &lt;&lt; endl;</span><br></pre></td></tr></table></figure></p>
-<p>运行后输出的结果为:<br><img src="/2019/03/15/stringstream常见用法/stringstream1.jpg" alt=""><br>在这个例子涉及的场景下（多次数据类型转换），必须使用clear()方法清空stringstream，不使用clear()方法或者使用str(“”)方法，都不能得到数据类型转换的正确结果。不使用clear()方法得到的运行结果为：<br><img src="/2019/03/15/stringstream常见用法/stringstream2.jpg" alt=""><br>而使用str(“”)得到的运行结果为：<br><img src="/2019/03/15/stringstream常见用法/stringstream3.jpg" alt=""></p>
+<p>运行后输出的结果为:<br><img src="images/stringstream1.jpg" alt=""><br>在这个例子涉及的场景下（多次数据类型转换），必须使用clear()方法清空stringstream，不使用clear()方法或者使用str(“”)方法，都不能得到数据类型转换的正确结果。不使用clear()方法得到的运行结果为：<br><img src="images/stringstream2.jpg" alt=""><br>而使用str(“”)得到的运行结果为：<br><img src="images/stringstream3.jpg" alt=""></p>
 <p>参考博客：</p>
 <p><a href="https://blog.csdn.net/liitdar/article/details/82598039" target="_blank" rel="noopener">liitdar的博客</a></p>
 <p><a href="http://developer.zhiding.cn/2003/0304/83250.shtml" target="_blank" rel="noopener">至顶网</a></p>

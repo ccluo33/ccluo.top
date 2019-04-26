@@ -293,7 +293,7 @@
 <li>上述代价函数也被称为平方误差函数，有时也被称为误差平方代价函数。平方误差代价函数是解决回归问题最常用的手段。<h3 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h3></li>
 <li>可以使用梯度下降法(gradient descent algorithm)将代价函数最小化。</li>
 <li>梯度下降法的步骤为:<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{j} := \theta _{j}-\alpha \frac{\partial }{\partial\theta _{j}}J(\theta _{0},\theta _{1})</script>&emsp;(for j = 0 and j = 1)<br><br>&emsp;&emsp;}</li>
-<li>注意上述步骤在实现时要做到同步更新。<br><br><img src="/机器学习简介/machinelearning1.jpg" alt="同步更新"></li>
+<li>注意上述步骤在实现时要做到同步更新。<br><br><img src="/images/machinelearning1.jpg" alt="同步更新"></li>
 <li>其中<script type="math/tex">\alpha</script>是学习率(learning rate)，它用来控制梯度下降时，我们迈出多大的步子。如果<script type="math/tex">\alpha</script>太小，我们就需要很多步才能达到全局最优解或者局部最优解。如果<script type="math/tex">\alpha</script>值很大，梯度下降可能越过最低点，甚至可能无法收敛(converge)，甚至发散(diverge)。</li>
 <li>递归下降法可以收敛到一个局部最小值，甚至是在学习率固定的情况下。因为当我们接近一个局部最小值时（因为导数在逐渐减小），梯度下降法将会自动地减小步子。因此， 我们不需要去减小学习率。</li>
 <li>对于线性回归问题，梯度下降算法的步骤为：<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{0} := \theta _{0}-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_{\theta }(x_{i})-y^{(i)})</script><br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{1} := \theta _{1}-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_{\theta }(x_{i})-y^{(i)})</script><br><br>&emsp;&emsp;}</li>
@@ -366,7 +366,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>stringstream常用来进行输入输出格式转换，有时候也用来进行字符串合并。<br><br>stringstream两种清空的方法，以及两种方法的使用场景的区别。<br></p>
+              <p>stringstream常用来进行输入输出格式转换，有时候也用来进行字符串合并。<br><br>stringstream两种清空的方法，以及两种方法的使用场景的区别。<br>
           
       
     </div>
@@ -435,7 +435,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p><code>&lt;div&gt;</code>元素用于对块元素划分逻辑区，<code>&lt;span&gt;</code>元素用于对内联元素划分逻辑区<br><br>元素的一般默认宽度和高度都设置的是auto，所以随着浏览器宽度，高度改变，元素的宽度和高度会随之改变。可以使用width属性来设置元素的宽度，高度一般还是用默认属性<br><br>用text-align属性来设置块元素的对齐方式，其中内联内容会按设置的方式对齐，而该块元素中的块元素会继承该属性，再将自己对齐<br><br>使用子孙选择器来选择某元素的子孙元素<br><br>设置行高的line-height属性的属性值可以直接为一个数，表示行高是该元素中每个元素的字体大小的多少倍（如果该元素中有<code>&lt;h1&gt;</code>元素和<code>&lt;p&gt;</code>元素，则<code>&lt;h1&gt;</code>和<code>&lt;p&gt;</code>的行高不同）<br><br>设置内边距，外边距，边框，背景，字体都可以使用快捷方式<br><br>链接元素的不同状态可以用伪类来设置其表现形式<br><br>使用层叠可以确定哪个元素具体使用哪种样式<br></p>
+              <p><code>&lt;div&gt;</code>元素用于对块元素划分逻辑区，<code>&lt;span&gt;</code>元素用于对内联元素划分逻辑区<br><br>元素的一般默认宽度和高度都设置的是auto，所以随着浏览器宽度，高度改变，元素的宽度和高度会随之改变。可以使用width属性来设置元素的宽度，高度一般还是用默认属性<br><br>用text-align属性来设置块元素的对齐方式，其中内联内容会按设置的方式对齐，而该块元素中的块元素会继承该属性，再将自己对齐<br><br>使用子孙选择器来选择某元素的子孙元素<br><br>设置行高的line-height属性的属性值可以直接为一个数，表示行高是该元素中每个元素的字体大小的多少倍（如果该元素中有<code>&lt;h1&gt;</code>元素和<code>&lt;p&gt;</code>元素，则<code>&lt;h1&gt;</code>和<code>&lt;p&gt;</code>的行高不同）<br><br>设置内边距，外边距，边框，背景，字体都可以使用快捷方式<br><br>链接元素的不同状态可以用伪类来设置其表现形式<br><br>使用层叠可以确定哪个元素具体使用哪种样式<br>
           
       
     </div>
@@ -504,7 +504,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>盒模型由内容区(context area)，内边距(padding)，边框(border)和外边距(margin)组成<br><br>内边距和外边距只能调整大小（可以使用像素或百分数）<br><br>边框可以设置样式，宽度，颜色，圆角<br><br>内边距，外边距可以调整任意一边的大小，边框可以调整任意一边的宽度<br><br>使用line-height属性调整行间距（可以使用像素或百分数或em，相对于字体大小指定）<br><br>还可以设置背景图像，以及设置背景图像是否重复，背景图像摆放位置<br><br>id属性的使用<br><br>使用混合样式表来控制不同设备用不同的样式显示页面（多个<code>&lt;link&gt;</code>元素或用@media规则）<br></p>
+              <p>盒模型由内容区(context area)，内边距(padding)，边框(border)和外边距(margin)组成<br><br>内边距和外边距只能调整大小（可以使用像素或百分数）<br><br>边框可以设置样式，宽度，颜色，圆角<br><br>内边距，外边距可以调整任意一边的大小，边框可以调整任意一边的宽度<br><br>使用line-height属性调整行间距（可以使用像素或百分数或em，相对于字体大小指定）<br><br>还可以设置背景图像，以及设置背景图像是否重复，背景图像摆放位置<br><br>id属性的使用<br><br>使用混合样式表来控制不同设备用不同的样式显示页面（多个<code>&lt;link&gt;</code>元素或用@media规则）<br>
           
       
     </div>
@@ -573,7 +573,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>五种字体系列介绍，怎么设置字体，以及Web字体的使用<br>调整字体大小的四种方法<br>调整字体粗细<br>设置字体倾斜<br>指定Web颜色的三种方法<br>如何为文本增加装饰<br></p>
+              <p>五种字体系列介绍，怎么设置字体，以及Web字体的使用<br>调整字体大小的四种方法<br>调整字体粗细<br>设置字体倾斜<br>指定Web颜色的三种方法<br>如何为文本增加装饰<br>
           
       
     </div>
@@ -642,7 +642,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>如何利用<code>&lt;style&gt;</code>元素给某种元素增加样式<br>利用样式表给多个页面增加样式<br>继承与覆盖继承<br>利用类为单独的段落指定样式<br>CSS验证工具以及常用属性<br>在CSS中写注释，只需要把注释包围在/*和*/之间。<br></p>
+              <p>如何利用<code>&lt;style&gt;</code>元素给某种元素增加样式<br>利用样式表给多个页面增加样式<br>继承与覆盖继承<br>利用类为单独的段落指定样式<br>CSS验证工具以及常用属性<br>在CSS中写注释，只需要把注释包围在/*和*/之间。<br>
           
       
     </div>
@@ -711,7 +711,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>HTML版本说明<br><code>&lt;img&gt;</code>元素的alt属性是必要的<br>字符编码<br>W3C验证工具<br></p>
+              <p>HTML版本说明<br><code>&lt;img&gt;</code>元素的alt属性是必要的<br>字符编码<br>W3C验证工具<br>
           
       
     </div>
@@ -780,7 +780,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>浏览器如何处理图像<br><br>缩略图的使用<br><br><code>&lt;img&gt;</code>元素是一个内联元素，这说明浏览器不会在图像前后插入一个换行<br><br><code>&lt;img&gt;</code>元素的src属性和alt属性介绍<br><br>JPEG,PNG,GIF三种图像格式的特点<br></p>
+              <p>浏览器如何处理图像<br><br>缩略图的使用<br><br><code>&lt;img&gt;</code>元素是一个内联元素，这说明浏览器不会在图像前后插入一个换行<br><br><code>&lt;img&gt;</code>元素的src属性和alt属性介绍<br><br>JPEG,PNG,GIF三种图像格式的特点<br>
           
       
     </div>
@@ -849,7 +849,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>URL中协议部分告诉浏览器应当使用什么方法来获取资源（大多数情况下，协议都是HTTP）。网站部分（由服务器名和域名组成）告诉浏览器要从互联网上的哪个计算机获取资源。最后绝对路径告诉服务器我们要找哪个页面。<br>使用URL或者相对链接链接到其它页面，结合id属性，然后再加上#可以链接到Web页面的指定位置。<br>还可以在<code>&lt;a&gt;</code>元素中使用title属性对链接进行描述。<br>在<code>&lt;a&gt;</code>元素中使用target属性控制浏览器如何打开一个窗口。<br></p>
+              <p>URL中协议部分告诉浏览器应当使用什么方法来获取资源（大多数情况下，协议都是HTTP）。网站部分（由服务器名和域名组成）告诉浏览器要从互联网上的哪个计算机获取资源。最后绝对路径告诉服务器我们要找哪个页面。<br>使用URL或者相对链接链接到其它页面，结合id属性，然后再加上#可以链接到Web页面的指定位置。<br>还可以在<code>&lt;a&gt;</code>元素中使用title属性对链接进行描述。<br>在<code>&lt;a&gt;</code>元素中使用target属性控制浏览器如何打开一个窗口。<br>
           
       
     </div>
@@ -918,7 +918,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>引用元素<code>&lt;q&gt;</code>和引用元素<code>&lt;blockquote&gt;</code>的区别：<code>&lt;q&gt;</code>是内联元素，适合于小段引用时使用，而<code>&lt;blockquote&gt;</code>是块元素，适合于大段引用。<br>一个列表由两种元素构成：列表类型和列表项。列表类型有无序列表（<code>&lt;ul&gt;</code>元素表示）以及有序列表（<code>&lt;ol&gt;</code>元素表示），列表项由<code>&lt;li&gt;</code>元素表示。这三个元素都是块元素。<br></p>
+              <p>引用元素<code>&lt;q&gt;</code>和引用元素<code>&lt;blockquote&gt;</code>的区别：<code>&lt;q&gt;</code>是内联元素，适合于小段引用时使用，而<code>&lt;blockquote&gt;</code>是块元素，适合于大段引用。<br>一个列表由两种元素构成：列表类型和列表项。列表类型有无序列表（<code>&lt;ul&gt;</code>元素表示）以及有序列表（<code>&lt;ol&gt;</code>元素表示），列表项由<code>&lt;li&gt;</code>元素表示。这三个元素都是块元素。<br>
           
       
     </div>
