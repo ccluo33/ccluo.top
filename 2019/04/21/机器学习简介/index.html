@@ -24,7 +24,7 @@
 <meta property="og:description" content="分类 机器学习有很多分类，主要可以分为监督学习（supervised learning）和无监督学习（unsupervised learning）。 监督学习是指教计算机怎么学习，无监督学习是指让计算机自己学习。 监督学习可以分为分类问题(classification problems)和回归问题(regression problems)，分类问题对应于离散的情况，而回归问题对应于连续的情况。对于">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/machinelearning1.jpg">
-<meta property="og:updated_time" content="2019-04-26T11:29:16.760Z">
+<meta property="og:updated_time" content="2019-04-26T15:22:32.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习简介">
 <meta name="twitter:description" content="分类 机器学习有很多分类，主要可以分为监督学习（supervised learning）和无监督学习（unsupervised learning）。 监督学习是指教计算机怎么学习，无监督学习是指让计算机自己学习。 监督学习可以分为分类问题(classification problems)和回归问题(regression problems)，分类问题对应于离散的情况，而回归问题对应于连续的情况。对于">
@@ -297,7 +297,7 @@
 <li>监督学习是指教计算机怎么学习，无监督学习是指让计算机自己学习。</li>
 <li>监督学习可以分为分类问题(classification problems)和回归问题(regression problems)，分类问题对应于离散的情况，而回归问题对应于连续的情况。对于只有少量离散值的问题，应该将它作为分类问题。</li>
 <li>在无监督学习中，所给的数据没有标签或者标签都相同，常使用聚类算法(clustering algorithm)，将数据集划分为不同的簇；另一个使用无监督学习方法的问题时鸡尾酒会的音频分离问题。<h1 id="线性回归-linear-regression"><a href="#线性回归-linear-regression" class="headerlink" title="线性回归(linear regression)"></a>线性回归(linear regression)</h1></li>
-<li>线性回归中假设函数(hypothesis function)$h_{\theta}(x)$用来预测y是x的线性函数。<h2 id="Linear-regression-with-one-variable"><a href="#Linear-regression-with-one-variable" class="headerlink" title="Linear regression with one variable"></a>Linear regression with one variable</h2></li>
+<li>线性回归属于监督学习方法中的回归问题，它是用用假设函数(hypothesis function)<script type="math/tex">h_{\theta}(x)</script>来预测y是x的线性函数。<h2 id="Linear-regression-with-one-variable"><a href="#Linear-regression-with-one-variable" class="headerlink" title="Linear regression with one variable"></a>Linear regression with one variable</h2></li>
 <li>Cost function（代价函数）有助于我们弄清楚如何把最有可能的直线与我们的数据相拟合。</li>
 <li>在线性回归中假设函数的形式为<script type="math/tex">h_{\theta}(x) = \theta _{0}+\theta _{1}x</script>，其中<script type="math/tex">\theta _{i}</script>称为模型参数。</li>
 <li>如何选择<script type="math/tex">\theta _{0}</script>和<script type="math/tex">\theta _{1}</script>这两个参数？选取的原则是对于我们给定的训练集中的数据，使<script type="math/tex">h_{\theta}(x)</script>尽可能靠近y。也就是求解最小化问题<script type="math/tex">\underset{\theta _{0},\theta _{1}}{minimize}\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{i})-y^{i})^{2}</script>(m是训练集中样本的数量)。</li>
@@ -308,11 +308,11 @@
 <li>注意上述步骤在实现时要做到同步更新。<br><br><img src="/images/machinelearning1.jpg" alt="同步更新"></li>
 <li>其中<script type="math/tex">\alpha</script>是学习率(learning rate)，它用来控制梯度下降时，我们迈出多大的步子。如果<script type="math/tex">\alpha</script>太小，我们就需要很多步才能达到全局最优解或者局部最优解。如果<script type="math/tex">\alpha</script>值很大，梯度下降可能越过最低点，甚至可能无法收敛(converge)，或者发散(diverge)。</li>
 <li>递归下降法可以收敛到一个局部最小值，哪怕是在学习率固定的情况下。因为当我们接近一个局部最小值时（因为导数在逐渐减小），梯度下降法将会自动地减小减少的速度。因此，我们不需要去减小学习率。</li>
-<li>对于线性回归问题，梯度下降算法的步骤为：<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{0} := \theta _{0}-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_{\theta }(x_{i})-y^{(i)})</script><br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{1} := \theta _{1}-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_{\theta }(x_{i})-y^{(i)})\cdot x^{i}</script><br><br>&emsp;&emsp;}</li>
+<li>对于线性回归问题，梯度下降算法的步骤为：<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{0} := \theta _{0}-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_{\theta }(x_{i})-y^{(i)})</script><br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{1} := \theta _{1}-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_{\theta }(x_{i})-y^{(i)})\cdot x^{(i)}</script><br><br>&emsp;&emsp;}</li>
 <li>注意update <script type="math/tex">\theta _{0}</script> and <script type="math/tex">\theta _{1}</script> simultaneously</li>
 <li>可能会有这么一个问题：使用梯度下降法不会陷入局部最优解吗？因为线性回归的代价函数是一个凸函数(convex function)，该函数没有局部最优解，只有一个全局最优解，故不会出现这种情况。</li>
-<li>上面的梯度下降算法也常被称作”Batch” Gradient Descent, “Batch” means each step of gradient descent uses all the training examples.有的梯度下降法没有使用全部的训练集而只是关注了小子集。</li>
-<li></li>
+<li>上面的梯度下降算法也常被称作”Batch” Gradient Descent, “Batch” means each step of gradient descent uses all the training examples.有的梯度下降法没有使用全部的训练集而只是关注了小子集。  <h2 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h2></li>
+<li>没有逆矩阵的矩阵一般叫做奇异(singular)矩阵或退化(degenerate)矩阵。</li>
 </ul>
 
       
@@ -325,7 +325,7 @@
         <p><span>本文标题:</span><a href="/2019/04/21/机器学习简介/">机器学习简介</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
         <p><span>发布时间:</span>2019-04-21, 20:28:38</p>
-        <p><span>最后更新:</span>2019-04-26, 19:29:16</p>
+        <p><span>最后更新:</span>2019-04-26, 23:22:32</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/04/21/机器学习简介/" title="机器学习简介">http://yoursite.com/2019/04/21/机器学习简介/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/21/机器学习简介/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -339,6 +339,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/04/29/省赛训练(一)补题/">
+                    
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -355,7 +361,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分类"><span class="toc-number">1.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性回归-linear-regression"><span class="toc-number">2.</span> <span class="toc-text">线性回归(linear regression)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linear-regression-with-one-variable"><span class="toc-number">2.1.</span> <span class="toc-text">Linear regression with one variable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降法"><span class="toc-number">2.1.1.</span> <span class="toc-text">梯度下降法</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分类"><span class="toc-number">1.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性回归-linear-regression"><span class="toc-number">2.</span> <span class="toc-text">线性回归(linear regression)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linear-regression-with-one-variable"><span class="toc-number">2.1.</span> <span class="toc-text">Linear regression with one variable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降法"><span class="toc-number">2.1.1.</span> <span class="toc-text">梯度下降法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵运算"><span class="toc-number">2.2.</span> <span class="toc-text">矩阵运算</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -430,7 +436,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2019/04/29/省赛训练(一)补题/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -442,7 +450,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/21/机器学习简介/">机器学习简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/15/stringstream常见用法/">stringstream常见用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/04/HTML和CSS(十)/">HTML和CSS(十)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/01/HTML与CSS(九)/">HTML与CSS（九）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/28/HTML和CSS(八)/">HTML和CSS(八)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(七)/">HTML和CSS(七)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(六)/">HTML和CSS(六)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/24/HTML和CSS(五)/">HTML和CSS(五)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/HTML和CSS(四)/">HTML和CSS(四)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/HTML和CSS(三)/">HTML和CSS(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/20/HTML和CSS(二)/">HTML和CSS(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/09/HTML和CSS(一)/">HTML和CSS(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/12/LCS和LIS/">LCS和LIS</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/搜索/">数独求解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/c++之string类简述/">c++之string类简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/输入输出流对象/">输入输出流对象</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/29/省赛训练(一)补题/">省赛训练(一)补题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/21/机器学习简介/">机器学习简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/15/stringstream常见用法/">stringstream常见用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/04/HTML和CSS(十)/">HTML和CSS(十)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/01/HTML与CSS(九)/">HTML与CSS（九）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/28/HTML和CSS(八)/">HTML和CSS(八)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(七)/">HTML和CSS(七)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(六)/">HTML和CSS(六)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/24/HTML和CSS(五)/">HTML和CSS(五)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/HTML和CSS(四)/">HTML和CSS(四)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/HTML和CSS(三)/">HTML和CSS(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/20/HTML和CSS(二)/">HTML和CSS(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/09/HTML和CSS(一)/">HTML和CSS(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/12/LCS和LIS/">LCS和LIS</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/搜索/">数独求解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/c++之string类简述/">c++之string类简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/输入输出流对象/">输入输出流对象</a></li></ul>
 
 
 
