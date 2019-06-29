@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/machinelearning1.jpg">
 <meta property="og:image" content="http://yoursite.com/images/machinelearning2.jpg">
-<meta property="og:updated_time" content="2019-06-29T02:58:59.473Z">
+<meta property="og:updated_time" content="2019-06-29T11:10:49.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习简介">
 <meta name="twitter:description" content="感觉当时上机器学习课的时候学得似懂非懂，现在补一补课吧。">
@@ -345,7 +345,12 @@ x_{n}\end{bmatrix}</script><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta=
 <li>if <script type="math/tex">\alpha</script> is too small: slow convergence.<br><br>&emsp;&emsp;if <script type="math/tex">\alpha</script> is too large: <script type="math/tex">J(\theta)</script> may not decrease on every iteration; may not converge.<br></li>
 <li>To choose <script type="math/tex">\alpha</script>, try …,0.001,0.003,0.01,0.03,0.1,0.3,1,…<h3 id="特征和多项式回归"><a href="#特征和多项式回归" class="headerlink" title="特征和多项式回归"></a>特征和多项式回归</h3></li>
 <li>在选择特征时，要合理选择，比如说在预测房子的价格时，选择房子的面积作为一个特征更合理，而不是选择房子的长度和宽度。</li>
-<li>如果是一个多项式回归时，可将特征选为<script type="math/tex">x1 = size, x2 = size^{2}, x3 = size^{3}...</script>。</li>
+<li>如果是一个多项式回归时，可将特征选为<script type="math/tex">x1 = size, x2 = size^{2}, x3 = size^{3}...</script>。<h3 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h3></li>
+<li>Normal equation: Method to slove for <script type="math/tex">\theta</script> analytically. </li>
+<li>正规方程是区别于迭代法（梯度下降法）的直接解法。</li>
+<li><script type="math/tex">\theta = (X^{T}X)^{-1}X^{T}y</script>，假设有m training examples, n features. X is a m*(n+1) matrix. X矩阵的每一行表示一个样本，其中<script type="math/tex">x^{(i)}_{0}</script>为常数。 </li>
+<li>在使用梯度下降法时，要提高梯度下降的速度就要使用特征缩放的方法，但是在使用正规方程求解参数时就没有必要再使用特征缩放的方法了。</li>
+<li>Compare Gradient Descent and Normal Equation(m training examples, n features)<br>|      Gradient Descent            |      Normal Equation              |<br>|—————————————————|:————————————————-:|<br>| Need to choose <script type="math/tex">\alpha</script>.       | No need to choose <script type="math/tex">\alpha</script>.     |<br>| Need many iterations.            | Don’t need to iterate.            |<br>| Wroks well evne when n is large. | Need to compute <script type="math/tex">(X^{T}X)^{-1}</script>, slow if n is very large. | </li>
 </ul>
 
       
@@ -358,7 +363,7 @@ x_{n}\end{bmatrix}</script><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta=
         <p><span>本文标题:</span><a href="/2019/04/21/机器学习简介/">机器学习简介</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
         <p><span>发布时间:</span>2019-04-21, 20:28:38</p>
-        <p><span>最后更新:</span>2019-06-29, 10:58:59</p>
+        <p><span>最后更新:</span>2019-06-29, 19:10:49</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/04/21/机器学习简介/" title="机器学习简介">http://yoursite.com/2019/04/21/机器学习简介/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/21/机器学习简介/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -394,7 +399,7 @@ x_{n}\end{bmatrix}</script><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta=
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分类"><span class="toc-number">1.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性回归-linear-regression"><span class="toc-number">2.</span> <span class="toc-text">线性回归(linear regression)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linear-regression-with-one-variable"><span class="toc-number">2.1.</span> <span class="toc-text">Linear regression with one variable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降法"><span class="toc-number">2.1.1.</span> <span class="toc-text">梯度下降法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵运算"><span class="toc-number">2.1.2.</span> <span class="toc-text">矩阵运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multivariate-linear-regression"><span class="toc-number">2.2.</span> <span class="toc-text">Multivariate linear regression</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降法-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">梯度下降法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征缩放-Feature-Scaling"><span class="toc-number">2.2.2.</span> <span class="toc-text">特征缩放(Feature Scaling)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习率"><span class="toc-number">2.2.3.</span> <span class="toc-text">学习率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征和多项式回归"><span class="toc-number">2.2.4.</span> <span class="toc-text">特征和多项式回归</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分类"><span class="toc-number">1.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性回归-linear-regression"><span class="toc-number">2.</span> <span class="toc-text">线性回归(linear regression)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linear-regression-with-one-variable"><span class="toc-number">2.1.</span> <span class="toc-text">Linear regression with one variable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降法"><span class="toc-number">2.1.1.</span> <span class="toc-text">梯度下降法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵运算"><span class="toc-number">2.1.2.</span> <span class="toc-text">矩阵运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multivariate-linear-regression"><span class="toc-number">2.2.</span> <span class="toc-text">Multivariate linear regression</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降法-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">梯度下降法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征缩放-Feature-Scaling"><span class="toc-number">2.2.2.</span> <span class="toc-text">特征缩放(Feature Scaling)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习率"><span class="toc-number">2.2.3.</span> <span class="toc-text">学习率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征和多项式回归"><span class="toc-number">2.2.4.</span> <span class="toc-text">特征和多项式回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正规方程"><span class="toc-number">2.2.5.</span> <span class="toc-text">正规方程</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
