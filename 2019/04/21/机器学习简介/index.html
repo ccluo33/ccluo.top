@@ -24,7 +24,8 @@
 <meta property="og:description" content="感觉当时上机器学习课的时候学得似懂非懂，现在补一补课吧。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/machinelearning1.jpg">
-<meta property="og:updated_time" content="2019-05-02T02:13:44.769Z">
+<meta property="og:image" content="http://yoursite.com/images/machinelearning2.jpg">
+<meta property="og:updated_time" content="2019-06-29T02:38:56.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习简介">
 <meta name="twitter:description" content="感觉当时上机器学习课的时候学得似懂非懂，现在补一补课吧。">
@@ -302,7 +303,7 @@
 <li>Cost function（代价函数）有助于我们弄清楚如何把最有可能的直线与我们的数据相拟合。</li>
 <li>在线性回归中假设函数的形式为<script type="math/tex">h_{\theta}(x) = \theta _{0}+\theta _{1}x</script>，其中<script type="math/tex">\theta _{i}</script>称为模型参数。</li>
 <li>如何选择<script type="math/tex">\theta _{0}</script>和<script type="math/tex">\theta _{1}</script>这两个参数？选取的原则是对于我们给定的训练集中的数据，使<script type="math/tex">h_{\theta}(x)</script>尽可能靠近y。也就是求解最小化问题<script type="math/tex">\underset{\theta _{0},\theta _{1}}{minimize}\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{i})-y^{i})^{2}</script>(m是训练集中样本的数量)。</li>
-<li>在该问题中的代价函数为<script type="math/tex">J(\theta _{0},\theta _{1})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{i})-y^{i})^{2}</script>，代价函数的参数是模型参数，我们的目标是最小化代价函数，即求<script type="math/tex">\underset{\theta _{0},\theta_{1}}{minimize}J(\theta_{0}, \theta_{1})</script>。</li>
+<li>在该问题中的代价函数为<script type="math/tex">J(\theta _{0},\theta _{1})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{(i)})-y^{(i)})^{2}</script>，代价函数的参数是模型参数，我们的目标是最小化代价函数，即求<script type="math/tex">\underset{\theta _{0},\theta_{1}}{minimize}J(\theta_{0}, \theta_{1})</script>。</li>
 <li>上述代价函数也被称为平方误差函数，有时也被称为误差平方代价函数。平方误差代价函数是解决回归问题最常用的手段。<h3 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h3></li>
 <li>可以使用梯度下降法(gradient descent algorithm)将代价函数最小化。</li>
 <li>梯度下降法的步骤为:<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{j} := \theta _{j}-\alpha \frac{\partial }{\partial\theta _{j}}J(\theta _{0},\theta _{1})</script>&emsp;(for j = 0 and j = 1)<br><br>&emsp;&emsp;}</li>
@@ -315,8 +316,36 @@
 <li>上面的梯度下降算法也常被称作”Batch” Gradient Descent, “Batch” means each step of gradient descent uses all the training examples.有的梯度下降法没有使用全部的训练集而只是关注了小子集。  <h3 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h3></li>
 <li>没有逆矩阵的矩阵一般叫做奇异(singular)矩阵或退化(degenerate)矩阵。<h2 id="Multivariate-linear-regression"><a href="#Multivariate-linear-regression" class="headerlink" title="Multivariate linear regression"></a>Multivariate linear regression</h2></li>
 <li>如果变量有n个，此时假设函数的形式为<script type="math/tex">h_{\theta}(x)=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+...+\theta_{n}x_{n}</script>。</li>
-<li>For convenience of notation, define <script type="math/tex">x_{0}=1</script>,<script type="math/tex">(x_{0}^{(i)}=1)</script>,然后有<br>&emsp;&emsp;&emsp;<script type="math/tex">x=\begin{bmatrix}   &emsp;&emsp;&emsp;</script>\theta=\begin{bmatrix}<br>x<em>{0}\                                 &emsp;&emsp;&emsp;\theta</em>{0}\<br>x<em>{1}\                                 &emsp;&emsp;&emsp;\theta</em>{1}\<br>x<em>{2}\                                 &emsp;&emsp;&emsp;\theta</em>{2}\<br>.\                                     &emsp;&emsp;&emsp;.\<br>.\                                     &emsp;&emsp;&emsp;.\<br>.\                                     &emsp;&emsp;&emsp;.\<br>x<em>{n}\end{bmatrix}$$                    &emsp;&emsp;&emsp;{\theta}</em>{n}\end{bmatrix}<script type="math/tex">&emsp;&emsp;&emsp;</script>\theta=\begin{bmatrix}<br>\theta<em>{0}\<br>\theta</em>{1}\<br>\theta<em>{2}\<br>.\<br>.\<br>.\<br>{\theta}</em>{n}\end{bmatrix}$$</li>
-<li>因此在多特征量的时候假设函数可以写成<script type="math/tex">h_{\theta}(x) = \theta^{T}x</script>。</li>
+<li>For convenience of notation, define <script type="math/tex">x_{0}=1</script>,<script type="math/tex">(x_{0}^{(i)}=1)</script>,然后有<br>&emsp;&emsp;&emsp;<script type="math/tex">x=\begin{bmatrix}                                                      
+x_{0}\\                                                               
+x_{1}\\                                 
+x_{2}\\                                 
+.\\                                     
+.\\                                     
+.\\                                     
+x_{n}\end{bmatrix}</script><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta=\begin{bmatrix}
+\theta_{0}\\ 
+\theta_{1}\\ 
+\theta_{2}\\ 
+.\\
+.\\ 
+.\\
+{\theta}_{n}\end{bmatrix}</script></li>
+<li>因此在多特征量的时候假设函数可以写成<script type="math/tex">h_{\theta}(x) = \theta^{T}x</script>，其对应的cost function为<script type="math/tex">J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{(i)})-y^{(i)})^{2}</script>，其中参数<script type="math/tex">\theta</script>是一个n+1维的向量。<h3 id="梯度下降法-1"><a href="#梯度下降法-1" class="headerlink" title="梯度下降法"></a>梯度下降法</h3></li>
+<li>依旧使用梯度下降法将该函数最小化，梯度下降法的步骤为:<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{j} := \theta _{j}-\alpha \frac{\partial }{\partial\theta _{j}}J(\theta)</script><br><br>&emsp;&emsp;}(simultaneously update for every j = 0, …, n)<br><br><img src="/images/machinelearning2.jpg" alt="更新计算"><h3 id="特征缩放-Feature-Scaling"><a href="#特征缩放-Feature-Scaling" class="headerlink" title="特征缩放(Feature Scaling)"></a>特征缩放(Feature Scaling)</h3></li>
+<li>经过特征缩放后梯度下降法可以尽快迭代至全局最小点。</li>
+<li>Get every feature into approximately a <script type="math/tex">-1\leq x_{i} \leq 1</script> range。实际可取的范围可以大于+1，或者小于+1，但也别太大，比如+100，但也不能太小，比如+0.001。</li>
+<li>常用的特征缩放方法有特征值除以最大值或者均值归一化（即用<script type="math/tex">x_{i}-\mu _{i}</script>代替<script type="math/tex">x_{i}</script>来使特征有接近0的均值。均值归一化不适用<script type="math/tex">x_{0}=1</script>。）</li>
+<li>均值归一化的公式为<script type="math/tex">x_{i}= \frac{x_{i}-\mu _{i}}{s_{i}}</script>，<script type="math/tex">\mu _{i}</script> is avg value of <script type="math/tex">x_{i}</script> in training set. <script type="math/tex">s_{i}</script> is the range of <script type="math/tex">x_{i}</script> or the standard deviation of <script type="math/tex">x_{i}</script>.</li>
+<li>适用均值归一化方法将特征值可以转换到大致-0.5到0.5的范围内。<h3 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h3></li>
+<li>如何确保梯度下降法正确地工作呢？可以画出代价函数随迭代步数增加的变化曲线来判断梯度下降算法是否已经收敛(converged)。另外。也可以进行一些自动的收敛测试，比如说:Declare convergence if <script type="math/tex">J(\theta)</script> decreases by less than <script type="math/tex">10^{-3}</script> in one iteration(这里使用的阈值为<script type="math/tex">10^{-3}</script>)。即选择一个合适的阈值(threshold)<script type="math/tex">\varepsilon</script>来判断是否收敛。但是通常选择一个合适的阈值是比较困难的。</li>
+<li>如果在观察代价函数随迭代步数增加的变化曲线的时候发现随迭代步数的增加，代价函数呈递增趋势，说明梯度下降法没有正常工作，发生这种情况的原因一般是由于<script type="math/tex">J(\theta)</script>是一个凸函数，而学习率设置的太大了，越过了最低点。如果随着迭代次数的增加<script type="math/tex">J(\theta)</script>的值大时<br>小，那么也一般是因为学习率设置的太大了。</li>
+<li>For sufficiently small <script type="math/tex">\alpha</script>,<script type="math/tex">J(\theta)</script> should decrease on every iteration.</li>
+<li>But if <script type="math/tex">\alpha</script> is too small, gradient descent can be slow to converge.</li>
+<li>if <script type="math/tex">\alpha</script> is too small: slow convergence.<br><br>&emsp;&emsp;if <script type="math/tex">\alpha</script> is too large: <script type="math/tex">J(\theta)</script> may not decrease on every iteration; may not converge.<br></li>
+<li>To choose <script type="math/tex">\alpha</script>, try …,0.001,0.003,0.01,0.03,0.1,0.3,1,…<h3 id="特征和多项式回归"><a href="#特征和多项式回归" class="headerlink" title="特征和多项式回归"></a>特征和多项式回归</h3></li>
+<li>在选择特征时，要合理选择，比如说在预测房子的价格时，选择房子的面积作为一个特征更合理，而不是选择房子的长度和宽度。</li>
+<li>如果是一个多项式回归时，可将特征选为<script type="math/tex">x1 = size, x2 = size^{2}, x3 = size^{3}...</script>。</li>
 </ul>
 
       
@@ -329,7 +358,7 @@
         <p><span>本文标题:</span><a href="/2019/04/21/机器学习简介/">机器学习简介</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
         <p><span>发布时间:</span>2019-04-21, 20:28:38</p>
-        <p><span>最后更新:</span>2019-05-02, 10:13:44</p>
+        <p><span>最后更新:</span>2019-06-29, 10:38:56</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/04/21/机器学习简介/" title="机器学习简介">http://yoursite.com/2019/04/21/机器学习简介/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/21/机器学习简介/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -365,7 +394,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分类"><span class="toc-number">1.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性回归-linear-regression"><span class="toc-number">2.</span> <span class="toc-text">线性回归(linear regression)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linear-regression-with-one-variable"><span class="toc-number">2.1.</span> <span class="toc-text">Linear regression with one variable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降法"><span class="toc-number">2.1.1.</span> <span class="toc-text">梯度下降法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵运算"><span class="toc-number">2.1.2.</span> <span class="toc-text">矩阵运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multivariate-linear-regression"><span class="toc-number">2.2.</span> <span class="toc-text">Multivariate linear regression</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分类"><span class="toc-number">1.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性回归-linear-regression"><span class="toc-number">2.</span> <span class="toc-text">线性回归(linear regression)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linear-regression-with-one-variable"><span class="toc-number">2.1.</span> <span class="toc-text">Linear regression with one variable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降法"><span class="toc-number">2.1.1.</span> <span class="toc-text">梯度下降法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵运算"><span class="toc-number">2.1.2.</span> <span class="toc-text">矩阵运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multivariate-linear-regression"><span class="toc-number">2.2.</span> <span class="toc-text">Multivariate linear regression</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降法-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">梯度下降法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征缩放-Feature-Scaling"><span class="toc-number">2.2.2.</span> <span class="toc-text">特征缩放(Feature Scaling)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习率"><span class="toc-number">2.2.3.</span> <span class="toc-text">学习率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征和多项式回归"><span class="toc-number">2.2.4.</span> <span class="toc-text">特征和多项式回归</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
