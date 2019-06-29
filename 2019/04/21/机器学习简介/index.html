@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/machinelearning1.jpg">
 <meta property="og:image" content="http://yoursite.com/images/machinelearning2.jpg">
-<meta property="og:updated_time" content="2019-06-29T02:38:56.828Z">
+<meta property="og:updated_time" content="2019-06-29T02:57:05.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习简介">
 <meta name="twitter:description" content="感觉当时上机器学习课的时候学得似懂非懂，现在补一补课吧。">
@@ -316,7 +316,7 @@
 <li>上面的梯度下降算法也常被称作”Batch” Gradient Descent, “Batch” means each step of gradient descent uses all the training examples.有的梯度下降法没有使用全部的训练集而只是关注了小子集。  <h3 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h3></li>
 <li>没有逆矩阵的矩阵一般叫做奇异(singular)矩阵或退化(degenerate)矩阵。<h2 id="Multivariate-linear-regression"><a href="#Multivariate-linear-regression" class="headerlink" title="Multivariate linear regression"></a>Multivariate linear regression</h2></li>
 <li>如果变量有n个，此时假设函数的形式为<script type="math/tex">h_{\theta}(x)=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+...+\theta_{n}x_{n}</script>。</li>
-<li>For convenience of notation, define <script type="math/tex">x_{0}=1</script>,<script type="math/tex">(x_{0}^{(i)}=1)</script>,然后有<br>&emsp;&emsp;&emsp;<script type="math/tex">x=\begin{bmatrix}                                                      
+<li>For convenience of notation, define <script type="math/tex">x_{0}=1</script>,<script type="math/tex">(x_{0}^{(i)}=1)</script>,然后有<br>&emsp;&emsp;&emsp;\begin{gather<em>}<script type="math/tex">x=\begin{bmatrix}                                                      
 x_{0}\\                                                               
 x_{1}\\                                 
 x_{2}\\                                 
@@ -330,7 +330,7 @@ x_{n}\end{bmatrix}</script><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta=
 .\\
 .\\ 
 .\\
-{\theta}_{n}\end{bmatrix}</script></li>
+{\theta}_{n}\end{bmatrix}</script>\end{gather</em>}</li>
 <li>因此在多特征量的时候假设函数可以写成<script type="math/tex">h_{\theta}(x) = \theta^{T}x</script>，其对应的cost function为<script type="math/tex">J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{(i)})-y^{(i)})^{2}</script>，其中参数<script type="math/tex">\theta</script>是一个n+1维的向量。<h3 id="梯度下降法-1"><a href="#梯度下降法-1" class="headerlink" title="梯度下降法"></a>梯度下降法</h3></li>
 <li>依旧使用梯度下降法将该函数最小化，梯度下降法的步骤为:<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{j} := \theta _{j}-\alpha \frac{\partial }{\partial\theta _{j}}J(\theta)</script><br><br>&emsp;&emsp;}(simultaneously update for every j = 0, …, n)<br><br><img src="/images/machinelearning2.jpg" alt="更新计算"><h3 id="特征缩放-Feature-Scaling"><a href="#特征缩放-Feature-Scaling" class="headerlink" title="特征缩放(Feature Scaling)"></a>特征缩放(Feature Scaling)</h3></li>
 <li>经过特征缩放后梯度下降法可以尽快迭代至全局最小点。</li>
@@ -358,7 +358,7 @@ x_{n}\end{bmatrix}</script><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta=
         <p><span>本文标题:</span><a href="/2019/04/21/机器学习简介/">机器学习简介</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
         <p><span>发布时间:</span>2019-04-21, 20:28:38</p>
-        <p><span>最后更新:</span>2019-06-29, 10:38:56</p>
+        <p><span>最后更新:</span>2019-06-29, 10:57:05</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/04/21/机器学习简介/" title="机器学习简介">http://yoursite.com/2019/04/21/机器学习简介/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/21/机器学习简介/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
