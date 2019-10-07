@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="ccluo" />
+
+
+
+<meta name="description" content="title: 机器学习简介date: 2019-04-21 20:28:38tags: 简介 categories: 机器学习感觉当时上机器学习课的时候学得似懂非懂，现在补一补课吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ccluo&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/2019/04/24/机器学习简介/index.html">
+<meta property="og:site_name" content="ccluo&#39;s Blog">
+<meta property="og:description" content="title: 机器学习简介date: 2019-04-21 20:28:38tags: 简介 categories: 机器学习感觉当时上机器学习课的时候学得似懂非懂，现在补一补课吧。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/machinelearning1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/machinelearning2.jpg">
+<meta property="og:updated_time" content="2019-10-07T02:36:24.494Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ccluo&#39;s Blog">
+<meta name="twitter:description" content="title: 机器学习简介date: 2019-04-21 20:28:38tags: 简介 categories: 机器学习感觉当时上机器学习课的时候学得似懂非懂，现在补一补课吧。">
+<meta name="twitter:image" content="http://yoursite.com/images/machinelearning1.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="ccluo&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>ccluo&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?69af2dddda432279157cf5f99000fa57";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</head>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">ccluo</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Never put off what you can do today until tomorrow!</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/随笔">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" href="https://m.weibo.cn/u/6022390810" title="新浪微博"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/people/chi-cheng-64-41-58/activities" title="知乎"></a>
+                            
+                                <a class="fa Facebook" href="https://www.facebook.com/profile.php?id=100030189228604" title="Facebook"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">ccluo</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">ccluo</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Never put off what you can do today until tomorrow!</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/随笔">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://m.weibo.cn/u/6022390810" title="新浪微博"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/chi-cheng-64-41-58/activities" title="知乎"></a>
+                            
+                                <a class="fa Facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100030189228604" title="Facebook"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-机器学习简介" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/04/24/机器学习简介/" class="article-date">
+      <time datetime="2019-04-24T01:58:08.538Z" itemprop="datePublished">2019-04-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<p>title: 机器学习简介<br>date: 2019-04-21 20:28:38<br>tags: 简介</p>
+<h2 id="categories-机器学习"><a href="#categories-机器学习" class="headerlink" title="categories: 机器学习"></a>categories: 机器学习</h2><p>感觉当时上机器学习课的时候学得似懂非懂，现在补一补课吧。<br><a id="more"></a></p>
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><ul>
+<li>机器学习有很多分类，主要可以分为监督学习（supervised learning）和无监督学习（unsupervised learning）。</li>
+<li>监督学习是指教计算机怎么学习，无监督学习是指让计算机自己学习。</li>
+<li>监督学习可以分为分类问题(classification problems)和回归问题(regression problems)，分类问题对应于离散的情况，而回归问题对应于连续的情况。对于只有少量离散值的问题，应该将它作为分类问题。</li>
+<li>在无监督学习中，所给的数据没有标签或者标签都相同，常使用聚类算法(clustering algorithm)，将数据集划分为不同的簇；另一个使用无监督学习方法的问题时鸡尾酒会的音频分离问题。<h1 id="线性回归-linear-regression"><a href="#线性回归-linear-regression" class="headerlink" title="线性回归(linear regression)"></a>线性回归(linear regression)</h1></li>
+<li>线性回归属于监督学习方法中的回归问题，它是用用假设函数(hypothesis function)<script type="math/tex">h_{\theta}(x)</script>来预测y是x的线性函数。<h2 id="Linear-regression-with-one-variable"><a href="#Linear-regression-with-one-variable" class="headerlink" title="Linear regression with one variable"></a>Linear regression with one variable</h2></li>
+<li>Cost function（代价函数）有助于我们弄清楚如何把最有可能的直线与我们的数据相拟合。</li>
+<li>在线性回归中假设函数的形式为<script type="math/tex">h_{\theta}(x) = \theta _{0}+\theta _{1}x</script>，其中<script type="math/tex">\theta _{i}</script>称为模型参数。</li>
+<li>如何选择<script type="math/tex">\theta _{0}</script>和<script type="math/tex">\theta _{1}</script>这两个参数？选取的原则是对于我们给定的训练集中的数据，使<script type="math/tex">h_{\theta}(x)</script>尽可能靠近y。也就是求解最小化问题<script type="math/tex">\underset{\theta _{0},\theta _{1}}{minimize}\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{i})-y^{i})^{2}</script>(m是训练集中样本的数量)。</li>
+<li>在该问题中的代价函数为<script type="math/tex">J(\theta _{0},\theta _{1})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{(i)})-y^{(i)})^{2}</script>，代价函数的参数是模型参数，我们的目标是最小化代价函数，即求<script type="math/tex">\underset{\theta _{0},\theta_{1}}{minimize}J(\theta_{0}, \theta_{1})</script>。</li>
+<li>上述代价函数也被称为平方误差函数，有时也被称为误差平方代价函数。平方误差代价函数是解决回归问题最常用的手段。<h3 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h3></li>
+<li>可以使用梯度下降法(gradient descent algorithm)将代价函数最小化。</li>
+<li>梯度下降法的步骤为:<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{j} := \theta _{j}-\alpha \frac{\partial }{\partial\theta _{j}}J(\theta _{0},\theta _{1})</script>&emsp;(for j = 0 and j = 1)<br><br>&emsp;&emsp;}</li>
+<li>注意上述步骤在实现时要做到同步更新。<br><br><img src="/images/machinelearning1.jpg" alt="同步更新"></li>
+<li>其中<script type="math/tex">\alpha</script>是学习率(learning rate)，它用来控制梯度下降时，我们迈出多大的步子。如果<script type="math/tex">\alpha</script>太小，我们就需要很多步才能达到全局最优解或者局部最优解。如果<script type="math/tex">\alpha</script>值很大，梯度下降可能越过最低点，甚至可能无法收敛(converge)，或者发散(diverge)。</li>
+<li>递归下降法可以收敛到一个局部最小值，哪怕是在学习率固定的情况下。因为当我们接近一个局部最小值时（因为导数在逐渐减小），梯度下降法将会自动地减小减少的速度。因此，我们不需要去减小学习率。</li>
+<li>对于线性回归问题，梯度下降算法的步骤为：<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{0} := \theta _{0}-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_{\theta }(x_{i})-y^{(i)})</script><br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{1} := \theta _{1}-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_{\theta }(x_{i})-y^{(i)})\cdot x^{(i)}</script><br><br>&emsp;&emsp;}</li>
+<li>注意update <script type="math/tex">\theta _{0}</script> and <script type="math/tex">\theta _{1}</script> simultaneously</li>
+<li>可能会有这么一个问题：使用梯度下降法不会陷入局部最优解吗？因为线性回归的代价函数是一个凸函数(convex function)，该函数没有局部最优解，只有一个全局最优解，故不会出现这种情况。</li>
+<li>上面的梯度下降算法也常被称作”Batch” Gradient Descent, “Batch” means each step of gradient descent uses all the training examples.有的梯度下降法没有使用全部的训练集而只是关注了小子集。  <h3 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h3></li>
+<li>没有逆矩阵的矩阵一般叫做奇异(singular)矩阵或退化(degenerate)矩阵。<h2 id="Multivariate-linear-regression"><a href="#Multivariate-linear-regression" class="headerlink" title="Multivariate linear regression"></a>Multivariate linear regression</h2></li>
+<li>如果变量有n个，此时假设函数的形式为<script type="math/tex">h_{\theta}(x)=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+...+\theta_{n}x_{n}</script>。</li>
+<li>For convenience of notation, define <script type="math/tex">x_{0}=1</script>,<script type="math/tex">(x_{0}^{(i)}=1)</script>,然后有<br>&emsp;&emsp;&emsp;<script type="math/tex">x=\begin{bmatrix}                                                      
+x_{0}\\                                                               
+x_{1}\\                                 
+x_{2}\\                                 
+.\\                                     
+.\\                                     
+.\\                                     
+x_{n}\end{bmatrix}</script><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta=\begin{bmatrix}
+\theta_{0}\\ 
+\theta_{1}\\ 
+\theta_{2}\\ 
+.\\
+.\\ 
+.\\
+{\theta}_{n}\end{bmatrix}</script></li>
+<li>因此在多特征量的时候假设函数可以写成<script type="math/tex">h_{\theta}(x) = \theta^{T}x</script>，其对应的cost function为<script type="math/tex">J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta }(x^{(i)})-y^{(i)})^{2}</script>，其中参数<script type="math/tex">\theta</script>是一个n+1维的向量。<h3 id="梯度下降法-1"><a href="#梯度下降法-1" class="headerlink" title="梯度下降法"></a>梯度下降法</h3></li>
+<li>依旧使用梯度下降法将该函数最小化，梯度下降法的步骤为:<br><br>&emsp;&emsp;repeat until convergence{<br><br>&emsp;&emsp;&emsp;<script type="math/tex">\theta _{j} := \theta _{j}-\alpha \frac{\partial }{\partial\theta _{j}}J(\theta)</script><br><br>&emsp;&emsp;}(simultaneously update for every j = 0, …, n)<br><br><img src="/images/machinelearning2.jpg" alt="更新计算"><h3 id="特征缩放-Feature-Scaling"><a href="#特征缩放-Feature-Scaling" class="headerlink" title="特征缩放(Feature Scaling)"></a>特征缩放(Feature Scaling)</h3></li>
+<li>经过特征缩放后梯度下降法可以尽快迭代至全局最小点。</li>
+<li>Get every feature into approximately a <script type="math/tex">-1\leq x_{i} \leq 1</script> range。实际可取的范围可以大于+1，或者小于+1，但也别太大，比如+100，但也不能太小，比如+0.001。</li>
+<li>常用的特征缩放方法有特征值除以最大值或者均值归一化（即用<script type="math/tex">x_{i}-\mu _{i}</script>代替<script type="math/tex">x_{i}</script>来使特征有接近0的均值。均值归一化不适用<script type="math/tex">x_{0}=1</script>。）</li>
+<li>均值归一化的公式为<script type="math/tex">x_{i}= \frac{x_{i}-\mu _{i}}{s_{i}}</script>，<script type="math/tex">\mu _{i}</script> is avg value of <script type="math/tex">x_{i}</script> in training set. <script type="math/tex">s_{i}</script> is the range of <script type="math/tex">x_{i}</script> or the standard deviation of <script type="math/tex">x_{i}</script>.</li>
+<li>适用均值归一化方法将特征值可以转换到大致-0.5到0.5的范围内。<h3 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h3></li>
+<li>如何确保梯度下降法正确地工作呢？可以画出代价函数随迭代步数增加的变化曲线来判断梯度下降算法是否已经收敛(converged)。另外。也可以进行一些自动的收敛测试，比如说:Declare convergence if <script type="math/tex">J(\theta)</script> decreases by less than <script type="math/tex">10^{-3}</script> in one iteration(这里使用的阈值为<script type="math/tex">10^{-3}</script>)。即选择一个合适的阈值(threshold)<script type="math/tex">\varepsilon</script>来判断是否收敛。但是通常选择一个合适的阈值是比较困难的。</li>
+<li>如果在观察代价函数随迭代步数增加的变化曲线的时候发现随迭代步数的增加，代价函数呈递增趋势，说明梯度下降法没有正常工作，发生这种情况的原因一般是由于<script type="math/tex">J(\theta)</script>是一个凸函数，而学习率设置的太大了，越过了最低点。如果随着迭代次数的增加<script type="math/tex">J(\theta)</script>的值大时<br>小，那么也一般是因为学习率设置的太大了。</li>
+<li>For sufficiently small <script type="math/tex">\alpha</script>,<script type="math/tex">J(\theta)</script> should decrease on every iteration.</li>
+<li>But if <script type="math/tex">\alpha</script> is too small, gradient descent can be slow to converge.</li>
+<li>if <script type="math/tex">\alpha</script> is too small: slow convergence.<br><br>&emsp;&emsp;if <script type="math/tex">\alpha</script> is too large: <script type="math/tex">J(\theta)</script> may not decrease on every iteration; may not converge.<br></li>
+<li>To choose <script type="math/tex">\alpha</script>, try …,0.001,0.003,0.01,0.03,0.1,0.3,1,…<h3 id="特征和多项式回归"><a href="#特征和多项式回归" class="headerlink" title="特征和多项式回归"></a>特征和多项式回归</h3></li>
+<li>在选择特征时，要合理选择，比如说在预测房子的价格时，选择房子的面积作为一个特征更合理，而不是选择房子的长度和宽度。</li>
+<li>如果是一个多项式回归时，可将特征选为<script type="math/tex">x1 = size, x2 = size^{2}, x3 = size^{3}...</script>。<h3 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h3></li>
+<li>Normal equation: Method to slove for <script type="math/tex">\theta</script> analytically. </li>
+<li>正规方程是区别于迭代法（梯度下降法）的直接解法。</li>
+<li><script type="math/tex">\theta = (X^{T}X)^{-1}X^{T}y</script>，假设有m training examples, n features. X is a m*(n+1) matrix. X矩阵的每一行表示一个样本，其中<script type="math/tex">x^{(i)}_{0}</script>为常数。 </li>
+<li>在使用梯度下降法时，要提高梯度下降的速度就要使用特征缩放的方法，但是在使用正规方程求解参数时就没有必要再使用特征缩放的方法了。</li>
+<li>Compare Gradient Descent and Normal Equation(m training examples, n features):<br></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Gradient Descent</th>
+<th>Normal Equation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Need to choose <script type="math/tex">\alpha</script></td>
+<td>No need to choose <script type="math/tex">\alpha</script></td>
+</tr>
+<tr>
+<td>Need many iterations</td>
+<td>Don’t need to iterate</td>
+<td></td>
+</tr>
+<tr>
+<td>Works well even when n is large</td>
+<td>Need to compute <script type="math/tex">(X^{T}X)^{-1}</script>, slow if n is very large</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="正规方程在矩阵不可逆情况下的解决方案"><a href="#正规方程在矩阵不可逆情况下的解决方案" class="headerlink" title="正规方程在矩阵不可逆情况下的解决方案"></a>正规方程在矩阵不可逆情况下的解决方案</h3><p>What if <script type="math/tex">X^{T}X</script> is non-invertible?<br></p>
+<ul>
+<li>Redundant features(linearly dependent).<br><br>&emsp;&emsp;E.g. <script type="math/tex">x_{1} = size in {feet}^{2}&&(feet是尺)<br>
+&emsp;&emsp;&emsp;</script>x_{2} = size in {m}^{2}$$</li>
+<li>Too many features(e.g.<script type="math/tex">m\leqslant n</script>).<br><br>&emsp;&emsp;- Delete some features, or use regularization.<h1 id="matlab使用"><a href="#matlab使用" class="headerlink" title="matlab使用"></a>matlab使用</h1></li>
+<li>length()命令返回矩阵的行和列最高维度，不过一般常用于向量。</li>
+<li>load()命令用来加载数据。</li>
+<li>who命令用来显示当前工作区有哪些变量。</li>
+<li>whos命令用来显示工作区变量的具体信息。</li>
+<li>save+文件名+要保存的变量用来将变量保存到文件中。</li>
+<li>想要将变量保存为人可见的形式，可以使用命令：save 文件名.txt 变量 -ascii。</li>
+<li>size(A) = [3,2]，给A矩阵添加一列，例： A = [A, [100; 101; 102]]。</li>
+<li>size(A) = [3,2]，size(B) = [3,2], C = [A, B]， 则size(C) = [3, 4]，相当于把B加在A的右边。</li>
+<li>size(A) = [3,2]，size(B) = [3,2], C = [A; B]， 则size(C) = [6, 2]，相当于把B加在A的下边。</li>
+<li>max(a), a是一个行向量，则可以得到该行向量中的最大值，可以使用命令[val, ind] = max(a)，其中val用来返回最大值，ind用来返回最大值在行向量中的下标；也可以直接使用val = max(a)来返回a向量中的最大值。</li>
+<li>max(A)，A是一个矩阵，则max(A)会返回A中每一列的最大值。</li>
+<li>a = [1, 15, 2, 0.5]，find(a &lt; 3) = [1 3 4]，即返回a中所有小于3的元素的索引。</li>
+<li>max(A, [], 1)可以得到A矩阵的每一列的最大值。max(A, [], 2)可以得到A矩阵每一行的最大值，max默认求的是每一列的最大值。</li>
+<li>如果要求矩阵A中所有元素的最大值，则可以使用max(max(A))，或者将矩阵A变为向量再求最大值，即max(A(:))。</li>
+<li>flipud(A)表示将A矩阵垂直旋转。</li>
+<li>可以使用逗号连续调用函数。</li>
+<li>可以使用addpath()命令来添加搜索路径。</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/04/24/机器学习简介/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
+        <p><span>发布时间:</span>2019-04-24, 09:58:08</p>
+        <p><span>最后更新:</span>2019-10-07, 10:36:24</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/04/24/机器学习简介/" title="">http://yoursite.com/2019/04/24/机器学习简介/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/24/机器学习简介/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/05/01/省赛训练(一)补题/">
+                    省赛训练(一)补题
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/03/15/stringstream常见用法/">
+                    stringstream常见用法
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#categories-机器学习"><span class="toc-number">1.</span> <span class="toc-text">categories: 机器学习</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分类"><span class="toc-number"></span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性回归-linear-regression"><span class="toc-number"></span> <span class="toc-text">线性回归(linear regression)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linear-regression-with-one-variable"><span class="toc-number">1.</span> <span class="toc-text">Linear regression with one variable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降法"><span class="toc-number">1.1.</span> <span class="toc-text">梯度下降法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵运算"><span class="toc-number">1.2.</span> <span class="toc-text">矩阵运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multivariate-linear-regression"><span class="toc-number">2.</span> <span class="toc-text">Multivariate linear regression</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降法-1"><span class="toc-number">2.1.</span> <span class="toc-text">梯度下降法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征缩放-Feature-Scaling"><span class="toc-number">2.2.</span> <span class="toc-text">特征缩放(Feature Scaling)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习率"><span class="toc-number">2.3.</span> <span class="toc-text">学习率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征和多项式回归"><span class="toc-number">2.4.</span> <span class="toc-text">特征和多项式回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正规方程"><span class="toc-number">2.5.</span> <span class="toc-text">正规方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正规方程在矩阵不可逆情况下的解决方案"><span class="toc-number">2.6.</span> <span class="toc-text">正规方程在矩阵不可逆情况下的解决方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#matlab使用"><span class="toc-number"></span> <span class="toc-text">matlab使用</span></a>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| ccluo's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk5Ni8xNzUyMQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/05/01/省赛训练(一)补题/" title="上一篇: 省赛训练(一)补题">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/03/15/stringstream常见用法/" title="下一篇: stringstream常见用法">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/10/07/2019-10-7/">2019年10月7日</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/09/201903CSP知识点补充/">201903CSP知识点补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/01/省赛训练(一)补题/">省赛训练(一)补题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/24/机器学习简介/">机器学习简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/15/stringstream常见用法/">stringstream常见用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/04/HTML和CSS(十)/">HTML和CSS(十)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/01/HTML与CSS(九)/">HTML与CSS（九）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/28/HTML和CSS(八)/">HTML和CSS(八)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(七)/">HTML和CSS(七)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(六)/">HTML和CSS(六)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/24/HTML和CSS(五)/">HTML和CSS(五)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/HTML和CSS(四)/">HTML和CSS(四)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/HTML和CSS(三)/">HTML和CSS(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/20/HTML和CSS(二)/">HTML和CSS(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/09/HTML和CSS(一)/">HTML和CSS(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/12/LCS和LIS/">LCS和LIS</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/搜索/">数独求解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/c++之string类简述/">c++之string类简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/输入输出流对象/">输入输出流对象</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 ccluo
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+
+<!--ҳ����С����-->
+<script type="text/javascript" src="/love.js"></script>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 3;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+            
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
