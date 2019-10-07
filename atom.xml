@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-11T09:11:21.096Z</updated>
+  <updated>2019-10-07T01:55:48.626Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2019-10-7</title>
+    <link href="http://yoursite.com/2019/10/07/2019-10-7/"/>
+    <id>http://yoursite.com/2019/10/07/2019-10-7/</id>
+    <published>2019-10-07T01:52:48.000Z</published>
+    <updated>2019-10-07T01:55:48.626Z</updated>
+    
+    <content type="html"><![CDATA[<p>保完研了，本来打算前几天就写一写，有点懒，就一直推到了今天。<br><a id="more"></a><br>怎么说呢，不管好与坏，总算给自己大学前三年的学习阶段有了一个交代。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;保完研了，本来打算前几天就写一写，有点懒，就一直推到了今天。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>201903CSP知识点补充</title>

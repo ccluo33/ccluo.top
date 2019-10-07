@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。">
-<meta name="keywords" content="编程">
+<meta name="description" content="保完研了，本来打算前几天就写一写，有点懒，就一直推到了今天。">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c++之string类简述">
-<meta property="og:url" content="http://yoursite.com/2018/07/30/c++之string类简述/index.html">
+<meta property="og:title" content="2019-10-7">
+<meta property="og:url" content="http://yoursite.com/2019/10/07/2019-10-7/index.html">
 <meta property="og:site_name" content="ccluo&#39;s Blog">
-<meta property="og:description" content="最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。">
+<meta property="og:description" content="保完研了，本来打算前几天就写一写，有点懒，就一直推到了今天。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-19T07:04:46.237Z">
+<meta property="og:updated_time" content="2019-10-07T01:55:48.626Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="c++之string类简述">
-<meta name="twitter:description" content="最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。">
+<meta name="twitter:title" content="2019-10-7">
+<meta name="twitter:description" content="保完研了，本来打算前几天就写一写，有点懒，就一直推到了今天。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>c++之string类简述 | ccluo&#39;s Blog</title>
+<title>2019-10-7 | ccluo&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -245,11 +245,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-c++之string类简述" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2019-10-7" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/30/c++之string类简述/" class="article-date">
-      <time datetime="2018-07-30T13:32:20.000Z" itemprop="datePublished">2018-07-30</time>
+      <a href="/2019/10/07/2019-10-7/" class="article-date">
+      <time datetime="2019-10-07T01:52:48.000Z" itemprop="datePublished">2019-10-07</time>
 </a>
 
 
@@ -264,7 +264,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      c++之string类简述
+      2019-10-7
     </h1>
   
 
@@ -273,14 +273,10 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/C/">C++</a>
-    </div>
-
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -290,49 +286,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。<br><a id="more"></a><br>可能是由于受c语言的影响，现在好多时候写题还是用char数组字符串比较多，不过感觉用起来似乎比较麻烦，就决定整理一下<strong>c++中的string类的用法</strong>。</p>
-<h1 id="声明一个C-字符串"><a href="#声明一个C-字符串" class="headerlink" title="声明一个C++字符串"></a>声明一个C++字符串</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>这样就声明了一个字符串变量<strong>str</strong>,由于其构造函数没有传入参数，故此时将str初始化为一个<strong>空字符串</strong>。<h2 id="string类中的构造函数和析构函数如下："><a href="#string类中的构造函数和析构函数如下：" class="headerlink" title="string类中的构造函数和析构函数如下："></a>string类中的构造函数和析构函数如下：</h2></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s; //生成一个空字符串s</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str); //拷贝构造函数，将str复制到s中</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str, stridx); //将字符串str内**始于位置stridx**的部分当作字符串的初值</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str, stridx, strlen); //将字符串str内**始于stridx且长度至多为strlen**的部分作为字符串的初值</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(cstr); //将c字符串作为s的初值</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(chars, chars_len); //将c字符串前的至多chars_len个字符串作为字符串s的初值</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(num, c); //生成一个字符串，包含num个c</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.~string(); //销毁所有字符，释放内存</span><br></pre></td></tr></table></figure>
-<h1 id="字符串操作函数"><a href="#字符串操作函数" class="headerlink" title="字符串操作函数"></a>字符串操作函数</h1><ul>
-<li>=，aasign()   //赋值 </li>
-<li>swap()    //交换两个字符串的内容，既可以用作成员函数也可以用作普通函数</li>
-<li>+=,append(),push_back()  //在尾部添加字符，前两个也可添加字符串，后一个只能添加字符</li>
-<li>insert()   //插入字符，有两个参数</li>
-<li>erase()    //删除字符</li>
-<li>clear()    //删除全部字符</li>
-<li>replace()  //替换字符，可将字符串的某段替换为其他字符串</li>
-<li><code>+</code>   //字符串拼接</li>
-<li>==, !=, &lt;, &lt;=, &gt;, &gt;=, compare()     //字符串比较</li>
-<li>size(), length()   //返回字符串中的字符数量，<strong>注意如果求字符数组的长度的话可以用strlen()函数</strong></li>
-<li>max_size()     //返回字符的可能最大个数</li>
-<li>empty()     //判断字符串是否为空</li>
-<li>capacity()   //返回重新分配之前的字符容量</li>
-<li>reverse()   //字符串转置，<strong>注意如果是用字符数组表示字符串的话可用strrev()函数来进行字符串转置</strong></li>
-<li>[],at()    //存取单一字符串</li>
-<li>getline()   //从输入流读入一行</li>
-<li>copy(p,n,size_type _Off = 0)   //从string类型对象中至多复制n个字符到字符指针p指向的空间中。默认从首字符开始，但是也可以指定，开始的位置（记住从0开始）。返回真正从对象中复制的字符。<strong>用户要确保p指向的空间足够保存n个字符</strong>。</li>
-<li>c_str()   //取得c风格的<code>const char *</code>字符串，如果要用scanf()输入或者用printf()输出string类型的变量，我们可以使用c_str()函数，得到string类型的等效字符数组，然后就可以用scanf()/printf()函数进行输入输出。</li>
-<li>data()    //取得字符串内容的地址</li>
-<li>substr()   //返回某个子字符串</li>
-<li>begin()    //得到指向字符串开头的iterator</li>
-<li>end()      //得到指向字符串结尾的iterator</li>
-<li>rbegin()    //得到指向反向字符串开头的iterator</li>
-<li>rend()      //得到指向反向字符串结尾的iterator</li>
-<li>find_first_of()     //查找包含子串中的任何字符，返回第一个位置</li>
-<li>find_first_not_of()     //查找不包含子串中的任何字符，返回第一个位置</li>
-<li>find_last_of()    //查找包含子串中的任何字符，返回最后一个位置</li>
-<li>find_last_not_of()    //查找不包含子串中的任何字符，返回最后一个位置</li>
-</ul>
+        <p>保完研了，本来打算前几天就写一写，有点懒，就一直推到了今天。<br><a id="more"></a><br>怎么说呢，不管好与坏，总算给自己大学前三年的学习阶段有了一个交代。</p>
 
       
     </div>
@@ -341,13 +295,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/30/c++之string类简述/">c++之string类简述</a></p>
+        <p><span>本文标题:</span><a href="/2019/10/07/2019-10-7/">2019-10-7</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
-        <p><span>发布时间:</span>2018-07-30, 21:32:20</p>
-        <p><span>最后更新:</span>2019-03-19, 15:04:46</p>
+        <p><span>发布时间:</span>2019-10-07, 09:52:48</p>
+        <p><span>最后更新:</span>2019-10-07, 09:55:48</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/30/c++之string类简述/" title="c++之string类简述">http://yoursite.com/2018/07/30/c++之string类简述/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/30/c++之string类简述/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/10/07/2019-10-7/" title="2019-10-7">http://yoursite.com/2019/10/07/2019-10-7/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/10/07/2019-10-7/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -359,16 +313,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/11/搜索/">
-                    数独求解
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/04/22/输入输出流对象/">
-                    输入输出流对象
+                <a href="/2019/08/09/201903CSP知识点补充/">
+                    201903CSP知识点补充
                 </a>
             </div>
         
@@ -380,7 +328,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#声明一个C-字符串"><span class="toc-number">1.</span> <span class="toc-text">声明一个C++字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#string类中的构造函数和析构函数如下："><span class="toc-number">1.1.</span> <span class="toc-text">string类中的构造函数和析构函数如下：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串操作函数"><span class="toc-number">2.</span> <span class="toc-text">字符串操作函数</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -416,7 +364,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"c++之string类简述　| ccluo's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"2019-10-7　| ccluo's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -455,15 +403,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/11/搜索/" title="上一篇: 数独求解">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/04/22/输入输出流对象/" title="下一篇: 输入输出流对象">
+            <a href="/2019/08/09/201903CSP知识点补充/" title="下一篇: 201903CSP知识点补充">
                 <i class="fa fa-angle-right"></i>
             </a>
         
