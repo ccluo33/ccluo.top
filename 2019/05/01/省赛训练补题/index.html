@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。">
-<meta name="keywords" content="动态规划">
+<meta name="description" content="今年BIT的校赛题。觉得自己现在还停留在只会做水题的阶段（哦不，有的时候水题也想不出来），emmmmm还是好好加油做题吧！">
+<meta name="keywords" content="ACM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LCS和LIS">
-<meta property="og:url" content="http://ccluo.top/2018/08/12/LCS和LIS/index.html">
+<meta property="og:title" content="省赛训练补题">
+<meta property="og:url" content="http://ccluo.top/2019/05/01/省赛训练补题/index.html">
 <meta property="og:site_name" content="ccluo&#39;s Blog">
-<meta property="og:description" content="求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。">
+<meta property="og:description" content="今年BIT的校赛题。觉得自己现在还停留在只会做水题的阶段（哦不，有的时候水题也想不出来），emmmmm还是好好加油做题吧！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-13T14:44:23.564Z">
+<meta property="og:updated_time" content="2019-10-20T05:41:58.310Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LCS和LIS">
-<meta name="twitter:description" content="求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。">
+<meta name="twitter:title" content="省赛训练补题">
+<meta name="twitter:description" content="今年BIT的校赛题。觉得自己现在还停留在只会做水题的阶段（哦不，有的时候水题也想不出来），emmmmm还是好好加油做题吧！">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>LCS和LIS | ccluo&#39;s Blog</title>
+<title>省赛训练补题 | ccluo&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -248,11 +248,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-LCS和LIS" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-省赛训练补题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/12/LCS和LIS/" class="article-date">
-      <time datetime="2018-08-12T14:06:26.000Z" itemprop="datePublished">2018-08-12</time>
+      <a href="/2019/05/01/省赛训练补题/" class="article-date">
+      <time datetime="2019-05-01T11:40:26.000Z" itemprop="datePublished">2019-05-01</time>
 </a>
 
 
@@ -267,7 +267,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      LCS和LIS
+      省赛训练补题
     </h1>
   
 
@@ -283,7 +283,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACM/">ACM</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -293,60 +293,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>求解最长公共子序列与最长上升子序列问题以及如何利用最长公共子序列的求解方法来求解最长上升子序列。<br><a id="more"></a></p>
-<h1 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h1><ul>
-<li>LCS即<strong>最长公共子序列</strong>（Longest Common Subsequence）。</li>
-<li><p>对于dp数组可以采用如下的定义:</p>
-<p>   dp[i][j] :=s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j</sub>对应的LCS的长度</p>
-</li>
-<li><p>由此，s<sub>1</sub>…s<sub>i+1</sub>和t<sub>1</sub>…t<sub>j+1</sub>对应的最长公共子序列应该是</p>
-<p>   1.当s<sub>i+1</sub>=t<sub>j+1</sub>时，在s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j</sub>的最长公共子序列末尾追加上s<sub>i+1</sub>.</p>
-<p>   2.否则应该为s<sub>1</sub>…s<sub>i</sub>和t<sub>1</sub>…t<sub>j+1</sub>的最长公共子序列和s<sub>1</sub>…s<sub>i+1</sub>和t<sub>1</sub>…t<sub>j</sub>的最长公共子序列中最长的那个。</p>
-</li>
-<li>根据上述描述可求得dp数组的递推关系，关系可见代码：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int n , m;</span><br><span class="line">char s[MAX_N], t[MAX_M];</span><br><span class="line"></span><br><span class="line">int dp[MAX_N+1][MAX_M+1];    //DP数组</span><br><span class="line"></span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int j = 0; j &lt; m; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(s[i] == t[j])</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+1][j+1] = dp[i][j] + 1;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+1][j+1] = max(dp[i][j+1], dp[i+1][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, dp[n][m]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>此时的时间复杂度为O(nm)。</li>
-</ul>
-<h1 id="LIS"><a href="#LIS" class="headerlink" title="LIS"></a>LIS</h1><ul>
-<li>LIS即<strong>最长上升子序列</strong>(Longest Increasing Subsequence)。</li>
-<li>对于这种问题的求解通常有三种做法。<h2 id="1-动态规划-时间复杂度为O-n2"><a href="#1-动态规划-时间复杂度为O-n2" class="headerlink" title="1.动态规划(时间复杂度为O(n2))"></a>1.动态规划(时间复杂度为O(n<sup>2</sup>))</h2></li>
-<li><p>定义dp[i]:=以a<sub>i</sub>为末尾的最长上升子序列的长度</p>
-<p>  以a<sub>i</sub>结尾的上升子序列可以是:</p>
-<p>   1.只包含a<sub>i</sub>的子序列</p>
-<p>   2.在满足j &lt; i并且a<sub>j</sub> &lt; a<sub>i</sub>的以a<sub>j</sub>为结尾的上升子列末尾，追加上a<sub>i</sub>后得到的子序列</p>
-</li>
-<li>根据上述描述可求得dp数组的递推关系，关系可见代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int n,;</span><br><span class="line">int a[MAX_N];</span><br><span class="line"></span><br><span class="line">int dp[MAX_N];    //DP数组</span><br><span class="line"></span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">	int res = 0;</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[i] = 1;</span><br><span class="line">		for(int j = 0; j &lt; i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			dp[i] = max(dp[j]+1, dp[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		res = max(res, dp[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>今年BIT的校赛题。觉得自己现在还停留在只会做水题的阶段（哦不，有的时候水题也想不出来），emmmmm还是好好加油做题吧！<br><a id="more"></a></p>
+<h1 id="E题-只有一端开口的瓶子"><a href="#E题-只有一端开口的瓶子" class="headerlink" title="E题 只有一端开口的瓶子"></a>E题 只有一端开口的瓶子</h1><ul>
+<li>题目链接：<a href="https://codeforc.es/gym/102174/problem/E" title="只有一端开口的瓶子" target="_blank" rel="noopener">https://codeforc.es/gym/102174/problem/E</a></li>
+<li>觉得应该可以做得出来，一来看榜的话看起来好多人都过了，当时和队友分析，觉得不管什么情况只要有两个栈肯定可以将它变成递增的新数列，但是也有只需要一个栈的情况，想着将一个栈的情况判断出来，剩下的就是两个栈的情况了，maybe我的代码能力太弱或者最后分析的不太对，没有过这个题。</li>
+<li>看了题解，题解是说得先想到k = 2时必定可行的操作策略：在第一个栈里维护当前序列中被加入的所有数的单调递减序列。每次新加一个数时，使用第二个栈来辅助维护第一个栈的单调递减的性质。加完所有数字之后，第一个栈中的所有元素弹出即可有序。最后将问题转换为检测单个栈是否可行。</li>
+<li>觉得自己想得有点偏差，总是在想根据数据特征怎么判断只需要一个栈的情况，其实可以对一个栈的情况按它给的操作模拟一下，这个时候没有第三种操作，其实也比较简单。</li>
+<li>下面是AC代码的关键部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 0; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;a[i]);</span><br><span class="line">	if(i == 0)</span><br><span class="line">	&#123;</span><br><span class="line">		s.push(a[i]);	</span><br><span class="line">	&#125;	</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		while(s.empty() == false &amp;&amp; a[i] &gt; s.top())         //如果新来的元素大于栈顶元素，把所有比新来元素小的都先出栈放到数组中 </span><br><span class="line">		&#123;</span><br><span class="line">			b[count++] = s.top();</span><br><span class="line">			s.pop();</span><br><span class="line">		&#125;                            </span><br><span class="line">		s.push(a[i]);                       //新来的元素入栈 </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">while(s.empty() == false)               //如果栈不为空，则将栈中所有元素都出栈放到数组中去 </span><br><span class="line">&#123;</span><br><span class="line">	b[count++] = s.top();</span><br><span class="line">	s.pop();</span><br><span class="line">&#125; </span><br><span class="line">for(int i = 0; i &lt; n; i++)                 //判断b[i]数组中所有元素是否都有序 </span><br><span class="line">&#123;</span><br><span class="line">	if(b[i] != i+1)</span><br><span class="line">	&#123;</span><br><span class="line">		flag = false;</span><br><span class="line">		break;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="2-动态规划-二分查找-时间复杂度为O-nlogn"><a href="#2-动态规划-二分查找-时间复杂度为O-nlogn" class="headerlink" title="2.动态规划+二分查找(时间复杂度为O(nlogn))"></a>2.动态规划+二分查找(时间复杂度为O(nlogn))</h2><ul>
-<li><p>可以看这么一个例子：假设存在一个序列d[1..9] = 2 1 5 3 6 4 8 9 7，可以看出来它的LIS长度为5。<br>下面一步一步试着找出它。<br>我们定义一个序列B，然后令 i = 1 to 9 逐个考察这个序列。<br>此外，我们用一个变量Len来记录现在最长算到多少了</p>
-<p>  首先，把d[1]有序地放到B里，令B[1] = 2，就是说当只有1一个数字2的时候，长度为1的LIS的最小末尾是2。这时Len=1</p>
-<p>  然后，把d[2]有序地放到B里，令B[1] = 1，就是说长度为1的LIS的最小末尾是1，d[1]=2已经没用了，这时Len=1</p>
-<p>  接着，d[3] = 5，d[3]&gt;B[1]，所以令B[1+1]=B[2]=d[3]=5，就是说长度为2的LIS的最小末尾是5，这时候B[1..2] = 1, 5，Len＝2</p>
-<p>  再来，d[4] = 3，它正好加在1,5之间，放在1的位置显然不合适，因为1小于3，长度为1的LIS最小末尾应该是1，这样很容易推知，长度为2的LIS最小末尾是3，于是可以把5淘汰掉，这时候B[1..2] = 1, 3，Len = 2</p>
-<p>  继续，d[5] = 6，它在3后面，因为B[2] = 3, 而6在3后面，于是很容易可以推知B[3] = 6, 这时B[1..3] = 1, 3, 6， Len = 3 了哦。</p>
-<p>  第6个, d[6] = 4，你看它在3和6之间，于是我们就可以把6替换掉，得到B[3] = 4。B[1..3] = 1, 3, 4， Len继续等于3</p>
-<p>  第7个, d[7] = 8，它很大，比4大，嗯。于是B[4] = 8。Len变成4了</p>
-<p>  第8个, d[8] = 9，得到B[5] = 9，嗯。Len继续增大，到5了。</p>
-<p>  最后一个, d[9] = 7，它在B[3] = 4和B[4] = 8之间，所以我们知道，最新的B[4] =7，B[1..5] = 1, 3, 4, 7, 9，Len = 5。</p>
-<p>  于是我们知道了LIS的长度为5。</p>
-<p>  !!!!! 注意。这个1,3,4,7,9不是LIS，它只是存储的对应长度LIS的最小末尾。有了这个末尾，我们就可以一个一个地插入数据。虽然最后一个d[9] = 7更新进去对于这组数据没有什么意义，但是如果后面再出现两个数字 8 和 9，那么就可以把8更新到d[5], 9更新到d[6]，得出LIS的长度为6。</p>
-<p>  然后应该发现一件事情了：在B中插入数据是有序的，而且是进行替换而不需要挪动——也就是说，我们可以使用二分查找，将每一个数字的插入时间优化到O(logN)<del>~</del>于是算法的时间复杂度就降低到了O(NlogN)～！</p>
-</li>
-<li>根据上面的例子我们可以体会到如果子序列的长度相同，那么最末尾的元素较小的在之后会更加有优势。</li>
-<li><p>因此我们定义dp[i]:=长度为i+1的上升子序列中末尾元素的最小值(不存在的话就是INF)，最开始全部dp[i]的值都初始化为INF。然后由前到后逐个考虑数组的元素，对于每一个a<sub>j</sub>，如果i=0或者dp[i-1] &lt; a<sub>j</sub>的话，就用dp[i] = min(dp[i], a<sub>j</sub>)进行更新。最终找出使dp[i] &lt; INF的最大的i+1就是结果了。而这个dp数组是单调递增的，所以可以知道对于每个a<sub>j</sub>最多只需要更新一次。对于这次更新应该在什么位置，不必逐个遍历，可直接使用二分搜索。代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int dp[MAX_N];</span><br><span class="line"></span><br><span class="line">void solve()</span><br><span class="line">&#123;</span><br><span class="line">	fill(dp, dp + n, INF);</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		*lower_bound(dp, dp+n, a[i]) = a[i];  </span><br><span class="line">		//lower_bound(a, a+n, k)函数从已排好序的序列a中利用二分搜索指出满足ai &gt;= k的ai的最小的指针 </span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, lower_bound(dp, dp+n, INF) - dp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这种方法的缺点是求最长上升子序列的长度比较快，但最长上升子序列实际是什么很难知道。</p>
-<h2 id="转化为求LCS（时间复杂度O-n2-）"><a href="#转化为求LCS（时间复杂度O-n2-）" class="headerlink" title="转化为求LCS（时间复杂度O(n2)）"></a>转化为求LCS（时间复杂度O(n<sup>2</sup>)）</h2></li>
-<li>可将<strong>所求序列</strong>与<strong>所求序列排序后得到的序列</strong>求最长公共子序列，所得的最长公共子序列即是原序列的最长上升子序列。</li>
-<li>代码可参考LCS的求解代码。</li>
+<h1 id="L题-旅行的意义"><a href="#L题-旅行的意义" class="headerlink" title="L题 旅行的意义"></a>L题 旅行的意义</h1><ul>
+<li>题目链接：<a href="https://codeforc.es/gym/102174/problem/L" title="旅行的意义" target="_blank" rel="noopener">https://codeforc.es/gym/102174/problem/L</a></li>
+<li>先看看书再更吧。</li>
 </ul>
-<p>参考博客：</p>
-<p><a href="https://www.cnblogs.com/handsomecui/p/4692350.html" target="_blank" rel="noopener">handsomecui的博客</a></p>
-<p><a href="https://blog.csdn.net/xws117/article/details/45438917" target="_blank" rel="noopener">xws117123的博客</a></p>
 
       
     </div>
@@ -355,13 +314,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/12/LCS和LIS/">LCS和LIS</a></p>
+        <p><span>本文标题:</span><a href="/2019/05/01/省赛训练补题/">省赛训练补题</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
-        <p><span>发布时间:</span>2018-08-12, 22:06:26</p>
-        <p><span>最后更新:</span>2018-11-13, 22:44:23</p>
+        <p><span>发布时间:</span>2019-05-01, 19:40:26</p>
+        <p><span>最后更新:</span>2019-10-20, 13:41:58</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/12/LCS和LIS/" title="LCS和LIS">http://ccluo.top/2018/08/12/LCS和LIS/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://ccluo.top/2018/08/12/LCS和LIS/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/05/01/省赛训练补题/" title="省赛训练补题">http://ccluo.top/2019/05/01/省赛训练补题/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://ccluo.top/2019/05/01/省赛训练补题/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -374,15 +333,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/12/09/HTML和CSS(一)/">
-                    HTML和CSS(一)
+                <a href="/2019/08/09/201903CSP知识点补充/">
+                    201903CSP知识点补充
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/11/搜索/">
-                    数独求解
+                <a href="/2019/04/24/机器学习简介/">
+                    
                 </a>
             </div>
         
@@ -394,7 +353,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LCS"><span class="toc-number">1.</span> <span class="toc-text">LCS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LIS"><span class="toc-number">2.</span> <span class="toc-text">LIS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-动态规划-时间复杂度为O-n2"><span class="toc-number">2.1.</span> <span class="toc-text">1.动态规划(时间复杂度为O(n2))</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-动态规划-二分查找-时间复杂度为O-nlogn"><span class="toc-number">2.2.</span> <span class="toc-text">2.动态规划+二分查找(时间复杂度为O(nlogn))</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#转化为求LCS（时间复杂度O-n2-）"><span class="toc-number">2.3.</span> <span class="toc-text">转化为求LCS（时间复杂度O(n2)）</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#E题-只有一端开口的瓶子"><span class="toc-number">1.</span> <span class="toc-text">E题 只有一端开口的瓶子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#L题-旅行的意义"><span class="toc-number">2.</span> <span class="toc-text">L题 旅行的意义</span></a></li></ol>
         
     </div>
     <style>
@@ -430,7 +389,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"LCS和LIS　| ccluo's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"省赛训练补题　| ccluo's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -469,7 +428,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/12/09/HTML和CSS(一)/" title="上一篇: HTML和CSS(一)">
+            <a href="/2019/08/09/201903CSP知识点补充/" title="上一篇: 201903CSP知识点补充">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -477,7 +436,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/11/搜索/" title="下一篇: 数独求解">
+            <a href="/2019/04/24/机器学习简介/" title="下一篇: ">
                 <i class="fa fa-angle-right"></i>
             </a>
         
