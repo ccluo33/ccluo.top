@@ -15,16 +15,20 @@
 
 
 
-<meta name="description" content="ccluo">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ccluo&#39;s Blog">
-<meta property="og:url" content="http://ccluo.top/archives/index.html">
+<meta name="description" content="这几天是死肥宅。">
+<meta name="keywords" content="machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scikit-learn使用">
+<meta property="og:url" content="http://ccluo.top/2020/03/14/Scikit-learn使用/index.html">
 <meta property="og:site_name" content="ccluo&#39;s Blog">
-<meta property="og:description" content="ccluo">
+<meta property="og:description" content="这几天是死肥宅。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ccluo.top/images/sklearn1.png">
+<meta property="og:updated_time" content="2020-03-14T17:16:32.150Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ccluo&#39;s Blog">
-<meta name="twitter:description" content="ccluo">
+<meta name="twitter:title" content="Scikit-learn使用">
+<meta name="twitter:description" content="这几天是死肥宅。">
+<meta name="twitter:image" content="http://ccluo.top/images/sklearn1.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives | ccluo&#39;s Blog</title>
+<title>Scikit-learn使用 | ccluo&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,8 +70,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -243,210 +247,199 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Scikit-learn使用" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2020/03/14/Scikit-learn使用/" class="archive-article-date">
-      <time datetime="2020-03-14T02:50:22.000Z" itemprop="datePublished">03-14</time>
+    <div class="article-meta">
+      <a href="/2020/03/14/Scikit-learn使用/" class="article-date">
+      <time datetime="2020-03-14T02:50:22.000Z" itemprop="datePublished">2020-03-14</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/14/Scikit-learn使用/">Scikit-learn使用</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Scikit-learn使用
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/机器学习/">机器学习</a>
     </div>
 
 
-          
+        
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/machine-learning/">machine learning</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+      </div>
       
-        </div></section>
+    
+    <div class="article-entry" itemprop="articleBody">
       
+          
+        <p>这几天是死肥宅。<br><a id="more"></a><br>机器学习方法可以分为监督学习，无监督学习，半监督学习（半监督学习考虑利用少量有标签的样本和大量没有标签的样本进行训练和分类），强化学习（从经验中总结和提升）以及遗传算法（适者生存，不适者淘汰）。<br><br>监督学习可以分为分类和回归。<br><br>可以根据下图选择合适的学习方法。<br><img src="/images/sklearn1.png" alt="sklearn cheat-sheet"></p>
+<h1 id="强大的数据库"><a href="#强大的数据库" class="headerlink" title="强大的数据库"></a>强大的数据库</h1><ul>
+<li>sklearn具有强大的数据库，比如说boston房价, 糖尿病, 数字, Iris花等。<a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets" target="_blank" rel="noopener">数据链接</a></li>
+<li>sklearn还可以生成一些虚拟的数据，可用来练习。比如说<code>sklearn.datasets.make_regression(n_samples=100, n_features=100, n_informative=10, n_targets=1, bias=0.0, effective_rank=None, tail_strength=0.5, noise=0.0, shuffle=True, coef=False, random_state=None)</code>， 可以生成一个随机回归问题。<br><a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression" target="_blank" rel="noopener">具体参数的意义</a><h1 id="cross-validation"><a href="#cross-validation" class="headerlink" title="cross-validation"></a>cross-validation</h1></li>
+<li>可以使用交叉验证来选择模型中的参数或者选择合适的模型。<h1 id="模型save"><a href="#模型save" class="headerlink" title="模型save"></a>模型save</h1></li>
+<li>有两种方法可以实现保存模型。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import svm</span><br><span class="line">from sklearn import datasets</span><br><span class="line"></span><br><span class="line">clf = svm.SVC()</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X, y = iris.data, iris.target</span><br><span class="line">clf.fit(X, y)</span><br><span class="line"></span><br><span class="line"># method1: pickle</span><br><span class="line">import pickle</span><br><span class="line"># save</span><br><span class="line">with open(&apos;./save/clf.pickle&apos;, &apos;wb&apos;) as f:   # &apos;wb&apos;: write byte     用该行代码打开文件，该文件会自动生成</span><br><span class="line">    pickle.dump(clf, f)               # 把训练得到的模型导入到f文件中</span><br><span class="line"># restore</span><br><span class="line">with open(&apos;./save/clf.pickle&apos;, &apos;rb&apos;) as f:</span><br><span class="line">    clf2 = pickle.load(f)</span><br><span class="line">    print(clf2.predict(X[0:1]))          # X的第0行到第1行</span><br><span class="line"></span><br><span class="line"># method2: joblib</span><br><span class="line">from sklearn.externals import joblib</span><br><span class="line"># save</span><br><span class="line">joblib.dump(clf, &apos;./save/clf.pkl&apos;)</span><br><span class="line"># restore</span><br><span class="line">clf3 = joblib.load(&apos;./save/clf.pkl&apos;)</span><br><span class="line">print(clf3.predict(X[0:1]))</span><br><span class="line">``` </span><br><span class="line">## pickle使用举例</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>import pickle</p>
+<p>a_dict = {‘da’: 111, 2: [23, 1, 4], ‘23’: {1:2, ‘d’:’sad’}}</p>
+<p>with open(‘./save/pickle_example.pickle’, ‘wb’) as file:                # 使用with可以不用手动关闭file<br>    pickle.dump(a_dict, file)       # 将a_dict装载如file</p>
+<p>with open(‘./save/pickle_example.pickle’, ‘rb’) as file:<br>    a_dict1 = pickle.load(file)<br>    print(a_dict1)<br>```</p>
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
+    </div>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/12/07/git使用/" class="archive-article-date">
-      <time datetime="2019-12-07T11:22:34.000Z" itemprop="datePublished">12-07</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/07/git使用/">git使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/10/20/LeetCode第159场周赛补题/" class="archive-article-date">
-      <time datetime="2019-10-20T05:40:24.000Z" itemprop="datePublished">10-20</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/20/LeetCode第159场周赛补题/">LeetCode第159场周赛补题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/03/14/Scikit-learn使用/">Scikit-learn使用</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">ccluo</a></p>
+        <p><span>发布时间:</span>2020-03-14, 10:50:22</p>
+        <p><span>最后更新:</span>2020-03-15, 01:16:32</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/03/14/Scikit-learn使用/" title="Scikit-learn使用">http://ccluo.top/2020/03/14/Scikit-learn使用/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://ccluo.top/2020/03/14/Scikit-learn使用/　　作者: ccluo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/10/07/2019年10月7日/" class="archive-article-date">
-      <time datetime="2019-10-07T01:52:48.000Z" itemprop="datePublished">10-07</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/07/2019年10月7日/">2019年10月7日</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/08/09/201903CSP知识点补充/" class="archive-article-date">
-      <time datetime="2019-08-09T15:51:54.000Z" itemprop="datePublished">08-09</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/201903CSP知识点补充/">201903CSP知识点补充</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/C/">C++</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/12/07/git使用/">
+                    git使用
+                </a>
+            </div>
+        
     </nav>
-  
 
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#强大的数据库"><span class="toc-number">1.</span> <span class="toc-text">强大的数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cross-validation"><span class="toc-number">2.</span> <span class="toc-text">cross-validation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模型save"><span class="toc-number">3.</span> <span class="toc-text">模型save</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Scikit-learn使用　| ccluo's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk5Ni8xNzUyMQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/12/07/git使用/" title="下一篇: git使用">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/Scikit-learn使用/">Scikit-learn使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/07/git使用/">git使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/20/LeetCode第159场周赛补题/">LeetCode第159场周赛补题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/07/2019年10月7日/">2019年10月7日</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/09/201903CSP知识点补充/">201903CSP知识点补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/01/省赛训练补题/">省赛训练补题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/21/机器学习简介/">机器学习简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/15/stringstream常见用法/">stringstream常见用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/04/HTML和CSS(十)/">HTML和CSS(十)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/01/HTML与CSS(九)/">HTML与CSS（九）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/28/HTML和CSS(八)/">HTML和CSS(八)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(七)/">HTML和CSS(七)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/26/HTML和CSS(六)/">HTML和CSS(六)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/24/HTML和CSS(五)/">HTML和CSS(五)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/HTML和CSS(四)/">HTML和CSS(四)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/HTML和CSS(三)/">HTML和CSS(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/20/HTML和CSS(二)/">HTML和CSS(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/09/HTML和CSS(一)/">HTML和CSS(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/12/LCS和LIS/">LCS和LIS</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/搜索/">数独求解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/c++之string类简述/">c++之string类简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/输入输出流对象/">输入输出流对象</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
