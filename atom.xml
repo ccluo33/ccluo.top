@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ccluo.top/"/>
-  <updated>2020-03-17T03:53:15.626Z</updated>
+  <updated>2019-10-20T08:13:33.033Z</updated>
   <id>http://ccluo.top/</id>
   
   <author>
@@ -15,46 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Scikit-learn使用</title>
-    <link href="http://ccluo.top/2020/03/14/Scikit-learn%E4%BD%BF%E7%94%A8/"/>
-    <id>http://ccluo.top/2020/03/14/Scikit-learn使用/</id>
-    <published>2020-03-14T02:50:22.000Z</published>
-    <updated>2020-03-17T03:53:15.626Z</updated>
-    
-    <content type="html"><![CDATA[<p>这几天是死肥宅。<br><a id="more"></a><br>机器学习方法可以分为监督学习，无监督学习，半监督学习（半监督学习考虑利用少量有标签的样本和大量没有标签的样本进行训练和分类），强化学习（从经验中总结和提升）以及遗传算法（适者生存，不适者淘汰）。<br><br>监督学习可以分为分类和回归。<br><br>可以根据下图选择合适的学习方法。<br><img src="/images/sklearn1.png" alt="sklearn cheat-sheet"></p><h1 id="强大的数据库"><a href="#强大的数据库" class="headerlink" title="强大的数据库"></a>强大的数据库</h1><ul><li>sklearn具有强大的数据库，比如说boston房价, 糖尿病, 数字, Iris花等。<a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets" target="_blank" rel="noopener">数据链接</a></li><li>sklearn还可以生成一些虚拟的数据，可用来练习。比如说<code>sklearn.datasets.make_regression(n_samples=100, n_features=100, n_informative=10, n_targets=1, bias=0.0, effective_rank=None, tail_strength=0.5, noise=0.0, shuffle=True, coef=False, random_state=None)</code>， 可以生成一个随机回归问题。<br><a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression" target="_blank" rel="noopener">具体参数的意义</a><h1 id="cross-validation"><a href="#cross-validation" class="headerlink" title="cross-validation"></a>cross-validation</h1></li><li>可以使用交叉验证来选择模型中的参数或者选择合适的模型。<h1 id="模型save"><a href="#模型save" class="headerlink" title="模型save"></a>模型save</h1></li><li>有两种方法可以实现保存模型。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import svm</span><br><span class="line">from sklearn import datasets</span><br><span class="line"></span><br><span class="line">clf = svm.SVC()</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X, y = iris.data, iris.target</span><br><span class="line">clf.fit(X, y)</span><br><span class="line"></span><br><span class="line"># method1: pickle</span><br><span class="line">import pickle</span><br><span class="line"># save</span><br><span class="line">with open(&apos;./save/clf.pickle&apos;, &apos;wb&apos;) as f:   # &apos;wb&apos;: write byte     用该行代码打开文件，该文件会自动生成</span><br><span class="line">    pickle.dump(clf, f)               # 把训练得到的模型导入到f文件中</span><br><span class="line"># restore</span><br><span class="line">with open(&apos;./save/clf.pickle&apos;, &apos;rb&apos;) as f:</span><br><span class="line">    clf2 = pickle.load(f)</span><br><span class="line">    print(clf2.predict(X[0:1]))          # X的第0行到第1行</span><br><span class="line"></span><br><span class="line"># method2: joblib</span><br><span class="line">from sklearn.externals import joblib</span><br><span class="line"># save</span><br><span class="line">joblib.dump(clf, &apos;./save/clf.pkl&apos;)</span><br><span class="line"># restore</span><br><span class="line">clf3 = joblib.load(&apos;./save/clf.pkl&apos;)</span><br><span class="line">print(clf3.predict(X[0:1]))</span><br><span class="line">``` </span><br><span class="line">## pickle使用举例&lt;br&gt;</span><br></pre></td></tr></table></figure></li></ul><p>import pickle</p><p>a_dict = {‘da’: 111, 2: [23, 1, 4], ‘23’: {1:2, ‘d’:’sad’}}</p><p>with open(‘./save/pickle_example.pickle’, ‘wb’) as file:                # 使用with可以不用手动关闭file<br>    pickle.dump(a_dict, file)       # 将a_dict装载如file</p><p>with open(‘./save/pickle_example.pickle’, ‘rb’) as file:<br>    a_dict1 = pickle.load(file)<br>    print(a_dict1)<br>```</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这几天是死肥宅。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="机器学习" scheme="http://ccluo.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="machine learning" scheme="http://ccluo.top/tags/machine-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git使用</title>
-    <link href="http://ccluo.top/2019/12/07/git%E4%BD%BF%E7%94%A8/"/>
-    <id>http://ccluo.top/2019/12/07/git使用/</id>
-    <published>2019-12-07T11:22:34.000Z</published>
-    <updated>2019-12-29T03:36:28.514Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近真是越来越咸鱼了，好久不更新，今天开一个新坑。<br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近真是越来越咸鱼了，好久不更新，今天开一个新坑。&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>LeetCode第159场周赛补题</title>
@@ -95,28 +55,6 @@
     
     
       <category term="随笔" scheme="http://ccluo.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>201903CSP知识点补充</title>
-    <link href="http://ccluo.top/2019/08/09/201903CSP%E7%9F%A5%E8%AF%86%E7%82%B9%E8%A1%A5%E5%85%85/"/>
-    <id>http://ccluo.top/2019/08/09/201903CSP知识点补充/</id>
-    <published>2019-08-09T15:51:54.000Z</published>
-    <updated>2019-08-11T09:11:21.096Z</updated>
-    
-    <content type="html"><![CDATA[<p>好好刷题！<br><br>需要补充的知识点有：栈的应用（表达式求值），sscanf和sprintf的用法，scanf,gets,fget,cin,getline的比较。<br><a id="more"></a></p><h1 id="栈的应用（表达式求值）"><a href="#栈的应用（表达式求值）" class="headerlink" title="栈的应用（表达式求值）"></a>栈的应用（表达式求值）</h1><ul><li>栈既可应用于中缀表达式求值，也可应用于后缀表达式求值。<h2 id="后缀表达式求值"><a href="#后缀表达式求值" class="headerlink" title="后缀表达式求值"></a>后缀表达式求值</h2></li><li>后缀表达式求值是计算机比较喜闻乐见的，它的特点是不需要括号就能表示出整个表达式哪部分运算先进行，也就是说不需要考虑优先级，这非常符合计算机的处理方式。只需要一个操作数栈就可以对后缀表达式进行求值了。</li><li>比如计算<code>3+5*(2-4)</code>,可以先得到后缀表达式为<code>3524-*+</code>。具体在计算时先将所有操作数入栈，遇到操作符之后取两个操作数出栈，计算得到的结果入栈，一直这样直到计算完。</li><li>比较麻烦的是一般给我们的都是中缀表达式，需要将中缀表达式转换为后缀表达式。中缀表达式转换为后缀表达式的时候需要用到栈来辅助存储，具体过程如下：<br><br><ol>   <li>如果遇到操作数，直接将其输出。</li>   <li>如果遇到操作符，则将其放入到栈中，遇到左括号时也将其放入栈中。</li>   <li>如果遇到一个右括号，则将栈元素弹出，将弹出的操作符输出直到遇到左括号为止。注意，左括号只弹出并不输出。</li>   <li>如果遇到任何其他的操作符，如（“+”， “*”，“（”）等，从栈中弹出元素直到遇到发现更低优先级的元素(或者栈为空)为止。弹出完这些元素后，才将遇到的操作符压入到栈中。有一点需要注意，只有在遇到" ) "的情况下我们才弹出" ( "，其他情况我们都不会弹出" ( "。</li>   <li>如果读到了输入的末尾，则将栈中所有元素依次弹出。</li></ol><h2 id="中缀表达式求值"><a href="#中缀表达式求值" class="headerlink" title="中缀表达式求值"></a>中缀表达式求值</h2></li><li>中缀表达式就是我们最常见到的表达式的形式。中缀表达式求值，也就是直接对输入的表达式进行求值。为简单起见，这里假设只涉及加减乘除和小括号，并且操作数都是正整数，不涉及更加复杂的数据或运算。</li><li>计算思路为：<br><br><ol>   <li>使用两个栈，stack0用于存储操作数，stack1用于存储操作符。</li>   <li>从左往右扫描，遇到操作数入栈stack0。</li>   <li>遇到操作符时，如果优先级低于或等于栈顶操作符优先级，则从stack0弹出两个元素进行计算，并将结果压入stack0，继续与栈顶操作符的比较优先级。</li>   <li>如果遇到操作符高于栈顶操作符优先级，则直接入栈stack1。</li>   <li>遇到左括号，直接入栈stack1，遇到右括号，则直接出栈并计算，直到遇到左括号。</li></ol><h2 id="第二题思路"><a href="#第二题思路" class="headerlink" title="第二题思路"></a>第二题思路</h2></li><li>不用考虑中缀表达式求值思路的第5条然后去做就ok。<h1 id="sscanf和sprintf的用法"><a href="#sscanf和sprintf的用法" class="headerlink" title="sscanf和sprintf的用法"></a>sscanf和sprintf的用法</h1></li><li><p>sscanf从单词上可以理解为string+scanf, sprintf则可以理解为string+printf,他们都在stdio.h头文件下。</p><h2 id="sscanf的应用"><a href="#sscanf的应用" class="headerlink" title="sscanf的应用"></a>sscanf的应用</h2><p>sscanf与scanf类似，都是用于输入的，只是后者以屏幕(stdin)为输入源，前者以固定字符串为输入源。sscanf函数原型为<code>int sscanf(const char *str, const char *format, ...)</code>.将参数str的字符串根据参数format字符串来转换并格式化数据，转换后的结果存于对应的参数内。具体功能如下：<br><br><ol>  <li>根据格式从字符串中提取数据。如从字符串中取出整数、浮点数和字符串等。</li>  <li>取指定长度的字符串。</li>  <li>取到指定字符为止的字符串。</li>  <li>取仅包含指定字符集的字符串。</li>  <li>取到指定字符集为止的字符串。</li>  <li>将十六进制或八进制的字符串转换为整型变量。</li></ol><br>其中进制转换举例如下：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int k;</span><br><span class="line">temp[9] = &quot;A0A0A0A0&quot;;</span><br><span class="line">sscanf(temp, &quot;%x&quot;, &amp;k);      //将字符串temp作为十六进制数转换为整数</span><br></pre></td></tr></table></figure></li><li><p>一些可能用到的点：<br></p><ul>  <li>`*`亦可用于格式中, 即`%*d`和`%*s`加了星号`*`表示跳过此数据不读入. (也就是不把此数据读入参数中)。</li>  <li>width表示读取宽度（即可以加数字限制读取宽度）。</li>  <li>{a|b|c}表示a,b,c中选一，[d]表示可以有d也可以没有d。</li>  <li>-表示范围，如：%[1-9]表示只读取1-9这几个数字,%[a-z]表示只读取a-z小写字母，类似地 %[A-Z]只读取大写字母。</li>  <li>^表示不取，如：%[^1]表示读取除'1'以外的所有字符 %[^/]表示除/以外的所有字符。</li>  <li>表示范围可以用","相连接如%[1-9,a-z]表示同时取1-9数字和a-z小写字母。</li>  <li>匹配原则：从第一个在指定范围内的符号开始读取，到第一个不在范围内的符号结束，%s可以看成%[]的一个特例%[^ ]。</li></ul></li><li>比如说一个解析网址的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const char *s = &quot;http://www.baidu.com:1234&quot;;</span><br><span class="line"></span><br><span class="line">char protocol[32] = &#123;0, &#125;;</span><br><span class="line">char host[128] = &#123;0, &#125;;</span><br><span class="line">char port[8] = &#123;0, &#125;;</span><br><span class="line">sscanf(s,&quot;%[^:]://%[^:]:%[1-9]&quot;,protocol,host,port);</span><br><span class="line"></span><br><span class="line">printf(&quot;protocol: %s\n&quot;,protocol);</span><br><span class="line">printf(&quot;host: %s\n&quot;,host);</span><br><span class="line">printf(&quot;port: %s\n&quot;,port);</span><br></pre></td></tr></table></figure></li></ul><h2 id="sprintf的应用"><a href="#sprintf的应用" class="headerlink" title="sprintf的应用"></a>sprintf的应用</h2><ul><li>sprintf函数原型为<code>int sprintf(char *str, const char *format, ...)</code>.作用是格式化字符串，具体功能如下：<br><br><ol>  <li>将数字变量转换为字符串。</li>  <li>得到整型变量的16进制或8进制字符串。</li>  <li>连接多个字符串。</li></ol><br>对应情况分别举例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">char str[256];</span><br><span class="line">int data = 1024;</span><br><span class="line"></span><br><span class="line">//将data转换为字符串存在str中</span><br><span class="line">sprintf(str, &quot;%d&quot;, data);</span><br><span class="line"></span><br><span class="line">//获取data的十六进制存在str中 </span><br><span class="line">sprintf(str, &quot;0x%X&quot;, data); </span><br><span class="line"></span><br><span class="line">//获取data的八进制存在str中</span><br><span class="line">sprintf(str, &quot;0%o&quot;, data);</span><br><span class="line"></span><br><span class="line">//连接字符串s1和s2</span><br><span class="line">const char *s1 = &quot;Hello&quot;;</span><br><span class="line">const char *s2 = &quot;World&quot;;</span><br><span class="line">sprintf(str, &quot;%s %s&quot;, s1, s2);</span><br></pre></td></tr></table></figure></li></ul><h1 id="scanf-gets-fget-cin-cin-getline，getline的比较"><a href="#scanf-gets-fget-cin-cin-getline，getline的比较" class="headerlink" title="scanf,gets,fget,cin,cin.getline，getline的比较"></a>scanf,gets,fget,cin,cin.getline，getline的比较</h1><ul><li>scanf和cin遇到非空白字符结束，gets()和fgets()在读取时遇到换行符或EOF时停止，由于gets()不检查目标数组是否能容纳输入，所以很不安全，已被C11标准废弃。cin.getline会一次读取多个字符(包括空白字符）。它以指定的地址为存放第一个读取的字符的位置，依次向后存放读取的字符，直到读满N-1个，或者遇到指定的结束符为止。若不指定结束符，则默认结束符为’\0’。其语法为其语法为:<code>cin.getline(字符指针(char*),字符个数N(int),结束符(char));</code>。getline接收一个字符串，可以接收空格并输出，需包含头文件<code>#include&lt;cstring&gt;</code>。一般在对较长的字符串输入时，选择fegts函数比较快。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;好好刷题！&lt;br&gt;&lt;br&gt;需要补充的知识点有：栈的应用（表达式求值），sscanf和sprintf的用法，scanf,gets,fget,cin,getline的比较。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="C++" scheme="http://ccluo.top/categories/C/"/>
-    
-    
-      <category term="编程" scheme="http://ccluo.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -447,6 +385,50 @@
     
     
       <category term="搜索" scheme="http://ccluo.top/tags/%E6%90%9C%E7%B4%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>c++之string类简述</title>
+    <link href="http://ccluo.top/2018/07/30/c++%E4%B9%8Bstring%E7%B1%BB%E7%AE%80%E8%BF%B0/"/>
+    <id>http://ccluo.top/2018/07/30/c++之string类简述/</id>
+    <published>2018-07-30T13:32:20.000Z</published>
+    <updated>2019-03-19T07:04:46.237Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。<br><a id="more"></a><br>可能是由于受c语言的影响，现在好多时候写题还是用char数组字符串比较多，不过感觉用起来似乎比较麻烦，就决定整理一下<strong>c++中的string类的用法</strong>。</p><h1 id="声明一个C-字符串"><a href="#声明一个C-字符串" class="headerlink" title="声明一个C++字符串"></a>声明一个C++字符串</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br></pre></td></tr></table></figure><ul><li>这样就声明了一个字符串变量<strong>str</strong>,由于其构造函数没有传入参数，故此时将str初始化为一个<strong>空字符串</strong>。<h2 id="string类中的构造函数和析构函数如下："><a href="#string类中的构造函数和析构函数如下：" class="headerlink" title="string类中的构造函数和析构函数如下："></a>string类中的构造函数和析构函数如下：</h2></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s; //生成一个空字符串s</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str); //拷贝构造函数，将str复制到s中</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str, stridx); //将字符串str内**始于位置stridx**的部分当作字符串的初值</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str, stridx, strlen); //将字符串str内**始于stridx且长度至多为strlen**的部分作为字符串的初值</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(cstr); //将c字符串作为s的初值</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(chars, chars_len); //将c字符串前的至多chars_len个字符串作为字符串s的初值</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(num, c); //生成一个字符串，包含num个c</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.~string(); //销毁所有字符，释放内存</span><br></pre></td></tr></table></figure><h1 id="字符串操作函数"><a href="#字符串操作函数" class="headerlink" title="字符串操作函数"></a>字符串操作函数</h1><ul><li>=，aasign()   //赋值 </li><li>swap()    //交换两个字符串的内容，既可以用作成员函数也可以用作普通函数</li><li>+=,append(),push_back()  //在尾部添加字符，前两个也可添加字符串，后一个只能添加字符</li><li>insert()   //插入字符，有两个参数</li><li>erase()    //删除字符</li><li>clear()    //删除全部字符</li><li>replace()  //替换字符，可将字符串的某段替换为其他字符串</li><li><code>+</code>   //字符串拼接</li><li>==, !=, &lt;, &lt;=, &gt;, &gt;=, compare()     //字符串比较</li><li>size(), length()   //返回字符串中的字符数量，<strong>注意如果求字符数组的长度的话可以用strlen()函数</strong></li><li>max_size()     //返回字符的可能最大个数</li><li>empty()     //判断字符串是否为空</li><li>capacity()   //返回重新分配之前的字符容量</li><li>reverse()   //字符串转置，<strong>注意如果是用字符数组表示字符串的话可用strrev()函数来进行字符串转置</strong></li><li>[],at()    //存取单一字符串</li><li>getline()   //从输入流读入一行</li><li>copy(p,n,size_type _Off = 0)   //从string类型对象中至多复制n个字符到字符指针p指向的空间中。默认从首字符开始，但是也可以指定，开始的位置（记住从0开始）。返回真正从对象中复制的字符。<strong>用户要确保p指向的空间足够保存n个字符</strong>。</li><li>c_str()   //取得c风格的<code>const char *</code>字符串，如果要用scanf()输入或者用printf()输出string类型的变量，我们可以使用c_str()函数，得到string类型的等效字符数组，然后就可以用scanf()/printf()函数进行输入输出。</li><li>data()    //取得字符串内容的地址</li><li>substr()   //返回某个子字符串</li><li>begin()    //得到指向字符串开头的iterator</li><li>end()      //得到指向字符串结尾的iterator</li><li>rbegin()    //得到指向反向字符串开头的iterator</li><li>rend()      //得到指向反向字符串结尾的iterator</li><li>find_first_of()     //查找包含子串中的任何字符，返回第一个位置</li><li>find_first_not_of()     //查找不包含子串中的任何字符，返回第一个位置</li><li>find_last_of()    //查找包含子串中的任何字符，返回最后一个位置</li><li>find_last_not_of()    //查找不包含子串中的任何字符，返回最后一个位置</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="C++" scheme="http://ccluo.top/categories/C/"/>
+    
+    
+      <category term="编程" scheme="http://ccluo.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>输入输出流对象</title>
+    <link href="http://ccluo.top/2018/04/22/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://ccluo.top/2018/04/22/输入输出流对象/</id>
+    <published>2018-04-22T05:07:50.000Z</published>
+    <updated>2018-11-13T14:53:13.214Z</updated>
+    
+    <content type="html"><![CDATA[<p>C++中的输入输出流,以及一些有限定条件的输入输出方法。<br><a id="more"></a><br>哈哈，今天终于开始更新博客了(<em>^▽^</em>)一时不知道写什么好，就写一下最近学到的东西吧！</p><h1 id="输出流与输入流"><a href="#输出流与输入流" class="headerlink" title="输出流与输入流"></a>输出流与输入流</h1><ul><li><strong>cout</strong>是一个输出流对象，它是“console out”(控制台输出)的缩写,又称为插入运算符，是输出数据的，是属于basic_ostream类中的对象。而ostream类在iostream头文件中定义。</li><li><strong>cin</strong>是一个输入流对象，又称为提取操作符，用来获取用户外部输入的数据，当用户进行键盘输入时，对应的字符将输入到操作系统的键盘缓冲区，当用户点击”Enter”键时，操作系统把键盘缓冲区的内容传输到cin流的内部缓冲区，<strong>“&gt;&gt;”</strong>操作符随后从这个缓冲区提取需要的信息，它是属于istream类中的对象。</li><li>在C++中左移，右移操作符进行了重载。</li><li><p>下面列举一些<strong>cin</strong>和<strong>cout</strong>的用法:</p><h2 id="cin-ignore-amp-cin-getline"><a href="#cin-ignore-amp-cin-getline" class="headerlink" title="cin.ignore() &amp; cin.getline()"></a>cin.ignore() &amp; cin.getline()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char buf[20];</span><br><span class="line">cin.ignore(7);</span><br><span class="line">cin.getline( buf, 10 );</span><br><span class="line">cout &lt;&lt; buf &lt;&lt; endl;</span><br></pre></td></tr></table></figure></li><li><p>使用cin.ignore(7)在输入时会忽略输入的前7个字符。</p></li><li>使用cin.getline（buf, 10）在输入时只会得到前10个字符，注意这10个字符中还要包括’/0’。</li></ul><h2 id="cin-peek-amp-cin-get"><a href="#cin-peek-amp-cin-get" class="headerlink" title="cin.peek() &amp; cin.get()"></a>cin.peek() &amp; cin.get()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">char p;</span><br><span class="line">cout &lt;&lt; &quot;请输入一段文本: \n&quot;;</span><br><span class="line">while( cin.peek() != &apos;\n&apos; )</span><br><span class="line">&#123;</span><br><span class="line">      p = cin.get();</span><br><span class="line">      cout &lt;&lt; p;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; endl;</span><br></pre></td></tr></table></figure><ul><li>cin.peek()函数的返回值是一个<strong>char</strong>型的字符，其返回值是指针指向的当前字符。</li><li>cin.get()函数用来从指定的输入流中提取一个字符(包括空白字符)，函数的返回值就是读入的字符。</li></ul><h2 id="cin-gcount-amp-cin-read"><a href="#cin-gcount-amp-cin-read" class="headerlink" title="cin.gcount() &amp; cin.read()"></a>cin.gcount() &amp; cin.read()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const int SIZE = 50;</span><br><span class="line">char buf[SIZE];</span><br><span class="line">cout &lt;&lt; &quot;请输入一段文本: &quot;;</span><br><span class="line">cin.read( buf, 20 );</span><br><span class="line">cout &lt;&lt; &quot;字符串收集到的字符数为: &quot; &lt;&lt; cin.gcount() &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; &quot;输入的文本信息是: &quot;;</span><br><span class="line">cout.write( buf, 20 );</span><br><span class="line">cout &lt;&lt; endl;</span><br></pre></td></tr></table></figure><ul><li>cin.gcount()函数返回一个非格式化的提取方法读取的字符数，这以为着字符是由<strong>cin.get(),cin.getline(),cin.ignore()或cin.read()</strong>函数读取的，不是又提取操作符”&gt;&gt;”读取的。</li><li>cin.read(buf,20)是读取长度为20的字符串给buf字符数组中，该字符串中包括了’\0’。</li></ul><h2 id="cout-precision-amp-cout-width"><a href="#cout-precision-amp-cout-width" class="headerlink" title="cout.precision() &amp; cout.width()"></a>cout.precision() &amp; cout.width()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">double result = sqrt(3.0);</span><br><span class="line">cout &lt;&lt; &quot;对 3 开方保留小数点后0 ~ 9 位，结果如下: \n&quot; &lt;&lt;endl;</span><br><span class="line">for( int i=0; i &lt;= 9; i++ )</span><br><span class="line">&#123;</span><br><span class="line">     cout.precision(i);</span><br><span class="line">     cout &lt;&lt; result &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; &quot;当前的输出精度为: &quot; &lt;&lt; cout.precision() &lt;&lt; endl;</span><br></pre></td></tr></table></figure><ul><li>cout.precision(i)函数设置当前输出精度为i,输出小数点后<strong>i-1</strong>位，第i位四舍五入。</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int width = 4;</span><br><span class="line">char str[20];</span><br><span class="line">cout &lt;&lt; &quot;请输入一段文本: \n&quot;;</span><br><span class="line">cin.width(5);</span><br><span class="line">while( cin &gt;&gt; str )</span><br><span class="line">&#123;</span><br><span class="line">     cout.width(width++);</span><br><span class="line">     cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">     cin.width(5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>cin.width(n)读取长度为n的字符，注意最后一个字符为’\0’。</li><li>cout.width(n)设置输出宽度为n，不足的用空格补齐。<h1 id="名字空间"><a href="#名字空间" class="headerlink" title="名字空间"></a>名字空间</h1></li><li><strong>cout</strong>这个输出流对象是在名字空间<strong>std</strong>中来定义的。</li><li><p>在使用时可以直接用指令<strong>using namespace std</strong>，然后再使用<strong>cout</strong>，或者直接使用<strong>std::cout</strong>。</p><p><code>std::cout&lt;&lt;&quot;This is a test&quot;&lt;&lt;endl</code></p></li></ul><p>第一次写就先写到这了，希望以后自己能坚持下去!ヾ(◍°∇°◍)ﾉﾞ</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;C++中的输入输出流,以及一些有限定条件的输入输出方法。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="C++" scheme="http://ccluo.top/categories/C/"/>
+    
+    
+      <category term="编程" scheme="http://ccluo.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
