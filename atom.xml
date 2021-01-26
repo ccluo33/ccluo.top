@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ccluo.top/"/>
-  <updated>2019-10-20T08:13:33.033Z</updated>
+  <updated>2019-10-20T05:41:58.310Z</updated>
   <id>http://ccluo.top/</id>
   
   <author>
@@ -15,48 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>LeetCode第159场周赛补题</title>
-    <link href="http://ccluo.top/2019/10/20/LeetCode%E7%AC%AC159%E5%9C%BA%E5%91%A8%E8%B5%9B%E8%A1%A5%E9%A2%98/"/>
-    <id>http://ccluo.top/2019/10/20/LeetCode第159场周赛补题/</id>
-    <published>2019-10-20T05:40:24.000Z</published>
-    <updated>2019-10-20T08:13:33.033Z</updated>
-    
-    <content type="html"><![CDATA[<p>还是只做出来了两个题，加油吧。<br><a id="more"></a></p><h1 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h1><ul><li>题目链接:<a href="https://leetcode-cn.com/problems/replace-the-substring-for-balanced-string/" title="替换子串得到平衡字符串" target="_blank" rel="noopener">https://leetcode-cn.com/problems/replace-the-substring-for-balanced-string/</a></li><li>思路：双指针+滑动窗口。首先统计出每个字母的个数，确定期望的每个字母出现的个数，比较判断是不是出现了特例，即不需要替换子串的情况。对于出现次数超过期望次数的字符，假设字符Q超出了n个，那么我们要找的子字符串就得至少含有n个Q（出现了比n个多的Q也可以，这多出来的Q可以继续让它为Q）。然后采用双指针确定要替换的子串的开始位置和结束位置，不断改变窗口大小判断是否满足要求。时间复杂度为O(n)。代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">     int balancedString(string s) </span><br><span class="line">     &#123;</span><br><span class="line">         vector&lt;char&gt; chars&#123;&apos;Q&apos;, &apos;W&apos;, &apos;E&apos;, &apos;R&apos;&#125;;</span><br><span class="line">         unordered_map&lt;char, int&gt; cnt;</span><br><span class="line">         for(char ch:s)</span><br><span class="line">         &#123;</span><br><span class="line">             ++cnt[ch];</span><br><span class="line">         &#125;</span><br><span class="line">         int exp = s.size()/4;</span><br><span class="line">         bool balanced = true;</span><br><span class="line">         for(char ch: chars)</span><br><span class="line">         &#123;</span><br><span class="line">             cnt[ch] -= exp;</span><br><span class="line">             if(cnt[ch] != 0)</span><br><span class="line">                 balanced = false;</span><br><span class="line">         &#125;</span><br><span class="line">         if(balanced)                //已经平衡了</span><br><span class="line">             return 0;</span><br><span class="line">         </span><br><span class="line">         int left = 0, right = 0, n = s.size(), ans = n;</span><br><span class="line">         while(left &lt;= right &amp;&amp; right &lt; n)                     //滑动窗口，不断改变窗口的大小</span><br><span class="line">         &#123;</span><br><span class="line">             --cnt[s[right]];</span><br><span class="line">             bool find = true;</span><br><span class="line">             </span><br><span class="line">             while(find) //当找到可以替换的字符串时，判断左边是不是有多余的字符，在满足条件的情况下left指针不断++</span><br><span class="line">             &#123;</span><br><span class="line">                 for(char ch: chars)</span><br><span class="line">                     if(cnt[ch] &gt; 0)</span><br><span class="line">                     &#123;</span><br><span class="line">                         find = false;</span><br><span class="line">                         break;</span><br><span class="line">                     &#125;</span><br><span class="line">                 </span><br><span class="line">                 if(find)</span><br><span class="line">                 &#123;</span><br><span class="line">                     ans = min(ans, right-left+1);</span><br><span class="line">                     ++cnt[s[left++]];           //尝试去掉左边的多余字符</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">             ++right;            //找不到的时候right右移</span><br><span class="line">         &#125;</span><br><span class="line">         return ans;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li></ul><h1 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h1><ul><li>题目链接：<a href="https://leetcode-cn.com/problems/maximum-profit-in-job-scheduling/" title="规划兼职工作" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-profit-in-job-scheduling/</a></li><li>思路：</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;还是只做出来了两个题，加油吧。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://ccluo.top/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="编程" scheme="http://ccluo.top/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2019年10月7日</title>
-    <link href="http://ccluo.top/2019/10/07/2019%E5%B9%B410%E6%9C%887%E6%97%A5/"/>
-    <id>http://ccluo.top/2019/10/07/2019年10月7日/</id>
-    <published>2019-10-07T01:52:48.000Z</published>
-    <updated>2019-10-07T02:36:51.866Z</updated>
-    
-    <content type="html"><![CDATA[<p>保完研了，本来打算前几天就写一写，有点懒，就一直推到了今天。<br><a id="more"></a><br>怎么说呢，不管好与坏，总算给自己大学前三年的学习阶段有了一个交代。期间很多次挣扎与迷茫，但还好总算是过去了，还是好好准备，迎接下一个阶段啦！<br><br>感觉时间总是过得飞快，和大一刚入学时的自己比起来，我好像也没什么变化。蠢还是一样的蠢（笑哭），不过还是要向前看嘛。<br><br>剩下的大学一年里，希望可以加油练车，早点拿到驾照。然后看看书，敲敲代码，追一追自己想追的剧，出去玩一玩。还有要减肥，要好好学化妆！！！<br><br>有时候在想，为什么要读研呢？其实身边也有人选择去工作，当然也不乏有找到比较满意的工作的人。不过感觉似乎大多数是选择去读研了（当然，可能是我的朋友并不多的缘故）。有不少选择去直博的，其实觉得如果读完博之后去当一个大学老师似乎也是一个比较不错的选择，还有寒暑假哈哈。也有选择去考公务员的，比如我的漂亮室友。只要是适合自己的选择感觉都挺好的。<br><br>如果不出意外的话，研究生读完我就要去工作啦，所以还是希望现在能好好提升自己的个人能力，不要再这么菜了qaq。<br><br><img src="/images/essay1.jpg" alt=""><br>总之还是加油啦~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;保完研了，本来打算前几天就写一写，有点懒，就一直推到了今天。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="http://ccluo.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
   
   <entry>
     <title>省赛训练补题</title>
@@ -385,50 +343,6 @@
     
     
       <category term="搜索" scheme="http://ccluo.top/tags/%E6%90%9C%E7%B4%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>c++之string类简述</title>
-    <link href="http://ccluo.top/2018/07/30/c++%E4%B9%8Bstring%E7%B1%BB%E7%AE%80%E8%BF%B0/"/>
-    <id>http://ccluo.top/2018/07/30/c++之string类简述/</id>
-    <published>2018-07-30T13:32:20.000Z</published>
-    <updated>2019-03-19T07:04:46.237Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。<br><a id="more"></a><br>可能是由于受c语言的影响，现在好多时候写题还是用char数组字符串比较多，不过感觉用起来似乎比较麻烦，就决定整理一下<strong>c++中的string类的用法</strong>。</p><h1 id="声明一个C-字符串"><a href="#声明一个C-字符串" class="headerlink" title="声明一个C++字符串"></a>声明一个C++字符串</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br></pre></td></tr></table></figure><ul><li>这样就声明了一个字符串变量<strong>str</strong>,由于其构造函数没有传入参数，故此时将str初始化为一个<strong>空字符串</strong>。<h2 id="string类中的构造函数和析构函数如下："><a href="#string类中的构造函数和析构函数如下：" class="headerlink" title="string类中的构造函数和析构函数如下："></a>string类中的构造函数和析构函数如下：</h2></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s; //生成一个空字符串s</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str); //拷贝构造函数，将str复制到s中</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str, stridx); //将字符串str内**始于位置stridx**的部分当作字符串的初值</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(str, stridx, strlen); //将字符串str内**始于stridx且长度至多为strlen**的部分作为字符串的初值</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(cstr); //将c字符串作为s的初值</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(chars, chars_len); //将c字符串前的至多chars_len个字符串作为字符串s的初值</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s(num, c); //生成一个字符串，包含num个c</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.~string(); //销毁所有字符，释放内存</span><br></pre></td></tr></table></figure><h1 id="字符串操作函数"><a href="#字符串操作函数" class="headerlink" title="字符串操作函数"></a>字符串操作函数</h1><ul><li>=，aasign()   //赋值 </li><li>swap()    //交换两个字符串的内容，既可以用作成员函数也可以用作普通函数</li><li>+=,append(),push_back()  //在尾部添加字符，前两个也可添加字符串，后一个只能添加字符</li><li>insert()   //插入字符，有两个参数</li><li>erase()    //删除字符</li><li>clear()    //删除全部字符</li><li>replace()  //替换字符，可将字符串的某段替换为其他字符串</li><li><code>+</code>   //字符串拼接</li><li>==, !=, &lt;, &lt;=, &gt;, &gt;=, compare()     //字符串比较</li><li>size(), length()   //返回字符串中的字符数量，<strong>注意如果求字符数组的长度的话可以用strlen()函数</strong></li><li>max_size()     //返回字符的可能最大个数</li><li>empty()     //判断字符串是否为空</li><li>capacity()   //返回重新分配之前的字符容量</li><li>reverse()   //字符串转置，<strong>注意如果是用字符数组表示字符串的话可用strrev()函数来进行字符串转置</strong></li><li>[],at()    //存取单一字符串</li><li>getline()   //从输入流读入一行</li><li>copy(p,n,size_type _Off = 0)   //从string类型对象中至多复制n个字符到字符指针p指向的空间中。默认从首字符开始，但是也可以指定，开始的位置（记住从0开始）。返回真正从对象中复制的字符。<strong>用户要确保p指向的空间足够保存n个字符</strong>。</li><li>c_str()   //取得c风格的<code>const char *</code>字符串，如果要用scanf()输入或者用printf()输出string类型的变量，我们可以使用c_str()函数，得到string类型的等效字符数组，然后就可以用scanf()/printf()函数进行输入输出。</li><li>data()    //取得字符串内容的地址</li><li>substr()   //返回某个子字符串</li><li>begin()    //得到指向字符串开头的iterator</li><li>end()      //得到指向字符串结尾的iterator</li><li>rbegin()    //得到指向反向字符串开头的iterator</li><li>rend()      //得到指向反向字符串结尾的iterator</li><li>find_first_of()     //查找包含子串中的任何字符，返回第一个位置</li><li>find_first_not_of()     //查找不包含子串中的任何字符，返回第一个位置</li><li>find_last_of()    //查找包含子串中的任何字符，返回最后一个位置</li><li>find_last_not_of()    //查找不包含子串中的任何字符，返回最后一个位置</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近在学了C++之后，感觉其中字符串处理涉及到了很多的方法，故将其整理下来，并将其中某些与C语言处理字符串的方法进行对比。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="C++" scheme="http://ccluo.top/categories/C/"/>
-    
-    
-      <category term="编程" scheme="http://ccluo.top/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>输入输出流对象</title>
-    <link href="http://ccluo.top/2018/04/22/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81%E5%AF%B9%E8%B1%A1/"/>
-    <id>http://ccluo.top/2018/04/22/输入输出流对象/</id>
-    <published>2018-04-22T05:07:50.000Z</published>
-    <updated>2018-11-13T14:53:13.214Z</updated>
-    
-    <content type="html"><![CDATA[<p>C++中的输入输出流,以及一些有限定条件的输入输出方法。<br><a id="more"></a><br>哈哈，今天终于开始更新博客了(<em>^▽^</em>)一时不知道写什么好，就写一下最近学到的东西吧！</p><h1 id="输出流与输入流"><a href="#输出流与输入流" class="headerlink" title="输出流与输入流"></a>输出流与输入流</h1><ul><li><strong>cout</strong>是一个输出流对象，它是“console out”(控制台输出)的缩写,又称为插入运算符，是输出数据的，是属于basic_ostream类中的对象。而ostream类在iostream头文件中定义。</li><li><strong>cin</strong>是一个输入流对象，又称为提取操作符，用来获取用户外部输入的数据，当用户进行键盘输入时，对应的字符将输入到操作系统的键盘缓冲区，当用户点击”Enter”键时，操作系统把键盘缓冲区的内容传输到cin流的内部缓冲区，<strong>“&gt;&gt;”</strong>操作符随后从这个缓冲区提取需要的信息，它是属于istream类中的对象。</li><li>在C++中左移，右移操作符进行了重载。</li><li><p>下面列举一些<strong>cin</strong>和<strong>cout</strong>的用法:</p><h2 id="cin-ignore-amp-cin-getline"><a href="#cin-ignore-amp-cin-getline" class="headerlink" title="cin.ignore() &amp; cin.getline()"></a>cin.ignore() &amp; cin.getline()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char buf[20];</span><br><span class="line">cin.ignore(7);</span><br><span class="line">cin.getline( buf, 10 );</span><br><span class="line">cout &lt;&lt; buf &lt;&lt; endl;</span><br></pre></td></tr></table></figure></li><li><p>使用cin.ignore(7)在输入时会忽略输入的前7个字符。</p></li><li>使用cin.getline（buf, 10）在输入时只会得到前10个字符，注意这10个字符中还要包括’/0’。</li></ul><h2 id="cin-peek-amp-cin-get"><a href="#cin-peek-amp-cin-get" class="headerlink" title="cin.peek() &amp; cin.get()"></a>cin.peek() &amp; cin.get()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">char p;</span><br><span class="line">cout &lt;&lt; &quot;请输入一段文本: \n&quot;;</span><br><span class="line">while( cin.peek() != &apos;\n&apos; )</span><br><span class="line">&#123;</span><br><span class="line">      p = cin.get();</span><br><span class="line">      cout &lt;&lt; p;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; endl;</span><br></pre></td></tr></table></figure><ul><li>cin.peek()函数的返回值是一个<strong>char</strong>型的字符，其返回值是指针指向的当前字符。</li><li>cin.get()函数用来从指定的输入流中提取一个字符(包括空白字符)，函数的返回值就是读入的字符。</li></ul><h2 id="cin-gcount-amp-cin-read"><a href="#cin-gcount-amp-cin-read" class="headerlink" title="cin.gcount() &amp; cin.read()"></a>cin.gcount() &amp; cin.read()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const int SIZE = 50;</span><br><span class="line">char buf[SIZE];</span><br><span class="line">cout &lt;&lt; &quot;请输入一段文本: &quot;;</span><br><span class="line">cin.read( buf, 20 );</span><br><span class="line">cout &lt;&lt; &quot;字符串收集到的字符数为: &quot; &lt;&lt; cin.gcount() &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; &quot;输入的文本信息是: &quot;;</span><br><span class="line">cout.write( buf, 20 );</span><br><span class="line">cout &lt;&lt; endl;</span><br></pre></td></tr></table></figure><ul><li>cin.gcount()函数返回一个非格式化的提取方法读取的字符数，这以为着字符是由<strong>cin.get(),cin.getline(),cin.ignore()或cin.read()</strong>函数读取的，不是又提取操作符”&gt;&gt;”读取的。</li><li>cin.read(buf,20)是读取长度为20的字符串给buf字符数组中，该字符串中包括了’\0’。</li></ul><h2 id="cout-precision-amp-cout-width"><a href="#cout-precision-amp-cout-width" class="headerlink" title="cout.precision() &amp; cout.width()"></a>cout.precision() &amp; cout.width()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">double result = sqrt(3.0);</span><br><span class="line">cout &lt;&lt; &quot;对 3 开方保留小数点后0 ~ 9 位，结果如下: \n&quot; &lt;&lt;endl;</span><br><span class="line">for( int i=0; i &lt;= 9; i++ )</span><br><span class="line">&#123;</span><br><span class="line">     cout.precision(i);</span><br><span class="line">     cout &lt;&lt; result &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; &quot;当前的输出精度为: &quot; &lt;&lt; cout.precision() &lt;&lt; endl;</span><br></pre></td></tr></table></figure><ul><li>cout.precision(i)函数设置当前输出精度为i,输出小数点后<strong>i-1</strong>位，第i位四舍五入。</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int width = 4;</span><br><span class="line">char str[20];</span><br><span class="line">cout &lt;&lt; &quot;请输入一段文本: \n&quot;;</span><br><span class="line">cin.width(5);</span><br><span class="line">while( cin &gt;&gt; str )</span><br><span class="line">&#123;</span><br><span class="line">     cout.width(width++);</span><br><span class="line">     cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">     cin.width(5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>cin.width(n)读取长度为n的字符，注意最后一个字符为’\0’。</li><li>cout.width(n)设置输出宽度为n，不足的用空格补齐。<h1 id="名字空间"><a href="#名字空间" class="headerlink" title="名字空间"></a>名字空间</h1></li><li><strong>cout</strong>这个输出流对象是在名字空间<strong>std</strong>中来定义的。</li><li><p>在使用时可以直接用指令<strong>using namespace std</strong>，然后再使用<strong>cout</strong>，或者直接使用<strong>std::cout</strong>。</p><p><code>std::cout&lt;&lt;&quot;This is a test&quot;&lt;&lt;endl</code></p></li></ul><p>第一次写就先写到这了，希望以后自己能坚持下去!ヾ(◍°∇°◍)ﾉﾞ</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;C++中的输入输出流,以及一些有限定条件的输入输出方法。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="C++" scheme="http://ccluo.top/categories/C/"/>
-    
-    
-      <category term="编程" scheme="http://ccluo.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
